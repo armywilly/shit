@@ -36,7 +36,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                 <td><?php echo substr(strip_tags($list['file_name']),0,20) ?></td>
                                                 <td><a href="<?php echo $list['file'] ?>">Downloads</a></td>
                                                 <td><?php echo date('l, d/m/Y', strtotime($list['date_upload'])); ?></td>
-                                                <td><?php echo $list['status'] ?></td>
+                                                <td><?php echo $list['username'] ?></td>
                                                 <td class="td-actions text-right">
                                                             <a href="<?php echo base_url('admin/downloads/edit/'.$list['download_id']);?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
                                                                 <i class="material-icons">edit</i>

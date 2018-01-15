@@ -6,7 +6,7 @@ class Associates extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('Associates_model');
+		$this->load->model('admin/Associates_model');
 	}
 
 	// Index
@@ -90,8 +90,8 @@ class Associates extends CI_Controller {
 		$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 						'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 						'instansi'		=> $this->config->item('nama_instansi'),
-						'products'	=> $products,
-						'isi'		=> 'admin/associates/create');
+						'products'		=> $products,
+						'isi'			=> 'admin/associates/create');
 		$this->load->view('admin/layout/wrapper', $data);
 	}
 	

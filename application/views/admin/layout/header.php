@@ -72,6 +72,13 @@
                     </li>
 
                     <li>
+                        <a href="<?php echo base_url('admin/products') ?>">
+                            <i class="material-icons">content_paste</i>
+                            <p>Practice Areas</p>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="<?php echo base_url('admin/contacts/inbox') ?>">
                             <i class="material-icons">mail</i>
                             <p>Inbox</p>

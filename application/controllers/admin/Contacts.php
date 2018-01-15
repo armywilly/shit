@@ -6,6 +6,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Contacts extends CI_Controller {
+
+	// Load database
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin/Contacts_model');
+	}
 	
 	// Inbox Contacts
 	public function inbox() {

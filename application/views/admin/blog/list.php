@@ -1,13 +1,15 @@
-
 <?php
 // Session 
-if($this->session->flashdata('sukses')) { 
-    echo '<div class="alert alert-success">';
+if($this->session->flashdata('sukses')) {
+    echo '<div class="col-md-6 pull-left">';
+    echo '<div class="alert alert-info alert-with-icon" data-notify="container">';
+    echo '<i data-notify="icon" class="material-icons">add_alert</i>';
     echo $this->session->flashdata('sukses');
+    echo '</div>';
     echo '</div>';
 } 
 // Error
-echo validation_errors('<div class="alert alert-success">','</div>'); 
+echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert alert-danger alert-with-icon" data-notify="container">','<i data-notify="icon" class="material-icons">add_alert</i>','</div>','</div>'); 
 ?>
 
 <div class="content">
@@ -19,7 +21,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                     <h4 class="title">Blog</h4>
                                     <p class="category">List Blog</p>
                                     <a href="<?php echo base_url('admin/blog/create') ?>" class="btn btn-info"><i class="material-icons">add_circle_outline</i>&nbsp;Create Blog</a>
-                                    <a href="<?php echo base_url('admin/blog/categories') ?>" class="btn btn-info"><i class="material-icons">add_circle_outline</i>&nbsp;Create Category</a>
+                                    <a href="<?php echo base_url('admin/blog/categories') ?>" class="btn btn-info"><i class="material-icons">add_circle_outline</i>&nbsp;Category</a>
                                 </div>
                                 <div class="card-content table-responsive">
                                     <table class="table">

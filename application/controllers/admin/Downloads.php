@@ -6,6 +6,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Downloads extends CI_Controller {
+
+	// Load database
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin/Downloads_model');
+	}
 	
 	// Main Page Downloads
 	public function index() {

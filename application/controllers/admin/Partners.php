@@ -6,7 +6,7 @@ class Partners extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('Partners_model');
+		$this->load->model('admin/Partners_model');
 	}
 
 	// Index

@@ -31,6 +31,7 @@ class Dashboard extends CI_Controller {
 								'associates'	=> $this->mStats->associates(),
 								'partners'		=> $this->mStats->partners(),
 								'blog'			=> $this->mStats->blog(),
+								'products'		=> $this->mStats->products(),
 								'contacts'		=> $this->mStats->contacts(),
 								'downloads'		=> $this->mStats->downloads(),
 								'isi'			=> 'admin/dashboard/index');

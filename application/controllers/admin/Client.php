@@ -6,6 +6,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Client extends CI_Controller {
+
+	// Load database
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin/Clients_model');
+	}
 	
 	// Main Page Clients
 	public function index() {
@@ -106,7 +112,7 @@ class Client extends CI_Controller {
 						'error'		=> $this->upload->display_errors(),
 						'isi'		=> 'admin/client/edit');
 		$this->load->view('admin/layout/wrapper', $data);
-		}else{
+			}else{
 				$upload_data				= array('uploads' =>$this->upload->data());
 				$config['image_library']	= 'gd2';
 				$config['source_image'] 	= './upload/image/'.$upload_data['uploads']['file_name']; 

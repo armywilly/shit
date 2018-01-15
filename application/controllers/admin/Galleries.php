@@ -6,6 +6,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Galleries extends CI_Controller {
+
+	// Load database
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin/Galleries_model');
+	}
 	
 	// Main Page Products
 	public function index() {

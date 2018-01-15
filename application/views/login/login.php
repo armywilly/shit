@@ -45,6 +45,32 @@
     <!-- frontbox -->
   </div>
 
+  <?php if(validation_errors()) { ?>
+  <div class="container">
+  <div class="col-md-6 pull-left">
+    <div class="alert alert-danger alert-with-icon">
+      <i data-notify="icon" class="material-icons">add_alert</i>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+      <h4>Terjadi Kesalahan!</h4>
+    <?php echo validation_errors(); ?>
+  </div>
+</div>
+</div>
+  <?php } ?>
+  
+  <?php if($this->session->flashdata('result_login')) { ?>
+  <div class="container">
+  <div class="col-md-6 pull-left">
+    <div class="alert alert-danger alert-with-icon">
+      <i data-notify="icon" class="material-icons">add_alert</i>
+    <button type="button" class="close" data-dismiss="alert">×</button>
+      <h4>Terjadi Kesalahan!</h4>
+    <?php echo $this->session->flashdata('result_login'); ?>
+  </div>
+</div>
+</div>
+  <?php } ?>
+
   <script>
     var $loginMsg = $('.loginMsg'),
   $login = $('.login'),

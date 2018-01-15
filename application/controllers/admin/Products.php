@@ -6,49 +6,58 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Products extends CI_Controller {
+
+	// Load database
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('admin/Products_model');
+	}
 	
 	// Main Page Products
 	public function index() {
 
-		$site  	  = $this->mConfig->list_config();
 		$products = $this->mProducts->listProducts();
 		
-		$data = array(	'title'		=> 'List Practice Areas - '.$site['nameweb'],
-						'products'	=> $products,
-						'isi'		=> 'admin/products/list');
+		$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+						'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+						'instansi'		=> $this->config->item('nama_instansi'),
+						'credit'		=> $this->config->item('credit_aplikasi'),
+						'products'		=> $products,
+						'isi'			=> 'admin/product/list');
 		$this->load->view('admin/layout/wrapper',$data);
 	}
 
 	// Create Product
 	public function create() {
 		
-		$site = $this->mConfig->list_config();
 		
 		$v = $this->form_validation;
 		$v->set_rules('product_name','Product Name','required');
 		
 		if($v->run()) {
 			
-			$config['upload_path'] 		= './assets/upload/image/';
+			$config['upload_path'] 		= './upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
-			$config['max_size']			= '500'; // KB			
+			$config['max_size']			= '300'; // KB			
 			$this->load->library('upload', $config);
 			if(! $this->upload->do_upload('image')) {
 				
-		$data = array(	'title'			=> 'Create Practice Areas - '.$site['nameweb'],
-						'site'			=> $site,
+		$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+						'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+						'instansi'		=> $this->config->item('nama_instansi'),
+						'credit'		=> $this->config->item('credit_aplikasi'),
 						'error'			=> $this->upload->display_errors(),
-						'isi'			=> 'admin/products/create');
+						'isi'			=> 'admin/product/create');
 		$this->load->view('admin/layout/wrapper',$data);
 		}else{
 				$upload_data				= array('uploads' =>$this->upload->data());
 				$config['image_library']	= 'gd2';
-				$config['source_image'] 	= './assets/upload/image/'.$upload_data['uploads']['file_name']; 
-				$config['new_image'] 		= './assets/upload/image/thumbs/';
+				$config['source_image'] 	= './upload/image/'.$upload_data['uploads']['file_name']; 
+				$config['new_image'] 		= './upload/image/thumbs/';
 				$config['create_thumb'] 	= TRUE;
 				$config['maintain_ratio'] 	= TRUE;
-				$config['width'] 			= 1024; // Pixel
-				$config['height'] 			= 700; // Pixel
+				$config['width'] 			= 600; // Pixel
+				$config['height'] 			= 400; // Pixel
 				$config['thumb_marker'] 	= '';
 				$this->load->library('image_lib', $config);
 				$this->image_lib->resize();
@@ -56,7 +65,7 @@ class Products extends CI_Controller {
 				$i = $this->input;
 				$slugProduct = url_title($this->input->post('product_name'), 'dash', TRUE);
 				$data = array(	'slug_product'	=> $slugProduct,
-								'id_user'		=> $this->session->userdata('status'),
+								'id_user'		=> $this->session->userdata('id_user'),
 								'product_name'	=> $i->post('product_name'),								
 								'date'			=> $i->post('date'),								
 								'status'		=> $i->post('status'),
@@ -70,9 +79,11 @@ class Products extends CI_Controller {
 				redirect(base_url('admin/products/'));
 		}}
 		// Default page
-		$data = array(	'title'		=> 'Create Practice Areas - '.$site['nameweb'],
-						'site'		=> $site,
-						'isi'		=> 'admin/products/create');
+		$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+						'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+						'instansi'		=> $this->config->item('nama_instansi'),
+						'credit'		=> $this->config->item('credit_aplikasi'),
+						'isi'		=> 'admin/product/create');
 		$this->load->view('admin/layout/wrapper',$data);
 	}
 
@@ -88,13 +99,16 @@ class Products extends CI_Controller {
 		
 		if($v->run()) {
 			if(!empty($_FILES['image']['name'])) {
-			$config['upload_path'] 		= './assets/upload/image/';
+			$config['upload_path'] 		= './upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png|svg';
-			$config['max_size']			= '1000'; // KB			
+			$config['max_size']			= '300'; // KB			
 			$this->load->library('upload', $config);
 			if(! $this->upload->do_upload('image')) {
 		
-		$data = array(	'title'		=> 'Edit Product - '.$product['product_name'],
+		$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+						'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+						'instansi'		=> $this->config->item('nama_instansi'),
+						'credit'		=> $this->config->item('credit_aplikasi'),
 						'product'	=> $product,
 						'error'		=> $this->upload->display_errors(),
 						'isi'		=> 'admin/products/edit');
@@ -102,13 +116,13 @@ class Products extends CI_Controller {
 		}else{
 				$upload_data				= array('uploads' =>$this->upload->data());
 				$config['image_library']	= 'gd2';
-				$config['source_image'] 	= './assets/upload/image/'.$upload_data['uploads']['file_name']; 
-				$config['new_image'] 		= './assets/upload/image/thumbs/';
+				$config['source_image'] 	= './upload/image/'.$upload_data['uploads']['file_name']; 
+				$config['new_image'] 		= './upload/image/thumbs/';
 				$config['create_thumb'] 	= TRUE;
 				$config['quality'] 			= "100%";
 				$config['maintain_ratio'] 	= FALSE;
 				$config['width'] 			= 600; // Pixel
-				$config['height'] 			= 600; // Pixel
+				$config['height'] 			= 400; // Pixel
 				$config['x_axis'] 			= 0;
 				$config['y_axis'] 			= 0;
 				$config['thumb_marker'] 	= '';
@@ -117,19 +131,19 @@ class Products extends CI_Controller {
 				
 			$i = $this->input;
 
-			unlink('./assets/upload/image/'.$product['image']);
-			unlink('./assets/upload/image/thumbs/'.$product['image']);
+			unlink('./upload/image/'.$product['image']);
+			unlink('./upload/image/thumbs/'.$product['image']);
 
 			$slugProduct = $endProduct['product_id'].'-'.url_title($i->post('product_name'),'dash', TRUE);
-			$data = array(	'product_id'	=> $product['product_id'],
-							'slug_product'	=> $slugProduct,
-							'id_user'		=> $this->session->userdata('status'),
-							'product_name'	=> $i->post('product_name'),
-							'product_description' => $i->post('product_description'),
-							'date'			=> $i->post('date'),
-							'status'		=> $i->post('status'),
-							'urutan'		=> $i->post('urutan'),
-							'image'			=> $upload_data['uploads']['file_name']
+			$data = array(	'product_id'			=> $product['product_id'],
+							'slug_product'			=> $slugProduct,
+							'id_user'				=> $this->session->userdata('id_user'),
+							'product_name'			=> $i->post('product_name'),
+							'product_description' 	=> $i->post('product_description'),
+							'date'					=> $i->post('date'),
+							'status'				=> $i->post('status'),
+							'urutan'				=> $i->post('urutan'),
+							'image'					=> $upload_data['uploads']['file_name']
 							
 							);
 			$this->mProducts->editProduct($data);
@@ -138,23 +152,26 @@ class Products extends CI_Controller {
 		}}else{
 			$i = $this->input;
 			$slugProduct = $endProduct['product_id'].'-'.url_title($i->post('product_name'),'dash', TRUE);
-			$data = array(	'product_id'	=> $product['product_id'],
-							'slug_product'	=> $slugProduct,
-							'id_user'		=> $this->session->userdata('status'),
-							'product_name'	=> $i->post('product_name'),
+			$data = array(	'product_id'		  => $product['product_id'],
+							'slug_product'		  => $slugProduct,
+							'id_user'			  => $this->session->userdata('id_user'),
+							'product_name'		  => $i->post('product_name'),
 							'product_description' => $i->post('product_description'),
-							'date'			=> $i->post('date'),
-							'status'		=> $i->post('status'),
-							'urutan'		=> $i->post('urutan')
+							'date'				  => $i->post('date'),
+							'status'			  => $i->post('status'),
+							'urutan'			  => $i->post('urutan')
 							);
 			$this->mProducts->editProduct($data);
 			$this->session->set_flashdata('sukses','Success');
 			redirect(base_url('admin/products'));			
 		}}
 
-		$data = array(	'title'		=> 'Edit Practice Areas - '.$product['product_name'],
+		$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+						'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+						'instansi'		=> $this->config->item('nama_instansi'),
+						'credit'		=> $this->config->item('credit_aplikasi'),
 						'product'	=> $product,
-						'isi'		=> 'admin/products/edit');
+						'isi'		=> 'admin/product/edit');
 		$this->load->view('admin/layout/wrapper', $data);
 	}	
 

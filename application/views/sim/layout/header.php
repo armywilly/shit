@@ -37,15 +37,45 @@
             <div class="sidebar-wrapper">
                 <ul class="nav">
                     <li class="active">
-                        <a href="dashboard.html">
+                        <a href="<?php echo base_url('sim/dashboard') ?>">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
+                        <a href="<?php echo base_url('sim/karyawan') ?>">
+                            <i class="material-icons">folder</i>
+                            <p>Data Karyawan</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#">
-                            <i class="material-icons">settings</i>
-                            <p>Setting</p>
+                            <i class="material-icons">folder</i>
+                            <p>Data Gaji Pokok</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">folder</i>
+                            <p>Data Task Karyawan</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('sim/master_jabatan') ?>">
+                            <i class="material-icons">dns</i>
+                            <p>Master Jabatan</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">dns</i>
+                            <p>Master Gaji Pokok</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="material-icons">dns</i>
+                            <p>Master Task Lawyer</p>
                         </a>
                     </li>
                 </ul>
