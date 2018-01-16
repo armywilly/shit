@@ -147,4 +147,5 @@ $autoload['model'] = array( 'app_login_model'				=> 'mAlm',
 							'admin/Partners_model' 			=> 'mPartners',
 							'sim/Karyawan_model' 			=> 'mKaryawan',
 							'sim/Master_jabatan_model' 		=> 'mMjabatan',
+							'sim/Master_task_karyawan_model'=> 'mMtkaryawan',
 						);
