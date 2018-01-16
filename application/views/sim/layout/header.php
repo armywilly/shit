@@ -57,7 +57,7 @@
                     <li>
                         <a href="#">
                             <i class="material-icons">folder</i>
-                            <p>Data Task Karyawan</p>
+                            <p>Data Task Lawyer</p>
                         </a>
                     </li>
                     <li>
@@ -73,9 +73,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="<?php echo base_url('sim/master_task_karyawan') ?>">
                             <i class="material-icons">dns</i>
-                            <p>Master Task Lawyer</p>
+                            <p>Master Task </p>
                         </a>
                     </li>
                 </ul>
