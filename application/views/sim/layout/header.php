@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="<?php echo base_url('sim/data_task_lawyer') ?>">
                             <i class="material-icons">folder</i>
                             <p>Data Task Lawyer</p>
                         </a>
