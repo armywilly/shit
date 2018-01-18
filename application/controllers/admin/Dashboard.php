@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
@@ -22,7 +21,7 @@ class Dashboard extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="administrator") {
 
-		$d = array(	
+					$d = array(	
 								'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'		=> $this->config->item('nama_instansi'),
@@ -37,6 +36,8 @@ class Dashboard extends CI_Controller {
 								'isi'			=> 'admin/dashboard/index');
 			$this->load->view('admin/layout/wrapper',$d);
 
+		}else{
+			redirect('login');
 		}
 	}
 }

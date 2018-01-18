@@ -93,6 +93,7 @@ class Karyawan_model extends CI_Model {
 	// Edit
 	public function edit($data) {
 		$this->db->where('id_staff',$data['id_staff']);
+		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.id_jabatan','LEFT');
 		unset($data['nip']);
 		$this->db->update('s_karyawan',$data);
 	}

@@ -81,7 +81,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                     <label class="control-label">Jabatan</label>
                                                     <select name="id_jabatan" class="form-control">
                                                         <?php foreach($mj as $list) { ?>
-                                                        <option value="<?php echo $list['id_jabatan'] ?>" <?php if($list['id_jabatan']==$list['id_jabatan']) { echo "selected"; } ?>><?php echo $list['name'] ?></option>
+                                                        <option value="<?php echo $list['id_jabatan']; ?>" <?php if($list['id_jabatan']==$list['id_jabatan']) { echo "selected"; } ?>><?php echo $list['name']; ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>

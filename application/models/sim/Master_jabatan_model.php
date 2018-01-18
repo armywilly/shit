@@ -28,7 +28,7 @@
             $this->db->select('*');
             $this->db->from('s_jabatan');
             $this->db->where('id_jabatan',$id_jabatan);
-            $this->db->order_by('id_jabatan','DESC');
+            $this->db->order_by('id_jabatan','ASC');
             $query = $this->db->get();
             return $query->row_array();
         } 
