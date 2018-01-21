@@ -11,9 +11,16 @@ class Karyawan_model extends CI_Model {
 	public function listKaryawan() {
 		$this->db->select('*');
 		$this->db->from('s_karyawan');
+		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.id_jabatan');
 		$this->db->order_by('nama','ASC');
-		$query = $this->db->get();
-		return $query->result();
+		$query = $this->db->get(); //simpan database yang udah di get alias ambil ke query
+        if ($query->num_rows() >0){
+            foreach ($query->result() as $data) {
+                # code...
+                $k[] = $data;
+            }
+        return $k;
+        }
 	}
 	
 	// Semua
