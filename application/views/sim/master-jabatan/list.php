@@ -33,7 +33,7 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                                             <?php $i=1; foreach($mj as $list) { ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
-                                                <td><?php echo substr(strip_tags($list['name']),0,20) ?></td>
+                                                <td><?php echo substr(strip_tags($list['jabatan']),0,20) ?></td>
                                                 <td><?php echo substr(strip_tags($list['isi']),0,100) ?></td>
                                                 <td class="td-actions text-right">
                                                             <a href="<?php echo base_url('sim/master_jabatan/edit/'.$list['id_jabatan']);?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">

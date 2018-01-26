@@ -11,16 +11,10 @@ class Karyawan_model extends CI_Model {
 	public function listKaryawan() {
 		$this->db->select('*');
 		$this->db->from('s_karyawan');
-		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.id_jabatan');
+		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.jabatan');
 		$this->db->order_by('nama','ASC');
-		$query = $this->db->get(); //simpan database yang udah di get alias ambil ke query
-        if ($query->num_rows() >0){
-            foreach ($query->result() as $data) {
-                # code...
-                $k[] = $data;
-            }
-        return $k;
-        }
+		$query = $this->db->get();
+        return $query->result_array();
 	}
 	
 	// Semua
@@ -100,19 +94,19 @@ class Karyawan_model extends CI_Model {
 	// Edit
 	public function edit($data) {
 		$this->db->where('id_staff',$data['id_staff']);
-		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.id_jabatan','LEFT');
+		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.jabatan','LEFT');
 		unset($data['nip']);
 		$this->db->update('s_karyawan',$data);
 	}
 	
 	// Check delete
 	public function check($id_staff) {
-		$query = $this->db->get_where('gaji_pokok','task',array('id_staff' => $id_staff));
+		$query = $this->db->get_where('jabatan','data_task',array('id_staff' => $id_staff));
 		return $query->num_rows();
 	}
 	
 	// Delete
-	public function delete($data) {
+	public function deleteKaryawan($data) {
 		$this->db->where('id_staff',$data['id_staff']);
 		$this->db->delete('s_karyawan',$data);
 	}

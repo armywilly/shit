@@ -31,7 +31,7 @@ class Master_jabatan extends CI_Controller {
 		
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('jabatan','Jabatan','required');
 		
 				if($v->run()) {
 						
@@ -43,10 +43,10 @@ class Master_jabatan extends CI_Controller {
 						$this->load->view('sim/layout/wrapper', $d);
 				
 						$i = $this->input;
-						$slugmj = url_title($this->input->post('name'), 'dash', TRUE);
+						$slugmj = url_title($this->input->post('jabatan'), 'dash', TRUE);
 						$d  = array(	'slug_jabatan'	=> $slugmj,
 										'id_user'		=> $this->session->userdata('id_user'),
-										'name'			=> $i->post('name'),
+										'jabatan'		=> $i->post('jabatan'),
 										'isi'			=> $i->post('isi'),								
 										'date'			=> $i->post('date')				
 						 			 );
@@ -76,7 +76,7 @@ class Master_jabatan extends CI_Controller {
 
 			// Validation
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('jabatan','Jabatan','required');
 				//Funtion Baca Data
 				if($v->run()) {
 				
@@ -90,11 +90,11 @@ class Master_jabatan extends CI_Controller {
 
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
-					$slugmj = $endmj['id_jabatan'].'-'.url_title($i->post('name'),'dash', TRUE);
+					$slugmj = $endmj['id_jabatan'].'-'.url_title($i->post('jabatan'),'dash', TRUE);
 					$d = array(		'id_jabatan'    => $mj['id_jabatan'],
 									'slug_jabatan'	=> $slugmj,
 									'id_user'		=> $this->session->userdata('id_user'),
-									'name'			=> $i->post('name'),
+									'jabatan'		=> $i->post('jabatan'),
 									'isi'			=> $i->post('isi'),							
 									'date'			=> $i->post('date')								
 						 			 );

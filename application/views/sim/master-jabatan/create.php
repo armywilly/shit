@@ -55,7 +55,7 @@ $(function() {
                                             <div class="col-md-12 col-sm-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Nama Jabatan</label>
-                                                    <input type="text" name="name" class="form-control" value="<?php echo set_value('name') ?>">
+                                                    <input type="text" name="jabatan" class="form-control" value="<?php echo set_value('jabatan') ?>">
                                                 </div>
                                             </div>
                                         </div> 
