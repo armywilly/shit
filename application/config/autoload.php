@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','form_validation','pagination');
+$autoload['libraries'] = array('database','session','form_validation','pagination','email','tank_auth');
 
 /*
 | -------------------------------------------------------------------
@@ -149,4 +149,5 @@ $autoload['model'] = array( 'app_login_model'				=> 'mAlm',
 							'sim/Master_jabatan_model' 		=> 'mMjabatan',
 							'sim/Master_task_karyawan_model'=> 'mMtkaryawan',
 							'sim/Data_task_lawyer_model'	=> 'mDtlawyer',
+							'sim/master_client_model'		=> 'mMClients',
 						);

@@ -10,26 +10,24 @@ class Karyawan extends CI_Controller {
 
 	// Index
 	public function index() {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$k	= $this->mKaryawan->listKaryawan();
-			$mj = $this->mMjabatan->listJabatan();
 			
 			$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 							'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'k'				=> $k,
-							'mj'			=> $mj,
 							'isi'			=> 'sim/karyawan/list');
 			$this->load->view('sim/layout/wrapper',$data);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 		
 	// Tambah
 	public function create() {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			//Load Model
 			$mj = $this->mMjabatan->listJabatan();
 			$kd['nip']=  $this->mKaryawan->get_nip();
@@ -37,7 +35,7 @@ class Karyawan extends CI_Controller {
 			// Validasi
 			$v = $this->form_validation;//Set V as variable of form_validation
 			$v->set_rules('nama','Karyawan name','required');
-			$v->set_rules('jabatan','jabatan','required');
+			$v->set_rules('id_jabatan','id_jabatan','required');
 				if($v->run()) { //Eksekusi setelah validasi run, maka
 					
 					$config['upload_path'] 		= './upload/image/';
@@ -81,7 +79,7 @@ class Karyawan extends CI_Controller {
 									'tgl_lahir'			=> $i->post('tgl_lahir'),
 									'npwp'				=> $i->post('npwp'),
 									'bpjs'				=> $i->post('bpjs'),
-									'jabatan'			=> $i->post('jabatan'),
+									'id_jabatan'		=> $i->post('id_jabatan'),
 									'pendidikan'		=> $i->post('pendidikan'),
 									'sertifikat'		=> $i->post('sertifikat'),
 									'email'				=> $i->post('email'),
@@ -109,13 +107,13 @@ class Karyawan extends CI_Controller {
 								'isi'			=> 'sim/karyawan/create');
 				$this->load->view('sim/layout/wrapper', $data);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 	
 	// Edit
 	public function edit($id_staff) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			// Dari database
 			$k		  = $this->mKaryawan->detail($id_staff);
 			$kd['nip']=  $this->mKaryawan->get_nip();
@@ -123,6 +121,7 @@ class Karyawan extends CI_Controller {
 			// Validasi
 			$v 		  = $this->form_validation;
 			$v->set_rules('nama','Staff name','required');
+			$v->set_rules('id_jabatan','id_jabatan','required');
 		
 				if($v->run()) {
 					if(!empty($_FILES->gambar['name'])) {
@@ -142,6 +141,7 @@ class Karyawan extends CI_Controller {
 											'error'			=> $this->upload->display_errors(),
 											'isi'			=> 'sim/karyawan/edit');
 							$this->load->view('sim/layout/wrapper', $data);
+							var_dump($data);
 						// Masuk database
 						}else{
 
@@ -164,15 +164,15 @@ class Karyawan extends CI_Controller {
 						unlink('./upload/image/'.$k['image']);
 						unlink('./upload/image/thumbs/'.$k['image']);
 						// End hapus gambar lama
-						$data = array(	'id_staff'			=> $k['id_staff'],
-										'nip'				=> $kd('nip'),
+						$data = array(	'id_staff'			=> $k->id_staff,
+										'nip'				=> $kd['nip'],
 										'nama'				=> $i->post('nama'),
 										'gender'			=> $i->post('gender'),
 										'tempat_lahir'		=> $i->post('tempat_lahir'),
 										'tgl_lahir'			=> $i->post('tgl_lahir'),
 										'npwp'				=> $i->post('npwp'),
 										'bpjs'				=> $i->post('bpjs'),
-										'jabatan'			=> $i->post('jabatan'),
+										'id_jabatan'		=> $i->post('id_jabatan'),
 										'pendidikan'		=> $i->post('pendidikan'),
 										'sertifikat'		=> $i->post('sertifikat'),
 										'email'				=> $i->post('email'),
@@ -192,7 +192,7 @@ class Karyawan extends CI_Controller {
 					}else{
 
 					$i = $this->input;
-					$data = array(	'id_staff'			=> $k['id_staff'],
+					$data = array(	'id_staff'			=> $k->id_staff,
 									'nip'				=> $kd['nip'],
 									'nama'				=> $i->post('nama'),
 									'gender'			=> $i->post('gender'),
@@ -200,7 +200,7 @@ class Karyawan extends CI_Controller {
 									'tgl_lahir'			=> $i->post('tgl_lahir'),
 									'npwp'				=> $i->post('npwp'),
 									'bpjs'				=> $i->post('bpjs'),
-									'jabatan'			=> $i->post('jabatan'),
+									'id_jabatan'		=> $i->post('id_jabatan'),
 									'pendidikan'		=> $i->post('pendidikan'),
 									'sertifikat'		=> $i->post('sertifikat'),
 									'email'				=> $i->post('email'),
@@ -214,7 +214,8 @@ class Karyawan extends CI_Controller {
 									);
 					$this->mKaryawan->edit($data);
 					$this->session->set_flashdata('sukses','Staff data updated successfully');
-					redirect(base_url('sim/Karyawan'));			
+					redirect(base_url('sim/Karyawan'));	
+							
 					}
 				}
 				// End masuk database
@@ -227,14 +228,15 @@ class Karyawan extends CI_Controller {
 								'kd'			=> $kd,
 								'isi'			=> 'sim/karyawan/edit');
 				$this->load->view('sim/layout/wrapper', $data);
+				var_dump($data);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 	
 	// Delete
 	public function delete($id_staff) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$k		= $this->mKaryawan->detail($id_staff);
 			// Hapus gambar lama
 			unlink('./upload/image/'.$k['image']);
@@ -245,7 +247,7 @@ class Karyawan extends CI_Controller {
 			$this->session->set_flashdata('sukses','Staff deleted successfully');
 			redirect(base_url('sim/karyawan'));
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 
 	}

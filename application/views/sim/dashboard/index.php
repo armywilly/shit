@@ -321,7 +321,7 @@
                             <div class="inbox-widget nicescroll" style="height: 315px;">
                                 <a href="#">
                                     <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg"
+                                        <div class="inbox-item-img"><img src="<?php echo base_url() ?>assets/sim/assets/images/users/avatar-1.jpg"
                                                                          class="img-circle" alt=""></div>
                                         <p class="inbox-item-author">Chadengle</p>
                                         <p class="inbox-item-text">Hey! there I'm available...</p>
@@ -330,7 +330,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg"
+                                        <div class="inbox-item-img"><img src="<?php echo base_url() ?>assets/sim/assets/images/users/avatar-2.jpg"
                                                                          class="img-circle" alt=""></div>
                                         <p class="inbox-item-author">Tomaslau</p>
                                         <p class="inbox-item-text">I've finished it! See you so...</p>
@@ -339,7 +339,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg"
+                                        <div class="inbox-item-img"><img src="<?php echo base_url() ?>assets/sim/assets/images/users/avatar-3.jpg"
                                                                          class="img-circle" alt=""></div>
                                         <p class="inbox-item-author">Stillnotdavid</p>
                                         <p class="inbox-item-text">This theme is awesome!</p>
@@ -348,7 +348,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg"
+                                        <div class="inbox-item-img"><img src="<?php echo base_url() ?>assets/sim/assets/images/users/avatar-4.jpg"
                                                                          class="img-circle" alt=""></div>
                                         <p class="inbox-item-author">Kurafire</p>
                                         <p class="inbox-item-text">Nice to meet you</p>
@@ -357,7 +357,7 @@
                                 </a>
                                 <a href="#">
                                     <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg"
+                                        <div class="inbox-item-img"><img src="<?php echo base_url() ?>assets/sim/assets/images/users/avatar-5.jpg"
                                                                          class="img-circle" alt=""></div>
                                         <p class="inbox-item-author">Shahedk</p>
                                         <p class="inbox-item-text">Hey! there I'm available...</p>

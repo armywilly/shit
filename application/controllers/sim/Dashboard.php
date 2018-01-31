@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 
 			$d = array(	
 								'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
@@ -31,7 +31,7 @@ class Dashboard extends CI_Controller {
 			$this->load->view('sim/layout/wrapper',$d);
 
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 }

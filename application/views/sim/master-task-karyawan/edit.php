@@ -1,91 +1,83 @@
 <?php
 // Session 
 if($this->session->flashdata('sukses')) { 
-    echo '<div class="col-md-6 pull-left">';
-    echo '<div class="alert alert-info alert-with-icon" data-notify="container">';
-    echo '<i data-notify="icon" class="material-icons">add_alert</i>';
+    echo '<div class="alert alert-success">';
     echo $this->session->flashdata('sukses');
-    echo '</div>';
     echo '</div>';
 } 
 
 // File upload error
 if(isset($error)) {
-    echo '<div class="col-md-6 pull-left">';
-    echo '<div class="alert alert-danger alert-with-icon" data-notify="container">';
-    echo '<i data-notify="icon" class="material-icons">add_alert</i>';
+    echo '<div class="alert alert-success">';
     echo $error;
-    echo '</div>';
     echo '</div>';
 }
 
 // Error
-echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert alert-danger alert-with-icon" data-notify="container">','<i data-notify="icon" class="material-icons">add_alert</i>','</div>','</div>');
+echo validation_errors('<div class="alert alert-success">','</div>'); 
 ?>
-<script type="text/javascript">
-$(function() {
-    $("#file").on("change", function()
-    {
-        var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-        
-        if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-            reader.readAsDataURL(files[0]); // read the local file
-            
-            reader.onloadend = function(){ // set image data as background of div
-                $("#imagePreview").css("background-image", "url("+this.result+")");
-            }
-        }
-    });
-});
-</script>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-                        <div class="col-md-12 col-sm-6">
-                            <div class="card">
-                                <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Create Data Jabatan</h4>
-                                </div>
-                                <div class="card-content">
-                                    <form action="<?php echo base_url('sim/master_task_karyawan/edit/'.$mt['id_master_task']);?>" method="post" enctype="multipart/form-data">
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Nama Jabatan</label>
-                                                    <input type="text" name="name" class="form-control" value="<?php echo $mt['name'] ?>">
+
+    <div class="wrapper">    
+        <div class="container">
+            <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">Edit Data Task</h4>
+                    </div>
+                </div> 
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+
+                            <div class="row">
+                                <!-- Form Start -->
+                                <form action="<?php echo base_url('sim/master_task_karyawan/edit/'.$mt['id_master_task']);?>" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+
+                                    <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">Task</label>
+                                                <div class="col-md-10">
+                                                    <input type="text" name="task" class="form-control" value="<?php echo $mt['task']; ?>" placeholder="Task" required>
                                                 </div>
                                             </div>
-                                        </div> 
-                                        <div class="row">
-                                            <div class="col-md-12 col-sm-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Deskripsi Nama Jabatan</label>
-                                                    <textarea type="text" name="isi" class="form-control" id="#" required><?php echo $mt['isi'] ?></textarea>
+
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">Keterangan</label>
+                                                <div class="col-md-10">
+                                                    <textarea id="tools_editor" name="isi_task" class="form-control" placeholder="Keterangan" required><?php echo $mt['isi_task'] ?></textarea>
                                                 </div>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">Waktu Mulai</label>
+                                                <div class="col-md-10">
+                                                    <input type="date" name="tgl_mulai" class="form-control" rel="tooltip" placeholder="waktu Mulai" value="<?php echo $mt['tgl_mulai'] ?>" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">Waktu Selesai</label>
+                                                <div class="col-md-10">
+                                                    <input type="date" name="tgl_berakhir" class="form-control" rel="tooltip" placeholder="waktu Selesai" value="<?php echo $mt['tgl_berakhir'] ?>" required>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="text-right m-t-30">
+                                            <button type="submit" class="btn btn-success waves-effect waves-light">
+                                                Submit
+                                            </button>
+                                            <a href="<?php echo base_url('sim/master_task_karyawan') ?>" type="button"
+                                                    class="btn btn-danger waves-effect">Cancel
+                                            </a>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="form-group label-floating">
-                                                    <input type="date" name="tgl_mulai" class="form-control" rel="tooltip" title="waktu Mulai" value="<?php echo $mt['tgl_mulai'] ?>" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="form-group label-floating">
-                                                    <input type="date" name="tgl_berakhir" class="form-control" rel="tooltip" title="Waktu Berakhir" value="<?php echo $mt['tgl_berakhir'] ?>" required>
-                                                </div>
-                                            </div>
-                                        </div>   
-                                        <input type="submit" name="submit" class="btn btn-primary" value="Submit">
-                                        <a href="<?php echo base_url('sim/master_task_karyawan') ?>" type="button" name="cancel" class="btn btn-danger">Cancel</a>
-                                        <div class="clearfix"></div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-        </div>
-    </div>
-</div>
+                    </div>
+                </div>

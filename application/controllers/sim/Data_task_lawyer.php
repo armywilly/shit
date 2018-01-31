@@ -83,7 +83,8 @@ class Data_task_lawyer extends CI_Controller {
 
 			// Validation
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('id_master_task','id_master_task','required');
+			$v->set_rules('id_staff','id_staff','required');
 				//Funtion Baca Data
 				if($v->run()) {
 				
@@ -99,14 +100,14 @@ class Data_task_lawyer extends CI_Controller {
 
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
-					$d = array(		'id_task'		=> $dt['id_task'],
-									'id_staff'		=> $k('name'),
-									'id_master_task'=> $mt('name'),							
+					$d = array(		'id_task'		=> $dt->id_task,
+									'id_staff'		=> $i->post('id_staff'),
+									'id_master_task'=> $i->post('id_master_task'),							
 									'date'			=> $i->post('date')								
 						 			 );
-					$this->mMtkaryawan->editDatatask($d);
+					$this->mDtlawyer->editDatatask($d);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/master_task_karyawan'));			
+					redirect(base_url('sim/data_task_lawyer'));			
 				}
 
 				$d = array(	'judul_lengkap'			=> $this->config->item('nama_aplikasi_full'),
@@ -118,6 +119,7 @@ class Data_task_lawyer extends CI_Controller {
 								'k'					=> $k,
 								'isi'				=> 'sim/data-task-lawyer/edit');
 				$this->load->view('sim/layout/wrapper', $d);
+				var_dump($d);
 		}else{
 			redirect('login');
 		}

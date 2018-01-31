@@ -39,7 +39,7 @@ class Master_jabatan extends CI_Controller {
 									'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 									'instansi'		=> $this->config->item('nama_instansi'),
 									'credit'		=> $this->config->item('credit_aplikasi'),
-									'isi'			=> 'sim/master-jabatan/create');
+									'isi'			=> 'sim/master-jabatan/list');
 						$this->load->view('sim/layout/wrapper', $d);
 				
 						$i = $this->input;
@@ -60,7 +60,7 @@ class Master_jabatan extends CI_Controller {
 								'judul_pendek'		=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'			=> $this->config->item('nama_instansi'),
 								'credit'			=> $this->config->item('credit_aplikasi'),
-								'isi'				=> 'sim/master-jabatan/create');
+								'isi'				=> 'sim/master-jabatan/list');
 				$this->load->view('sim/layout/wrapper', $d);
 		}else{
 			redirect('login');

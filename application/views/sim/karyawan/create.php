@@ -56,7 +56,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Tanggal Lahir</label>
                                             <div class="col-md-9">
-                                                <input type="date" id="datepicker-autoclose" name="tgl_lahir" class="form-control" value="<?php echo set_value('tgl_lahir') ?>" required>
+                                                <input type="datepicker-autoclose" id="datepicker-autoclose" name="tgl_lahir" class="form-control" value="<?php echo set_value('tgl_lahir') ?>" required>
                                             </div>
                                         </div>
 
@@ -89,7 +89,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Jabatan</label>
                                             <div class="col-md-9">
-                                                <select name="jabatan" class="form-control">
+                                                <select name="id_jabatan" class="form-control">
                                                         <?php foreach($mj as $list) { ?>
                                                         <option value="<?php echo $list['id_jabatan'] ?>">
                                                             <?php echo $list['jabatan'] ?>
@@ -158,7 +158,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                             <label class="control-label" style="text-align: left;">Biodata Singkat</label>
-                                            <textarea id="isi" name="biodata" rows="7" class="form-control"><?php echo set_value('biodata') ?></textarea>
+                                            <textarea id="tools_editor" name="biodata" rows="7" class="form-control"><?php echo set_value('biodata') ?></textarea>
                                     </div>
                                 </div>
 
@@ -166,7 +166,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" style="text-align: left;">Keyword Search</label>
                                         <div class="col-md-9">
-                                            <textarea rows="10" name="keyword" class="form-control"><?php echo set_value('keyword') ?></textarea>
+                                            <textarea rows="10" id="tools_editor" name="keyword" class="form-control"><?php echo set_value('keyword') ?></textarea>
                                         </div>
                                     </div>
                                 </div>

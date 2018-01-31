@@ -26,12 +26,30 @@ class Master_task_karyawan extends CI_Controller {
 		}
 	}
 
+	// Read Blog
+	public function detil($id_master_task) {
+		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+
+			$mt 	= $this->mMtkaryawan->detailTask($id_master_task);                                           		
+			
+			$d  = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+								'instansi'		=> $this->config->item('nama_instansi'),
+								'credit'		=> $this->config->item('credit_aplikasi'),
+								'mt'			=> $mt,
+								'isi'			=> 'sim/master-task-karyawan/detail');
+			$this->load->view('sim/layout/wrapper', $d);
+		}else{
+			redirect('login');
+		}	
+	}
+
 	// Create Jabatan
 	public function create() {
 		
 		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('task','Task','required');
 		
 				if($v->run()) {
 						
@@ -43,11 +61,11 @@ class Master_task_karyawan extends CI_Controller {
 						$this->load->view('sim/layout/wrapper', $d);
 				
 						$i = $this->input;
-						$slugmt = url_title($this->input->post('name'), 'dash', TRUE);
+						$slugmt = url_title($this->input->post('task'), 'dash', TRUE);
 						$d  = array(	'slug_task'		=> $slugmt,
 										'id_user'		=> $this->session->userdata('id_user'),
-										'name'			=> $i->post('name'),
-										'isi'			=> $i->post('isi'),								
+										'task'			=> $i->post('task'),
+										'isi_task'		=> $i->post('isi_task'),								
 										'tgl_mulai'		=> $i->post('tgl_mulai'),
 										'tgl_berakhir'	=> $i->post('tgl_berakhir'),
 										'date'			=> $i->post('date'),				
@@ -78,7 +96,7 @@ class Master_task_karyawan extends CI_Controller {
 
 			// Validation
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('task','Task','required');
 				//Funtion Baca Data
 				if($v->run()) {
 				
@@ -92,12 +110,12 @@ class Master_task_karyawan extends CI_Controller {
 
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
-					$slugmt = $endmt['id_master_task'].'-'.url_title($i->post('name'),'dash', TRUE);
+					$slugmt = $endmt['id_master_task'].'-'.url_title($i->post('task'),'dash', TRUE);
 					$d = array(		'id_master_task'=> $mt['id_master_task'],
 									'slug_task'		=> $slugmt,
 									'id_user'		=> $this->session->userdata('id_user'),
-									'name'			=> $i->post('name'),
-									'isi'			=> $i->post('isi'),
+									'task'			=> $i->post('task'),
+									'isi_task'		=> $i->post('isi_task'),
 									'tgl_mulai'		=> $i->post('tgl_mulai'),
 									'tgl_berakhir'	=> $i->post('tgl_berakhir'),							
 									'date'			=> $i->post('date')								
@@ -114,6 +132,7 @@ class Master_task_karyawan extends CI_Controller {
 								'mt'				=> $mt,
 								'isi'				=> 'sim/master-task-karyawan/edit');
 				$this->load->view('sim/layout/wrapper', $d);
+				var_dump($d);
 		}else{
 			redirect('login');
 		}

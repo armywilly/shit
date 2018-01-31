@@ -8,7 +8,7 @@
 
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <title>Adminto - Responsive Admin Dashboard Template</title>
+        <title>Sistem Administrasi - MR &amp;&nbsp; Partners</title>
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="<?php echo base_url() ?>assets/sim/assets/plugins/morris/morris.css">
@@ -23,6 +23,26 @@
 
         <!-- form Uploads -->
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/fileuploads/css/dropify.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Plugins css-->
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+
+        <!-- DataTables -->
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -134,26 +154,29 @@
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-collection-text"></i><span> Task Karyawan </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="form-elements.html">List Task Karyawan</a></li>
-                                    <li><a href="form-advanced.html">Tambah Data</a></li>
+                                    <li><a href="<?php echo base_url('sim/data_task_lawyer') ?>">List Task Karyawan</a></li>
+                                    <li><a href="<?php echo base_url('sim/data_task_lawyer/create') ?>">Tambah Data</a></li>
                                 </ul>
                             </li>
                             <!-- Menu master Data -->
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Master Data </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="tables-basic.html">Master Task</a></li>
-                                    <li><a href="tables-datatable.html">Master Jabatan</a></li>
-                                    <li><a href="tables-responsive.html">Master Gaji</a></li>
+                                    <li><a href="<?php echo base_url('sim/master_task_karyawan') ?>">Master Task</a></li>
+                                    <li><a href="<?php echo base_url('sim/master_jabatan') ?>">Master Jabatan</a></li>
+                                    <li><a href="<?php echo base_url('sim/master_client') ?>">Master Client</a></li>
+                                    <li><a href="#">Master Kontrak Kerja Sama</a></li>
+                                    <li><a href="#">Master Gaji</a></li>
                                 </ul>
                             </li>
                             <!-- Menu Laporan -->
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-chart"></i><span> Laporan Data </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="chart-flot.html">Laporan Data Karyawan</a></li>
-                                    <li><a href="chart-morris.html">Laporan Slip Gaji Karyawan</a></li>
-                                    <li><a href="chart-chartist.html">Laporan Keaktifan Karyawan</a></li>
+                                    <li><a href="#">Laporan Data Karyawan</a></li>
+                                    <li><a href="#">Laporan Kerja Sama Jasa Hukum</a></li>
+                                    <li><a href="#">Laporan Slip Gaji Karyawan</a></li>
+                                    <li><a href="#">Laporan Keaktifan Karyawan</a></li>
                                 </ul>
                             </li>
 

@@ -119,6 +119,24 @@
         <script src="<?php echo base_url() ?>assets/sim/assets/js/jquery.nicescroll.js"></script>
         <script src="<?php echo base_url() ?>assets/sim/assets/js/jquery.scrollTo.min.js"></script>
 
+        <!-- Plugins Js -->
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/switchery/switchery.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/sim/assets/plugins/multiselect/js/jquery.multi-select.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/sim/assets/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/select2/dist/js/select2.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/moment/moment.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+
+        <!-- Bootstrap tagsinput -->
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
         <!-- KNOB JS -->
         <!--[if IE]>
         <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
@@ -140,9 +158,66 @@
         <script src="<?php echo base_url() ?>assets/sim/assets/js/jquery.core.js"></script>
         <script src="<?php echo base_url() ?>assets/sim/assets/js/jquery.app.js"></script>
 
-        <!--form wysiwig js-->
+        <!-- Datatables-->
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/jszip.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/pdfmake.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/vfs_fonts.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/buttons.html5.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/buttons.print.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/datatables/dataTables.scroller.min.js"></script>
 
-        <script src="<?php echo base_url() ?>assets/sim/assets/tinymce/js/tinymce/tinymce.min.js"></script>
+        <!-- Datatable init js -->
+        <script src="<?php echo base_url() ?>assets/sim/assets/pages/datatables.init.js"></script>
+
+        <!-- Editor Tools -->
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+
+        <script type="text/javascript">
+        tinymce.init({
+            file_browser_callback: function(field, url, type, win) {
+                tinyMCE.activeEditor.windowManager.open({
+                    file: '<?php echo base_url() ?>assets/sim/assets/plugins/kcfinder/browse.php?opener=tinymce4&field=' + field + '&type=' + type,
+                    title: 'KCFinder',
+                    width: 700,
+                    height: 500,
+                    inline: true,
+                    close_previous: false
+                }, {
+                    window: win,
+                    input: field
+                });
+                return false;
+            },
+            selector: "#tools_editor",
+            height: 250,
+            plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable();
+                $('#datatable-keytable').DataTable( { keys: true } );
+                $('#datatable-responsive').DataTable();
+                $('#datatable-scroller').DataTable( { ajax: "<?php echo base_url() ?>assets/sim/assets/plugins/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
+                var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
+            } );
+            TableManageButtons.init();
+
+        </script>
 
         <script>
             jQuery(document).ready(function() {
@@ -312,7 +387,7 @@
                     'error': 'Ooops, something wrong appended.'
                 },
                 error: {
-                    'fileSize': 'The file size is too big (300KB max).',
+                    'fileSize': 'The file size is too big.',
                     'dictInvalidFileType':'Type file ini tidak dizinkan.',
                 }
             });
@@ -336,34 +411,6 @@
                         }
                     }
                 });
-            });
-        </script>
-
-        <!-- Tools Editor -->
-        <script type="text/javascript">
-            tinymce.init({
-                file_browser_callback: function(field, url, type, win) {
-                    tinyMCE.activeEditor.windowManager.open({
-                        file: '<?php echo base_url() ?>assets/sim/assets/kcfinder/browse.php?opener=tinymce4&field=' + field + '&type=' + type,
-                        title: 'KCFinder',
-                        width: 900,
-                        height: 700,
-                        inline: true,
-                        close_previous: false
-                    }, {
-                        window: win,
-                        input: field
-                    });
-                    return false;
-                },
-                selector: "#isi",
-                height: 250,
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table contextmenu paste"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
             });
         </script>
 

@@ -40,7 +40,7 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                                 <img src="<?php echo base_url('upload/image/thumbs/'.$list['image']);?>" class="img-circle thumb-xl img-thumbnail m-b-10" alt="profile-image">
 
                                 <p class="text-muted font-13 m-b-30">
-                                    <?php echo $list['biodata'] ?>
+                                    <?php echo substr(strip_tags($list['biodata']),0,100) ?>...
                                 </p>
 
                                 <div class="text-left">
