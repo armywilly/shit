@@ -39,7 +39,7 @@ class Master_client extends CI_Controller {
 					
 					$config['upload_path'] 		= './upload/klien/';
 					$config['allowed_types'] 	= 'gif|jpg|png|pdf|rar|zip';
-					$config['max_size']			= '20000'; // KB			
+					$config['max_size']			= '1000'; // KB			
 					$this->load->library('upload', $config);
 					if(! $this->upload->do_upload('image','file')) {
 						
@@ -54,8 +54,7 @@ class Master_client extends CI_Controller {
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
 						$config['image_library']	= 'gd2';
-						$config['source_image'] 	= './upload/klien/image/'.$upload_data['uploads']['file_name'];
-						$config['source_file'] 		= './upload/klien/file/'.$upload_data['uploads']['file_name'];  
+						$config['source_image'] 	= './upload/klien/image/'.$upload_data['uploads']['file_name']; 
 						$config['new_image'] 		= './upload/klien/image/thumbs/';
 						$config['create_thumb'] 	= TRUE;
 						$config['maintain_ratio'] 	= TRUE;
@@ -78,9 +77,7 @@ class Master_client extends CI_Controller {
 										'email_client'	=> $i->post('email_client'),
 										'npwp_client'	=> $i->post('npwp_client'),								
 										'tanggal'		=> $i->post('tanggal'),								
-										'image'			=> $upload_data['uploads']['file_name'],
-										'file'			=> $upload_data['uploads']['file_name'],
-						 			 );
+										'image'			=> $upload_data['uploads']['file_name'],						 			 );
 
 						$this->mMClients->createMClient($data);
 						$this->session->set_flashdata('sukses','Success');

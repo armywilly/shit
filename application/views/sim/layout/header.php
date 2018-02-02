@@ -150,22 +150,14 @@
                                     </li>
                                 </ul>
                             </li>
-                            <!-- Menu Task Karyawan -->
-                            <li class="has-submenu">
-                                <a href="#"><i class="zmdi zmdi-collection-text"></i><span> Task Karyawan </span> </a>
-                                <ul class="submenu">
-                                    <li><a href="<?php echo base_url('sim/data_task_lawyer') ?>">List Task Karyawan</a></li>
-                                    <li><a href="<?php echo base_url('sim/data_task_lawyer/create') ?>">Tambah Data</a></li>
-                                </ul>
-                            </li>
+                            
                             <!-- Menu master Data -->
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Master Data </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="<?php echo base_url('sim/master_task_karyawan') ?>">Master Task</a></li>
                                     <li><a href="<?php echo base_url('sim/master_jabatan') ?>">Master Jabatan</a></li>
                                     <li><a href="<?php echo base_url('sim/master_client') ?>">Master Client</a></li>
-                                    <li><a href="#">Master Kontrak Kerja Sama</a></li>
+                                    <li><a href="<?php echo base_url('sim/master_kontrak_kerja') ?>">Master Kontrak Kerja Sama</a></li>
                                     <li><a href="#">Master Gaji</a></li>
                                 </ul>
                             </li>
