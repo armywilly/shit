@@ -119,6 +119,11 @@
         <script src="<?php echo base_url() ?>assets/sim/assets/js/jquery.nicescroll.js"></script>
         <script src="<?php echo base_url() ?>assets/sim/assets/js/jquery.scrollTo.min.js"></script>
 
+        <!--Chartist Chart-->
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/chartist/dist/chartist.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/plugins/chartist/dist/chartist-plugin-tooltip.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/sim/assets/pages/jquery.chartist.init.js"></script>
+
         <!-- Plugins Js -->
         <script src="<?php echo base_url() ?>assets/sim/assets/plugins/switchery/switchery.min.js"></script>
         <script src="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
@@ -392,26 +397,6 @@
                 }
             });
             
-        </script>
-
-        <!-- Function For Priview Image -->
-        <script type="text/javascript">
-            $(function() {
-                $("#file").on("change", function()
-                {
-                    var files = !!this.files ? this.files : [];
-                    if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-                    
-                    if (/^image/.test( files[0].type)){ // only image file
-                        var reader = new FileReader(); // instance of the FileReader
-                        reader.readAsDataURL(files[0]); // read the local file
-                        
-                        reader.onloadend = function(){ // set image data as background of div
-                            $("#imagePreview").css("background-image", "url("+this.result+")");
-                        }
-                    }
-                });
-            });
         </script>
 
         

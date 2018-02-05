@@ -64,6 +64,7 @@ class Karyawan_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('m_karyawan');
 		$this->db->where('id_staff',$id_staff);
+		$this->db->join('m_jabatan','m_jabatan.id_jabatan = m_karyawan.id_jabatan');
 		$this->db->order_by('nama','DESC');
 		$query = $this->db->get();
 		return $query->row();

@@ -6,7 +6,7 @@
             <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">Master Kontrak Kerja</h4>
+                        <h4 class="page-title">Kontrak Kerja Klien</h4>
                     </div>
                 </div>    
 

@@ -53,7 +53,7 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                                     <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15"><?php echo $list['email'] ?></span></p>
                                 </div>
 
-                                <button type="button" class="btn btn-custom btn-rounded waves-effect waves-light">Send Message</button>
+                                <a href="<?php echo base_url('sim/karyawan/detail/'.$list['id_staff']) ?>" type="button" class="btn btn-custom btn-rounded waves-effect waves-light">Detail Profile</a>
                             </div>
 
                         </div>

@@ -10,7 +10,7 @@ class Master_jabatan extends CI_Controller {
 	
 	// Main Page Jabatan
 	public function index() {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 
 			$mj = $this->mMjabatan->listJabatan();
 			
@@ -22,14 +22,14 @@ class Master_jabatan extends CI_Controller {
 							'isi'			=> 'sim/master-jabatan/list');
 			$this->load->view('sim/layout/wrapper', $d);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 
 	// Create Jabatan
 	public function create() {
 		
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$v = $this->form_validation;
 			$v->set_rules('jabatan','Jabatan','required');
 		
@@ -63,13 +63,13 @@ class Master_jabatan extends CI_Controller {
 								'isi'				=> 'sim/master-jabatan/list');
 				$this->load->view('sim/layout/wrapper', $d);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 
 	// Edit Client
 	public function edit($id_jabatan) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 
 			$mj		= $this->mMjabatan->detailJabatan($id_jabatan);
 			$endmj	= $this->mMjabatan->endJabatan();		
@@ -111,19 +111,19 @@ class Master_jabatan extends CI_Controller {
 								'isi'				=> 'sim/master-jabatan/edit');
 				$this->load->view('sim/layout/wrapper', $d);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}	
 
 	// Delete Client
 	public function delete($id_jabatan) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$d = array('id_jabatan' => $id_jabatan);
 			$this->mMjabatan->deleteJabatan($d);		
 			$this->session->set_flashdata('sukses','Success');
 			redirect(base_url('sim/master_jabatan'));
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}		
 }

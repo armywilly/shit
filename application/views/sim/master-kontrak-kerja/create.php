@@ -54,7 +54,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" style="text-align: left;">No Partnership Agreement</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" name="no_pa" class="form-control" value="<?php echo set_value('no_pa') ?>" placeholder="No Partnership Agreement" required>
+                                                    <select name="id_pa" class="form-control" required>
+                                                            <?php foreach($pa as $list) { ?>
+                                                            <option value="<?php echo $list['id_pa'] ?>">
+                                                                <?php echo $list['no_pa'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -68,7 +74,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                                 <?php echo $list['nama_client'] ?>
                                                             </option>
                                                             <?php } ?>
-                                                        </select>
+                                                    </select>
                                                 </div>
                                             </div>
 

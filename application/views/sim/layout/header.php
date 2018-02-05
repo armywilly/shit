@@ -12,6 +12,7 @@
 
         <!--Morris Chart CSS -->
         <link rel="stylesheet" href="<?php echo base_url() ?>assets/sim/assets/plugins/morris/morris.css">
+        <link rel="stylesheet" href="<?php echo base_url() ?>assets/sim/assets/plugins/chartist/dist/chartist.min.css">
 
         <link href="<?php echo base_url() ?>assets/sim/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url() ?>assets/sim/assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -23,6 +24,7 @@
 
         <!-- form Uploads -->
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/fileuploads/css/dropify.min.css" rel="stylesheet" type="text/css" />
+        
 
         <!-- Plugins css-->
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
@@ -52,6 +54,14 @@
         <![endif]-->
 
         <script src="<?php echo base_url() ?>assets/sim/assets/js/modernizr.min.js"></script>
+
+        <style type="text/css">
+            
+            .dropzone {
+                margin-top: 100px;
+                border: 2px dashed #0087F7;
+            }
+        </style>
 
 
 
@@ -109,7 +119,7 @@
                                     <li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
                                     <li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
                                     <li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
-                                    <li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+                                    <li><a href="<?php echo base_url() ?>auth/logout" id="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -150,14 +160,23 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <!-- Menu Klien -->
+                            <li class="has-submenu">
+                                <a href="#"><i class="fa fa-user-circle-o"></i> <span> Klien </span> </a>
+                                <ul class="submenu">
+                                    <li><a href="<?php echo base_url('sim/master_client') ?>">List Klien</a></li>
+                                    <li><a href="<?php echo base_url('sim/master_kontrak_kerja') ?>">Kontrak Kerja Sama</a></li>
+                                    <li><a href="<?php echo base_url('sim/partnership_ag') ?>">Partnership Agreement</a></li>
+                                    <li><a href="<?php echo base_url('sim/dokumentasi_client') ?>">Dokumentasi Klien</a></li>
+                                </ul>
+                            </li>
                             
                             <!-- Menu master Data -->
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Master Data </span> </a>
                                 <ul class="submenu">
                                     <li><a href="<?php echo base_url('sim/master_jabatan') ?>">Master Jabatan</a></li>
-                                    <li><a href="<?php echo base_url('sim/master_client') ?>">Master Client</a></li>
-                                    <li><a href="<?php echo base_url('sim/master_kontrak_kerja') ?>">Master Kontrak Kerja Sama</a></li>
                                     <li><a href="#">Master Gaji</a></li>
                                 </ul>
                             </li>
@@ -169,6 +188,15 @@
                                     <li><a href="#">Laporan Kerja Sama Jasa Hukum</a></li>
                                     <li><a href="#">Laporan Slip Gaji Karyawan</a></li>
                                     <li><a href="#">Laporan Keaktifan Karyawan</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Menu User Managaments -->
+                            <li class="has-submenu">
+                                <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Setting </span> </a>
+                                <ul class="submenu">
+                                    <li><a href="<?php echo base_url('sim/user_managament') ?>">User Managament</a></li>
+                                    <li><a href="<?php echo base_url('sim/permission') ?>">Setting Web Site</a></li>
                                 </ul>
                             </li>
 

@@ -13,13 +13,11 @@ class Master_kontrak_kerja extends CI_Controller {
 		if ($this->tank_auth->is_logged_in()) {	
 
 			$mkk  	= $this->mMKontrak->listMKontrak();
-			$mc 	= $this->mMClients->listMClients();
 			
 			$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 							'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
-							'mc'			=> $mc,
 							'mkk'			=> $mkk,
 							'isi'			=> 'sim/master-kontrak-kerja/list');
 			$this->load->view('sim/layout/wrapper',$data);
@@ -51,6 +49,7 @@ class Master_kontrak_kerja extends CI_Controller {
 
 		$kd['nr_k'] = $this->mMKontrak->get_nr_k();
 		$mc 		= $this->mMClients->listMClients();
+		$pa 		= $this->mMPa->listMPa();
 		
 		if ($this->tank_auth->is_logged_in()) {	
 			$v = $this->form_validation;
@@ -71,6 +70,7 @@ class Master_kontrak_kerja extends CI_Controller {
 									'error'			=> $this->upload->display_errors(),
 									'kd'			=> $kd,
 									'mc'			=> $mc,
+									'pa'			=> $pa,
 									'isi'			=> 'sim/master-kontrak-kerja/create');
 					$this->load->view('sim/layout/wrapper',$data);
 					}else{
@@ -80,8 +80,7 @@ class Master_kontrak_kerja extends CI_Controller {
 						$i = $this->input;
 						$data = array(	'id_user'			=> $this->session->userdata('username'),
 										'id_master_client'	=> $i->post('id_master_client'),
-										'no_kontrak'		=> $i->post('no_kontrak'),
-										'no_pa'				=> $i->post('no_pa'),
+										'id_pa'				=> $i->post('id_pa'),
 										'nr_k'				=> $kd['nr_k'],
 										'probs'				=> $i->post('probs'),
 										'tgl_kontrak'		=> $i->post('tgl_kontrak'),
@@ -104,6 +103,7 @@ class Master_kontrak_kerja extends CI_Controller {
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'kd'			=> $kd,
 								'mc'			=> $mc,
+								'pa'			=> $pa,
 								'isi'			=> 'sim/master-kontrak-kerja/create');
 				$this->load->view('sim/layout/wrapper',$data);
 				var_dump($data);

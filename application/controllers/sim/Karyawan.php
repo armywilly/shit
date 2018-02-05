@@ -24,6 +24,24 @@ class Karyawan extends CI_Controller {
 			redirect('auth/login');
 		}
 	}
+
+	// Read Karyawan
+	public function detail($id_staff) {
+		if ($this->tank_auth->is_logged_in()) {	
+
+			$k 	= $this->mKaryawan->detail($id_staff);                                           		
+			
+			$data  = array(		'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+								'instansi'		=> $this->config->item('nama_instansi'),
+								'credit'		=> $this->config->item('credit_aplikasi'),
+								'k'				=> $k,
+								'isi'			=> 'sim/karyawan/detail');
+			$this->load->view('sim/layout/wrapper', $data);
+		}else{
+			redirect('auth/login');
+		}	
+	}
 		
 	// Tambah
 	public function create() {

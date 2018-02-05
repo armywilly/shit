@@ -2,12 +2,6 @@
 
 class Login extends CI_Controller {
 
-	/*
-		***	Controller : app.php
-		***	by Gede Lumbung
-		***	http://gedelumbung.com
-	*/
-
 	public function index()
 	{
 		if($this->session->userdata('logged_in')=="")
