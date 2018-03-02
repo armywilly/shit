@@ -214,11 +214,17 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#datatable').dataTable();
-                $('#datatable-keytable').DataTable( { keys: true } );
-                $('#datatable-responsive').DataTable();
-                $('#datatable-scroller').DataTable( { ajax: "<?php echo base_url() ?>assets/sim/assets/plugins/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
-                var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
+                var table = $('#convert').DataTable();
+ 
+new $.fn.dataTable.Buttons( table, {
+    buttons: [
+    'excel', 'pdf', 'print'
+    ]
+} );
+ 
+table.buttons().container()
+    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+                
             } );
             TableManageButtons.init();
 

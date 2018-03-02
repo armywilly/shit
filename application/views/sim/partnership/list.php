@@ -6,7 +6,7 @@
             <!-- Page-Title -->
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="page-title">Partnership Agreement Klien</h4>
+                        <h4 class="page-title">Partnership Agreement</h4>
                     </div>
                 </div>    
 
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
 
-                            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <table id="convert" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>

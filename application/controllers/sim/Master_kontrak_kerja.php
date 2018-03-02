@@ -82,6 +82,7 @@ class Master_kontrak_kerja extends CI_Controller {
 										'id_master_client'	=> $i->post('id_master_client'),
 										'id_pa'				=> $i->post('id_pa'),
 										'nr_k'				=> $kd['nr_k'],
+										'no_kontrak'		=> $i->post('no_kontrak'),
 										'probs'				=> $i->post('probs'),
 										'tgl_kontrak'		=> $i->post('tgl_kontrak'),
 										'start'				=> $i->post('start'),

@@ -23,6 +23,10 @@
                                            <i class="fa fa-linkedin"></i>
                                         </button>
 
+                                        <button type="button" class="btn btn-sm btn-info waves-effect waves-light">
+                                           <i class="fa fa-comments"></i>
+                                        </button>
+
                                     </div>
                                 </div>
 

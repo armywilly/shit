@@ -14,52 +14,56 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
 <div class="wrapper">
         <div class="container">
 
-                <!-- Page-Title -->
-                <div class="row">
-                    <div class="col-sm-4">
-                         <a href="#custom-modal" class="btn btn-success btn-md waves-effect waves-light m-b-30" data-animation="fadein" data-plugin="custommodal"
-                                                data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> Add Contact</a>
+            <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">Karyawan</h4>
+                    </div>
+                </div>
+
+            <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="m-b-30">
+                                        <a href="<?php echo base_url('sim/karyawan/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <table id="convert" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>No Induk Pegawai</th>
+                                        <th>Jabatan</th>
+                                        <th>Email</th>
+                                        <th width="120">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                <?php $i=1; foreach($k as $list) { ?>
+                                            <tr>
+                                                <td><?php echo $i; ?></td>
+                                                <td><?php echo substr(strip_tags($list['nama']),0,25) ?></td>
+                                                <td><?php echo $list['nip'] ?></td>
+                                                <td><?php echo $list['jabatan'] ?></td>
+                                                <td><?php echo $list['email'] ?></td>
+                                                <td class="actions">
+                                                    <a href="<?php echo base_url('sim/karyawan/detail/'.$list['id_staff']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?php echo base_url('sim/karyawan/edit/'.$list['id_staff']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('sim/karyawan/delete/'.$list['id_staff']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                </td>
+                                            </tr>
+                                            <?php $i++; } ?>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
                     </div><!-- end col -->
                 </div>
                 <!-- end row -->
 
-                <div class="row">
-                    <?php $i=1; foreach($k as $list) { ?>
-                    <div class="col-md-4">
-                        <div class="text-center card-box">
-                            <div class="dropdown pull-right">
-                                <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
-                                    <i class="zmdi zmdi-more-vert"></i>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="<?php echo base_url('sim/karyawan/edit/'.$list['id_staff']) ?>">Edit</a></li>
-                                    <li><a href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                            <div>
-                                <img src="<?php echo base_url('upload/image/thumbs/'.$list['image']);?>" class="img-circle thumb-xl img-thumbnail m-b-10" alt="profile-image">
-
-                                <p class="text-muted font-13 m-b-30">
-                                    <?php echo substr(strip_tags($list['biodata']),0,100) ?>...
-                                </p>
-
-                                <div class="text-left">
-                                    <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15"><?php echo substr(strip_tags($list['nama']),0,20) ?></span></p>
-
-                                    <p class="text-muted font-13"><strong>NIP :</strong><span class="m-l-15"><?php echo $list['nip'] ?></span></p>
-
-                                    <p class="text-muted font-13"><strong>Jabatan :</strong> <span class="m-l-15"><?php echo $list['jabatan']; ?></span></p>
-
-                                    <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15"><?php echo $list['email'] ?></span></p>
-                                </div>
-
-                                <a href="<?php echo base_url('sim/karyawan/detail/'.$list['id_staff']) ?>" type="button" class="btn btn-custom btn-rounded waves-effect waves-light">Detail Profile</a>
-                            </div>
-
-                        </div>
-
-                    </div> <!-- end col -->
-                    <?php $i++; } ?>
-
-                </div><!-- End Row -->
         </div> <!-- End Cont -->

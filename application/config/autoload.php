@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','form_validation','pagination','email','tank_auth',);
+$autoload['libraries'] = array('database','session','form_validation','pagination','email','tank_auth','acl',);
 
 /*
 | -------------------------------------------------------------------
@@ -133,18 +133,7 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array( 'app_login_model'				=> 'mAlm',
-							'admin/config_model' 			=> 'mConfig',
-							'admin/stats_model'  			=> 'mStats',
-							'admin/blogs_model'  			=> 'mBlogs',
-							'admin/categories_model'		=> 'mCategories',
-							'admin/clients_model'  			=> 'mClients',
-							'admin/contacts_model' 			=> 'mContacts',
-							'admin/downloads_model' 		=> 'mDownloads',
-							'admin/galleries_model' 		=> 'mGalleries',
-							'admin/products_model' 			=> 'mProducts',
-							'admin/Associates_model' 		=> 'mAssociates',
-							'admin/Partners_model' 			=> 'mPartners',
+$autoload['model'] = array( 
 							'sim/Karyawan_model' 			=> 'mKaryawan',
 							'sim/Master_jabatan_model' 		=> 'mMjabatan',
 							'sim/master_client_model'		=> 'mMClients',

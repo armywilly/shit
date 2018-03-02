@@ -23,9 +23,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
         <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="card-box">
+                        <h4 class="page-title">Input Data Karyawan</h4>
+                    </div>
+                </div>
 
-                            <h4 class="header-title m-t-0 m-b-30">Input Data Karyawan</h4>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box">
 
                             <div class="row">
                                 <!-- Form Start -->

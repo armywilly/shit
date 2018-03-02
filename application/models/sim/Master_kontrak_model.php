@@ -16,8 +16,8 @@
             $this->db->select('*');
             $this->db->from('m_kontrak');
             $this->db->join('users','users.id = m_kontrak.id_user','LEFT'); 
-            $this->db->join('m_client','m_client.id_master_client = m_kontrak.id_master_client'); 
-            $this->db->join('m_pa','m_pa.id_pa = m_client.id_pa','RIGHT');                       
+            $this->db->join('m_client','m_client.id_master_client = m_kontrak.id_master_client');
+            $this->db->join('m_pa','m_pa.id_pa = m_kontrak.id_pa');                      
             $this->db->order_by('id_master_kk','ASC');
             $query = $this->db->get();
             return $query->result_array();
