@@ -77,7 +77,7 @@
 
                     <!-- LOGO -->
                     <div class="topbar-left">
-                        <a href="#" class="logo"><span>Dashboard<span>SIM</span></span></a>
+                        <a href="#" class="logo"><span>Dashboard<span>&nbsp;&nbsp;SIM</span></span></a>
                     </div>
                     <!-- End Logo container-->
 
@@ -177,7 +177,7 @@
                                 <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Master Data </span> </a>
                                 <ul class="submenu">
                                     <li><a href="<?php echo base_url('sim/master_jabatan') ?>">Master Jabatan</a></li>
-                                    <li><a href="#">Master Gaji</a></li>
+                                    <li><a href="<?php echo base_url('sim/master_gaji') ?>">Master Gaji</a></li>
                                 </ul>
                             </li>
                             <!-- Menu Laporan -->
@@ -186,8 +186,7 @@
                                 <ul class="submenu">
                                     <li><a href="#">Laporan Data Karyawan</a></li>
                                     <li><a href="#">Laporan Kerja Sama Jasa Hukum</a></li>
-                                    <li><a href="#">Laporan Slip Gaji Karyawan</a></li>
-                                    <li><a href="#">Laporan Keaktifan Karyawan</a></li>
+                                    <li><a href="#">Laporan Absensi Karyawan</a></li>
                                 </ul>
                             </li>
 

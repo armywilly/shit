@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form');
+$autoload['helper'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -141,4 +141,5 @@ $autoload['model'] = array(
 							'sim/dokumentasi_client_model'	=> 'mDocs',
 							'sim/partnership_model'			=> 'mMPa',
 							'sim/user_model'				=> 'mMuser',
+							'tank_auth/users'				=> 'mUsers',
 						);

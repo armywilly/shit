@@ -15,17 +15,17 @@
                                     <p><?php echo $k->biodata ?></p>
 
                                     <div class="button-list m-t-20">
-                                        <button type="button" class="btn btn-danger btn-sm waves-effect waves-light">
+                                        <a  href="" type="button" class="btn btn-danger btn-sm waves-effect waves-light">
                                            <i class="fa fa-envelope"></i>
-                                        </button>
+                                        </a>
 
-                                        <button type="button" class="btn btn-sm btn-linkedin waves-effect waves-light">
+                                        <a href="<?php echo $k->linkedin ?>" type="button" target="_blank" class="btn btn-sm btn-linkedin waves-effect waves-light">
                                            <i class="fa fa-linkedin"></i>
-                                        </button>
+                                        </a>
 
-                                        <button type="button" class="btn btn-sm btn-info waves-effect waves-light">
+                                        <a type="button" class="btn btn-sm btn-info waves-effect waves-light">
                                            <i class="fa fa-comments"></i>
-                                        </button>
+                                        </a>
 
                                     </div>
                                 </div>

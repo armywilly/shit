@@ -52,15 +52,6 @@ class Auth extends CI_Controller
 				$login = '';
 			}
 
-			$data['use_recaptcha'] = $this->config->item('use_recaptcha', 'tank_auth');
-			if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-				if ($data['use_recaptcha'])
-					$this->form_validation->set_rules('recaptcha_response_field', 'Confirmation Code', 'trim|xss_clean|required|callback__check_recaptcha');
-				else
-					$this->form_validation->set_rules('captcha', 'Confirmation Code', 'trim|xss_clean|required|callback__check_captcha');
-			}
-			$data['errors'] = array();
-
 			if ($this->form_validation->run()) {								// validation ok
 				if ($this->tank_auth->login(
 						$this->form_validation->set_value('login'),
@@ -82,16 +73,9 @@ class Auth extends CI_Controller
 						foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 					}
 				}
+				
 			}
-			$data['show_captcha'] = FALSE;
-			if ($this->tank_auth->is_max_login_attempts_exceeded($login)) {
-				$data['show_captcha'] = TRUE;
-				if ($data['use_recaptcha']) {
-					$data['recaptcha_html'] = $this->_create_recaptcha();
-				} else {
-					$data['captcha_html'] = $this->_create_captcha();
-				}
-			}
+
 			$this->load->view('auth/login_form', $data);
 		}
 	}
@@ -115,8 +99,7 @@ class Auth extends CI_Controller
 	 */
 	function register()
 	{
-		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect('');
+		if ($this->tank_auth->is_logged_in()) {								// logged in
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('auth/send_again/');

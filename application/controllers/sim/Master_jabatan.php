@@ -5,6 +5,8 @@ class Master_jabatan extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
+        $this->load->helper('url');
 		$this->load->model('sim/Master_jabatan_model');
 	}
 	

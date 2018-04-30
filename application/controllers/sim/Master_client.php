@@ -5,6 +5,8 @@ class Master_client extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
+        $this->load->helper('url');
 		$this->load->model('sim/master_client_model');
 	}
 	
@@ -39,9 +41,10 @@ class Master_client extends CI_Controller {
 					
 					$config['upload_path'] 		= './upload/klien/';
 					$config['allowed_types'] 	= 'gif|jpg|png|pdf|rar|zip';
-					$config['max_size']			= '1000'; // KB			
+					$config['max_size']			= '20000'; // KB
+					$config['overwrite']		= 'FALSE';			
 					$this->load->library('upload', $config);
-					if(! $this->upload->do_upload('image','file')) {
+					if(! $this->upload->do_multi_upload('')) {
 						
 					$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 									'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
@@ -53,16 +56,6 @@ class Master_client extends CI_Controller {
 					$this->load->view('sim/layout/wrapper',$data);
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
-						$config['image_library']	= 'gd2';
-						$config['source_image'] 	= './upload/klien/image/'.$upload_data['uploads']['file_name']; 
-						$config['new_image'] 		= './upload/klien/image/thumbs/';
-						$config['create_thumb'] 	= TRUE;
-						$config['maintain_ratio'] 	= TRUE;
-						$config['width'] 			= 150; // Pixel
-						$config['height'] 			= 150; // Pixel
-						$config['thumb_marker'] 	= '';
-						$this->load->library('image_lib', $config);
-						$this->image_lib->resize();
 
 						$i = $this->input;
 						$slugmc = url_title($this->input->post('nama_client'), 'dash', TRUE);
@@ -77,7 +70,8 @@ class Master_client extends CI_Controller {
 										'email_client'	=> $i->post('email_client'),
 										'npwp_client'	=> $i->post('npwp_client'),								
 										'tanggal'		=> $i->post('tanggal'),								
-										'image'			=> $upload_data['uploads']['file_name'],						 			 );
+										'image'			=> $upload_data['uploads']['file_name'],
+										'file_1'		=> $upload_data['uploads']['file_name'],						 			 );
 
 						$this->mMClients->createMClient($data);
 						$this->session->set_flashdata('sukses','Success');
@@ -92,7 +86,6 @@ class Master_client extends CI_Controller {
 								'kd'			=> $kd,
 								'isi'			=> 'sim/master-client/create');
 				$this->load->view('sim/layout/wrapper',$data);
-				var_dump($data);
 		}else{
 			redirect('auth/login');
 		}
@@ -185,7 +178,7 @@ class Master_client extends CI_Controller {
 						 			 );
 					$this->mMClients->editMClient($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/master_client'));			
+					redirect('sim/master_client');			
 					}
 				}
 

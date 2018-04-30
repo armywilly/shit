@@ -54,18 +54,18 @@ $captcha = array(
                 padding: 50px;
             }
             .login {
-                margin: 20px auto;
-                width: 400px;
+                margin: 100px auto;
+                width: 500px;
             }
             .login-screen {
                 background-color: #00CCFF;
-                padding: 20px;
-                border-radius: 5px
+                padding: 50px;
+                border-radius: 6px
             }
 
             .app-title {
                 text-align: center;
-                color: #777;
+                color: #FFF;
             }
 
             .login-form {
@@ -73,13 +73,14 @@ $captcha = array(
             }
             .control-group {
                 margin-bottom: 10px;
+                border-radius: 6px;
             }
 
             input {
                 text-align: left;
                 background-color: #FFF;
                 border: 2px solid transparent;
-                border-radius: 3px;
+                border-radius: 6px;
                 font-size: 16px;
                 font-weight: 200;
                 padding: 10px 5px;
@@ -94,7 +95,7 @@ $captcha = array(
 
             .btn {
                 border: 2px solid transparent;
-                background: #fff568;
+                background: #FFF;
                 color: #444;
                 font-size: 16px;
                 line-height: 25px;
@@ -105,12 +106,12 @@ $captcha = array(
                 box-shadow: none;
                 transition: 0.25s;
                 display: block;
-                width: 350px;
+                width: 150px;
                 margin: 0 auto;
             }
 
             .btn:hover {
-                background-color: #2980B9;
+                background-color: #FFF;
             }
 
             .login-link {
@@ -128,8 +129,7 @@ $captcha = array(
         <div class="login">
             <div class="login-screen">
                 <div class="app-title">
-                    <img src="<?php echo base_url() ?>asset/logo.png">
-                    <h3>Silahkan Isikan Data Anda Dengan Benar!!</h3>
+                    <h3>Selamat Datang, Silahkan Login dengan Username &amp; Password Anda!</h3>
                 </div>
 
                 <div class="login-form">
@@ -153,19 +153,6 @@ $captcha = array(
 
 
                     </form>
-                </div>
-                <div style="text-align: center">
-                    <div class="separator">
-                        <p class="change_link">Pengguna Baru?
-                            <a href="<?php echo base_url() ?>auth/register" class="to_register"> Buat Akun </a>
-                        </p>
-
-                        <div class="clearfix"></div>
-                        <br />
-
-
-                    </div>
-
                 </div>
             </div>
         </div>

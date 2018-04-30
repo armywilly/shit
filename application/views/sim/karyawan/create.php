@@ -46,7 +46,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">No Induk Pegawai</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="nip" class="form-control" value="<?php echo $kd['nip'] ?>">
+                                                <input type="text" name="nip" placeholder="No Induk Pegawai" class="form-control" value="<?php echo set_value('nip') ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" style="text-align: left;">No Advocat</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="no_advokat" placeholder="No Advocat(Optional)" class="form-control" value="<?php echo set_value('no_advokat') ?>">
                                             </div>
                                         </div>
 
@@ -60,14 +67,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Tanggal Lahir</label>
                                             <div class="col-md-9">
-                                                <input type="datepicker-autoclose" id="datepicker-autoclose" name="tgl_lahir" class="form-control" value="<?php echo set_value('tgl_lahir') ?>" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" style="text-align: left;">Pendidikan</label>
-                                            <div class="col-md-9">
-                                                <input type="text" name="pendidikan" class="form-control" value="<?php echo set_value('pendidikan') ?>" placeholder="Pendidikan Terakhir" required>
+                                                <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" value="<?php echo set_value('tgl_lahir') ?>" required>
                                             </div>
                                         </div>
 
@@ -83,6 +83,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <label class="col-md-3 control-label" style="text-align: left;">Email</label>
                                             <div class="col-md-9">
                                                 <input type="text" name="email" class="form-control" value="<?php echo set_value('email') ?>" placeholder="Email ex: mail@email.com" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" style="text-align: left;">Linked In</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="linkedin" class="form-control" value="<?php echo set_value('linkedin') ?>" placeholder="Paste Your Url Linked In Here" required>
                                             </div>
                                         </div>
 
@@ -158,6 +165,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
                                         </div>                                    
                                 </div><!-- end col -->
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                            <label class="control-label" style="text-align: left;">Pendidikan</label>
+                                            <textarea id="tools_editor" name="pendidikan" rows="7" class="form-control"><?php echo set_value('pendidikan') ?></textarea>
+                                    </div>
+                                </div>
 
                                 <div class="col-lg-12">
                                     <div class="form-group">

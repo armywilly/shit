@@ -42,7 +42,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">No Induk Pegawai</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="nip" class="form-control" value="<?php echo $kd['nip']; ?>">
+                                                <input type="text" name="nip" placeholder="No Induk Pegawai" class="form-control" value="<?php echo $k->nip; ?>" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" style="text-align: left;">No Advocat</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="no_advokat" placeholder="No Advocat(Optional)" class="form-control" value="<?php echo $k->no_advokat; ?>">
                                             </div>
                                         </div>
 
@@ -61,13 +68,6 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-md-3 control-label" style="text-align: left;">Pendidikan</label>
-                                            <div class="col-md-9">
-                                                <input type="text" name="pendidikan" class="form-control" value="<?php echo $k->pendidikan; ?>" placeholder="Pendidikan Terakhir" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Sertifikat</label>
                                             <div class="col-md-9">
                                                 <input type="text" name="sertifikat" class="form-control" value="<?php echo $k->sertifikat; ?>" placeholder="Sertifikat" required>
@@ -79,6 +79,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <label class="col-md-3 control-label" style="text-align: left;">Email</label>
                                             <div class="col-md-9">
                                                 <input type="text" name="email" class="form-control" value="<?php echo $k->email; ?>" placeholder="Email ex: mail@email.com" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" style="text-align: left;">Linked In</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="linkedin" class="form-control" value="<?php echo $k->linkedin; ?>" placeholder="Paste Your Url Linked In Here" required>
                                             </div>
                                         </div>
 
@@ -155,6 +162,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
                                         </div>                                    
                                 </div><!-- end col -->
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                            <label class="control-label" style="text-align: left;">Pendidikan</label>
+                                            <textarea id="tools_editor" name="pendidikan" rows="7" class="form-control"><?php echo $k->pendidikan; ?></textarea>
+                                    </div>
+                                </div>
 
                                 <div class="col-lg-12">
                                     <div class="form-group">

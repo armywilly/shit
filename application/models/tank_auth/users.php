@@ -24,13 +24,23 @@ class Users extends CI_Model
 		$this->profile_table_name	= $ci->config->item('db_table_prefix', 'tank_auth').$this->profile_table_name;
 	}
 
-	/**
-	 * Get user record by Id
-	 *
-	 * @param	int
-	 * @param	bool
-	 * @return	object
-	 */
+	
+	function get_all_users()
+    {
+        $this->db->select('users.*,roles.name as name');
+        $this->db->join('roles','roles.id=users.role_id','left');
+        $query = $this->db->get('users');
+        return $query->result();
+    }
+        
+    function get_permission()
+    {
+        $this->db->order_by("group");
+        $this->db->order_by("order");
+        $query = $this->db->get('permissions');
+        return $query->result();
+    }
+
 	function get_user_by_id($user_id, $activated)
 	{
 		$this->db->where('id', $user_id);
@@ -133,6 +143,7 @@ class Users extends CI_Model
 		if ($this->db->insert($this->table_name, $data)) {
 			$user_id = $this->db->insert_id();
 			if ($activated)	$this->create_profile($user_id);
+			$this->db->join('roles','roles.id=users.role_id','left');
 			return array('user_id' => $user_id);
 		}
 		return NULL;
@@ -378,6 +389,7 @@ class Users extends CI_Model
 	private function create_profile($user_id)
 	{
 		$this->db->set('user_id', $user_id);
+		$this->db->join('roles','roles.id=users.role_id','left');
 		return $this->db->insert($this->profile_table_name);
 	}
 

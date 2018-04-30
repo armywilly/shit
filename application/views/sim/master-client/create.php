@@ -93,9 +93,16 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Upload Foto</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Upload Foto / Logo Klien</label>
                                                 <div class="col-md-10">
                                                     <input type="file" value="<?php echo set_value('image') ?>" name="image" class="dropify" data-max-file-size="1M"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">File Pendukung(Optional)</label>
+                                                <div class="col-md-10">
+                                                    <input type="file" value="<?php echo set_value('file_1') ?>" name="file_1" class="dropify" data-max-file-size="20M"/>
                                                 </div>
                                             </div>
 

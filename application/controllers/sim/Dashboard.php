@@ -18,6 +18,15 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct() {
+        parent::__construct();
+
+        $this->load->library('form_validation');
+        $this->load->helper('url');
+        $this->load->library('tank_auth');
+         }
+         
 	public function index()
 	{
 		if ($this->tank_auth->is_logged_in()) {	

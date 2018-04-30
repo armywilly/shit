@@ -5,6 +5,8 @@ class Partnership_ag extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
+        $this->load->helper('url');
 		$this->load->model('sim/partnership_model');
 	}
 	
@@ -58,7 +60,6 @@ class Partnership_ag extends CI_Controller {
 								'mc'			=> $mc,
 								'isi'			=> 'sim/partnership/create');
 				$this->load->view('sim/layout/wrapper',$data);
-				var_dump($data);
 		}else{
 			redirect('auth/login');
 		}

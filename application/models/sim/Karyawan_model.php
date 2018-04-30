@@ -60,7 +60,7 @@ class Karyawan_model extends CI_Model {
 	}
 		
 	// Detail
-	public function detail($id_staff) {
+	public function detailkaryawan($id_staff) {
 		$this->db->select('*');
 		$this->db->from('m_karyawan');
 		$this->db->where('id_staff',$id_staff);
@@ -96,7 +96,6 @@ class Karyawan_model extends CI_Model {
 	public function edit($data) {
 		$this->db->where('id_staff',$data['id_staff']);
 		$this->db->join('m_jabatan','m_jabatan.id_jabatan = m_karyawan.id_jabatan');
-		unset($kd['nip']);
 		$this->db->update('m_karyawan',$data);
 	}
 	

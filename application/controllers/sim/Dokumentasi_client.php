@@ -5,6 +5,8 @@ class Dokumentasi_client extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
+        $this->load->helper('url');
 		$this->load->model('sim/Dokumentasi_client_model');
 	}
 	
@@ -12,8 +14,8 @@ class Dokumentasi_client extends CI_Controller {
 	public function index() {
 
 		if ($this->tank_auth->is_logged_in()) {	
-			$doc = $this->mDocs->listDocs();
-			
+
+			$doc  = $this->mDocs->listDocs();
 			$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 							'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 							'instansi'		=> $this->config->item('nama_instansi'),
@@ -29,13 +31,13 @@ class Dokumentasi_client extends CI_Controller {
 	// Upload File
 	public function upload() {
 		if ($this->tank_auth->is_logged_in()) {	
-			$mc = $this->mMClients->listMClients();
 		
 			$v = $this->form_validation;
+			$v->set_rules('file_name','File Name','required');
 		
 				if($v->run()) {
 					
-					$config['upload_path'] 		= './upload/klien/file/';
+					$config['upload_path'] 		= './upload/file/';
 					$config['allowed_types'] 	= 'gif|jpg|png|pdf|rar|zip';
 					$config['max_size']			= '20000'; // KB			
 					$this->load->library('upload', $config);
@@ -46,20 +48,23 @@ class Dokumentasi_client extends CI_Controller {
 									'instansi'		=> $this->config->item('nama_instansi'),
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'error'			=> $this->upload->display_errors(),
-									'mc'			=> $mc,
 									'isi'			=> 'sim/dokumentasi/upload');
 					$this->load->view('sim/layout/wrapper',$data);
+
 					}else{
+
 						$upload_data				= array('uploads' =>$this->upload->data());
-						$config['source_file'] 	= './upload/klien/file/'.$upload_data['uploads']['file_name']; 
+						$config['source_file'] 	= './upload/file/'.$upload_data['uploads']['file_name']; 
 
 						$i = $this->input;
-						$data = array(	'mc'			=> $mc,							
-										'file'			=> $upload_data['uploads']['file_name'],
-										'keterangan'	=> $i->post('keterangan')								
+						$data = array(	'id_user'			=> $this->session->userdata('id_user'),
+										'file_name'			=> $i->post('file_name'),
+										'keterangan'		=> $i->post('keterangan'),							
+										'date_upload'		=> $i->post('date_upload'),								
+										'file'				=> $upload_data['uploads']['file_name']
 						 			 );
 
-						$this->mDocs->createDocs($data);
+						$this->mDownloads->createDocs($data);
 						$this->session->set_flashdata('sukses','Success');
 						redirect(base_url('sim/dokumentasi_client/'));
 					}
@@ -69,18 +74,70 @@ class Dokumentasi_client extends CI_Controller {
 								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
-								'mc'			=> $mc,
 								'isi'			=> 'sim/dokumentasi/upload');
 				$this->load->view('sim/layout/wrapper',$data);
-				var_dump($data);
+
 		}else{
+
 			redirect('auth/login');
 		}
 	}
 
+	// Upload File
+	/*public function upload() {
+
+      $config['upload_path'] = './upload/klien';
+      $config['allowed_types'] = 'gif|jpg|png|pdf|';
+      $config['max_size']  = '20000';
+      $config['max_width']  = '1024';
+      $config['max_height']  = '768';
+ 
+      $this->load->library('upload', $config);
+ 
+      // modifikasi disini
+      // looping $_FILES dan buat array baru
+      foreach($_FILES['userfile'] as $key=>$val)
+      {
+         $i = 1;
+         foreach($val as $v)
+         {
+            $field_name = "file_name".$i;
+            $_FILES[$field_name][$key] = $v;
+            $i++;
+         }
+      }
+      // hapus array awal, karena kita sudah memiliki array baru
+      unset($_FILES['userfile']);
+ 
+      // variabel error diubah, dari string menjadi array
+      $error = array();
+      $success = array();
+      foreach($_FILES as $field_name => $file)
+      {
+         if ( ! $this->upload->do_upload($field_name))
+         {
+            $error[] = $this->upload->display_errors();
+         }
+         else
+         {
+            $success[] = $this->upload->data();
+         }
+      }
+      if(count($error) > 0)
+      {
+         $data['error'] = implode('<br />',$error);
+         $this->load->view('upload_form',$data);
+      }
+      else
+      {
+         $data['success'] = implode('<br />',$success);
+         $this->load->view('upload_success',$data);
+      }
+   } */
+
 	// Edit File
 	public function edit($id_dok) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="administrator") {
+		if($this->tank_auth->is_logged_in()){
 
 			$download	 = $this->mDownloads->detailDownload($download_id);
 			$endDownload = $this->mDownloads->endDownload();						

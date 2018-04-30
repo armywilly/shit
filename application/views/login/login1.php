@@ -61,7 +61,7 @@
                                 <div class="col-md-6">
                                     <h4 class="m-t-0 header-title"><b>Sistem Informasi Management Karyawan(SIMAKAR)</b></h4>
                                     <p class="text-muted m-b-30 font-13">
-                                        Selamat datang di halaman sistem informasi management karyawan(SIMAKAR). Silahkan login pada form disamping dengan memnggunakan username atau email beserta password Anda.<br><br>Jika ada kendala, silahkan hubungi webmaster melalui email <code>muhammadarmy14@gmail.com</code>.
+                                        Selamat datang di halaman sistem informasi management karyawan(SIMAKAR). Silahkan login pada form di samping dengan menggunakan username atau email beserta password Anda.<br><br>Jika ada kendala, silahkan hubungi webmaster melalui email <code>muhammadarmy14@gmail.com</code>.
                                     </p>
                                 </div><!-- end col -->
 
@@ -69,11 +69,11 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                            <input type="email" class="form-control" id="" placeholder="Enter email">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                            <input type="password" class="form-control" id="" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="checkbox checkbox-primary">
