@@ -63,14 +63,12 @@
 
         //creating bar chart
         var $barData  = [
-            { y: '2010', a: 75 },
-            { y: '2011', a: 42 },
-            { y: '2012', a: 75 },
-            { y: '2013', a: 38 },
-            { y: '2014', a: 19 },
-            { y: '2015', a: 93 }
+            { y: '2015', a: 20 },
+            { y: '2016', a: 40 },
+            { y: '2017', a: 75 },
+            { y: '2018', a: 100 },
         ];
-        this.createBarChart('morris-bar-example', $barData, 'y', ['a'], ['Statistics'], ['#188ae2']);
+        this.createBarChart('morris-bar-example', $barData, 'y', ['a'], ['Klien'], ['#188ae2']);
 
         //create line chart
         var $data  = [
@@ -87,11 +85,10 @@
 
         //creating donut chart
         var $donutData = [
-                {label: "Download Sales", value: 12},
-                {label: "In-Store Sales", value: 30},
-                {label: "Mail-Order Sales", value: 20}
+                {label: "Jangka Pendek", value: 1},
+                {label: "Jangka Panjang", value: 1},
             ];
-        this.createDonutChart('morris-donut-example', $donutData, ['#ff8acc', '#5b69bc', "#35b8e0"]);
+        this.createDonutChart('morris-donut-example', $donutData, ['#ff8acc', '#5b69bc']);
     },
     //init
     $.Dashboard1 = new Dashboard1, $.Dashboard1.Constructor = Dashboard1

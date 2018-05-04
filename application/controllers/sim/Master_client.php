@@ -28,6 +28,24 @@ class Master_client extends CI_Controller {
 		}
 	}
 
+	// Read Karyawan
+	public function detil($id_master_client) {
+		if ($this->tank_auth->is_logged_in()) {	
+
+			$mc 	= $this->mKaryawan->detailMClient($id_master_clien);                                           		
+			
+			$data  = array(		'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+								'instansi'		=> $this->config->item('nama_instansi'),
+								'credit'		=> $this->config->item('credit_aplikasi'),
+								'mc'			=> $mc,
+								'isi'			=> 'sim/master-client/detail');
+			$this->load->view('sim/layout/wrapper', $data);
+		}else{
+			redirect('auth/login');
+		}	
+	}
+
 	// Create Product
 	public function create() {
 

@@ -664,14 +664,14 @@ chart.on('created', function() {
 //Simple pie chart
 
 var data = {
-  series: [5, 3, 4]
+  series: [10, 33,]
 };
 
 var sum = function(a, b) { return a + b };
 
 new Chartist.Pie('#simple-pie', data, {
   labelInterpolationFnc: function(value) {
-    return Math.round(value / data.series.reduce(sum) * 100) + '%';
+    return value;;
   }
 });
 
@@ -681,8 +681,8 @@ new Chartist.Pie('#simple-pie', data, {
 //Pie chart with custom labels
 
 var data = {
-  labels: ['Bananas', 'Apples', 'Grapes'],
-  series: [20, 15, 40]
+  labels: ['Jangka Pendek', 'Jangka Panjang'],
+  series: [10, 20],
 };
 
 var options = {

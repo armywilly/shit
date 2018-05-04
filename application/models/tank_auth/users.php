@@ -143,7 +143,6 @@ class Users extends CI_Model
 		if ($this->db->insert($this->table_name, $data)) {
 			$user_id = $this->db->insert_id();
 			if ($activated)	$this->create_profile($user_id);
-			$this->db->join('roles','roles.id=users.role_id','left');
 			return array('user_id' => $user_id);
 		}
 		return NULL;

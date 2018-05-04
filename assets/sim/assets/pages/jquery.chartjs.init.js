@@ -123,22 +123,19 @@ File: Chartjs
         //Pie chart
         var pieChart = {
             labels: [
-                "Desktops",
-                "Tablets",
-                "Mobiles"
+                "Jangka Panjang",
+                "Jangka Pendek"
             ],
             datasets: [
                 {
-                    data: [300, 50, 100],
+                    data: [10, 30],
                     backgroundColor: [
                         "#ff8acc",
-                        "#5b69bc",
-                        "#f9c851"
+                        "#5b69bc"
                     ],
                     hoverBackgroundColor: [
                         "#ff8acc",
-                        "#5b69bc",
-                        "#f9c851"
+                        "#5b69bc"
                     ],
                     hoverBorderColor: "#fff"
                 }]

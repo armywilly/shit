@@ -82,7 +82,7 @@ class Master_kontrak_kerja extends CI_Controller {
 						$i = $this->input;
 						$data = array(	'id_user'			=> $this->session->userdata('username'),
 										'id_master_client'	=> $i->post('id_master_client'),
-										'id_pa'				=> $i->post('id_pa'),
+										'no_pa'				=> $i->post('no_pa'),
 										'nr_k'				=> $kd['nr_k'],
 										'no_kontrak'		=> $i->post('no_kontrak'),
 										'probs'				=> $i->post('probs'),

@@ -52,7 +52,11 @@ class Auth extends CI_Controller
 				$login = '';
 			}
 
-			if ($this->form_validation->run()) {								// validation ok
+            
+			$data['errors'] = array();
+
+			if ($this->form_validation->run()) {
+			    // validation ok
 				if ($this->tank_auth->login(
 						$this->form_validation->set_value('login'),
 						$this->form_validation->set_value('password'),
@@ -73,10 +77,13 @@ class Auth extends CI_Controller
 						foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
 					}
 				}
-				
+			} else {
+    			
+    			echo validation_errors();
+    			
+    			$this->load->view('auth/login_form', $data);
+			    
 			}
-
-			$this->load->view('auth/login_form', $data);
 		}
 	}
 
@@ -99,7 +106,8 @@ class Auth extends CI_Controller
 	 */
 	function register()
 	{
-		if ($this->tank_auth->is_logged_in()) {								// logged in
+		if ($this->tank_auth->is_logged_in()) {									// logged in
+			redirect('');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('auth/send_again/');

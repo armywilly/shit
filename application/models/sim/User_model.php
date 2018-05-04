@@ -29,6 +29,7 @@ class User_model extends CI_Model {
             $this->db->join('roles','roles.id=users.role_id','left');
             $this->db->insert('users',$data);
         }
+        
         // Edit Jabatan
         public function editUser($data) {
             $this->db->where('id',$data['id']);
