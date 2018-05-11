@@ -57,6 +57,28 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                 </div>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">Pilih Team Leaader</label>
+                                                    <div class="col-md-10">
+                                                        <select name="" class="form-control">
+                                                                <option value="1"> 1. Dodi </option>
+                                                                <option value="2"> 2. Arif</option>
+                                                                <option value="3"> 3. Taufik</option>
+                                                        </select>
+                                                    </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" style="text-align: left;">Pilih Team</label>
+                                                    <div class="col-md-10">
+                                                          <select class="select select-multiple" multiple="multiple" id="my_multi_select3" multiple data-placeholder="Choose ...">
+                                                                <option value="1"> 1. Dodi </option>
+                                                                <option value="2"> 2. Arif</option>
+                                                                <option value="3"> 3. Taufik</option>
+                                                        </select>
+                                                    </div>
+                                            </div>
+
                                     </div>
                                     <div class="row">
                                     <div class="col-lg-12">

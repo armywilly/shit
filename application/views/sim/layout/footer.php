@@ -216,17 +216,17 @@
             $(document).ready(function() {
                 var table = $('#convert').DataTable();
  
-new $.fn.dataTable.Buttons( table, {
-    buttons: [
-    'excel', 'pdf', 'print'
-    ]
-} );
- 
-table.buttons().container()
-    .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
-                
+            new $.fn.dataTable.Buttons( table, {
+                buttons: [
+                'excel', 'pdf', 'print'
+                ]
             } );
-            TableManageButtons.init();
+ 
+            table.buttons().container()
+                .appendTo( $('.col-sm-6:eq(0)', table.table().container() ) );
+                            
+                        } );
+                        TableManageButtons.init();
 
         </script>
 
