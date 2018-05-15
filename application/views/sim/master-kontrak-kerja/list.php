@@ -40,15 +40,15 @@
                                 <?php $i=1; foreach($mkk as $list) { ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
-                                                <td><?php echo substr(strip_tags($list['nama_client']),0,20) ?></td>
-                                                <td><?php echo $list['nr_k'] ?></td>
-                                                <td><?php echo $list['no_kontrak'] ?></td>
-                                                <td><?php echo $list['no_pa'] ?></td>
-                                                <td><?php echo $list['stts_kontrak'] ?></td>
+                                                <td><?php echo substr(strip_tags($list->nama_client),0,20) ?></td>
+                                                <td><?php echo $list->nr_k ?></td>
+                                                <td><?php echo $list->no_kontrak ?></td>
+                                                <td><?php echo $list->no_pa ?></td>
+                                                <td><?php echo $list->stts_kontrak ?></td>
                                                 <td class="actions">
-                                                    <a href="<?php echo base_url('sim/master_kontrak_kerja/detail/'.$list['id_master_kk']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                                    <a href="<?php echo base_url('sim/master_kontrak_kerja/edit/'.$list['id_master_kk']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('sim/master_kontrak_kerja/delete/'.$list['id_master_kk']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="<?php echo base_url('sim/master_kontrak_kerja/detail/'.$list->id_master_kk);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?php echo base_url('sim/master_kontrak_kerja/edit/'.$list->id_master_kk);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('sim/master_kontrak_kerja/delete/'.$list->id_master_kk);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>

@@ -10,10 +10,10 @@
         public function listMPa() {
             $this->db->select('*');
             $this->db->from('m_pa'); 
-            $this->db->join('m_client','m_client.id_master_client = m_pa.id_master_client');                      
+            $this->db->join('m_client','m_client.id_master_client = m_pa.id_master_client','LEFT');                      
             $this->db->order_by('id_pa','ASC');
             $query = $this->db->get();
-            return $query->result_array();
+            return $query->result();
         }
 
         // Create Kontrak Kerja Sama

@@ -58,7 +58,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Pilih Team Leaader</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Pilih Team Leader</label>
                                                     <div class="col-md-10">
                                                         <select name="" class="form-control">
                                                                 <option value="1"> 1. Dodi </option>
@@ -68,16 +68,83 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                     </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Pilih Team</label>
-                                                    <div class="col-md-10">
-                                                          <select class="select select-multiple" multiple="multiple" id="my_multi_select3" multiple data-placeholder="Choose ...">
-                                                                <option value="1"> 1. Dodi </option>
-                                                                <option value="2"> 2. Arif</option>
-                                                                <option value="3"> 3. Taufik</option>
-                                                        </select>
-                                                    </div>
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 1</label>
+                                                        <div class="col-md-8">
+                                                            <select name="" class="form-control">
+                                                                    <option value="1"> 1. Dodi </option>
+                                                                    <option value="2"> 2. Arif</option>
+                                                                    <option value="3"> 3. Taufik</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 2</label>
+                                                        <div class="col-md-8">
+                                                            <select name="" class="form-control">
+                                                                    <option value="1"> 1. Dodi </option>
+                                                                    <option value="2"> 2. Arif</option>
+                                                                    <option value="3"> 3. Taufik</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 3</label>
+                                                        <div class="col-md-8">
+                                                            <select name="" class="form-control">
+                                                                    <option value="1"> 1. Dodi </option>
+                                                                    <option value="2"> 2. Arif</option>
+                                                                    <option value="3"> 3. Taufik</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+
                                             </div>
+
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 4</label>
+                                                        <div class="col-md-8">
+                                                            <select name="" class="form-control">
+                                                                    <option value="1"> 1. Dodi </option>
+                                                                    <option value="2"> 2. Arif</option>
+                                                                    <option value="3"> 3. Taufik</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 5</label>
+                                                        <div class="col-md-8">
+                                                            <select name="" class="form-control">
+                                                                    <option value="1"> 1. Dodi </option>
+                                                                    <option value="2"> 2. Arif</option>
+                                                                    <option value="3"> 3. Taufik</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 6</label>
+                                                        <div class="col-md-8">
+                                                            <select name="" class="form-control">
+                                                                    <option value="1"> 1. Dodi </option>
+                                                                    <option value="2"> 2. Arif</option>
+                                                                    <option value="3"> 3. Taufik</option>
+                                                            </select>
+                                                        </div>
+                                                </div>
+
+                                            </div>
+
+                                            
+
+                                            
 
                                     </div>
                                     <div class="row">

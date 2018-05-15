@@ -62,7 +62,7 @@ class Master_client extends CI_Controller {
 					$config['max_size']			= '20000'; // KB
 					$config['overwrite']		= 'FALSE';			
 					$this->load->library('upload', $config);
-					if(! $this->upload->do_multi_upload('')) {
+					if($this->upload->do_upload('multiple')) {
 						
 					$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 									'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),

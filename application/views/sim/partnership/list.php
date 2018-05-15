@@ -38,12 +38,12 @@
                                 <?php $i=1; foreach($pa as $list) { ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
-                                                <td><?php echo substr(strip_tags($list['nama_client']),0,20) ?></td>
-                                                <td><?php echo $list['no_pa'] ?></td>
-                                                <td><?php echo $list['nrk'] ?></td>
+                                                <td><?php echo substr(strip_tags($list->nama_client),0,20) ?></td>
+                                                <td><?php echo $list->no_pa ?></td>
+                                                <td><?php echo $list->nrk ?></td>
                                                 <td class="actions">
-                                                    <a href="<?php echo base_url('sim/partnership_ag/edit/'.$list['id_pa']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('sim/partnership_ag/delete/'.$list['id_pa']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="<?php echo base_url('sim/partnership_ag/edit/'.$list->id_pa);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('sim/partnership_ag/delete/'.$list->id_pa);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>

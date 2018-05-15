@@ -29,8 +29,8 @@
         <!-- Plugins css-->
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/multiselect/css/multi-select.css"  rel="stylesheet" type="text/css" />
-        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo base_url() ?>assets/sim/assets/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
         <link href="<?php echo base_url() ?>assets/sim/assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
