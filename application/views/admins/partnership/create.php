@@ -53,7 +53,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                                 <?php echo $list['nama_client'] ?>
                                                             </option>
                                                             <?php } ?>
-                                                        </select>
+                                                    </select>
                                                 </div>
                                             </div>
 

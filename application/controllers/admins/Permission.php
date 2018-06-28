@@ -17,7 +17,7 @@ class Permission extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper('url');
         $this->load->library('tank_auth');
-        $this->load->model('sim/Permission_model');
+        $this->load->model('admins/Permission_model');
         if (!$this->tank_auth->is_logged_in()) {
             redirect('/auth/login/');
         }

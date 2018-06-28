@@ -30,8 +30,8 @@ class User_managament extends CI_Controller {
                             'instansi'      => $this->config->item('nama_instansi'),
                             'credit'        => $this->config->item('credit_aplikasi'),
                             'um'            => $um,
-                            'isi'           => 'sim/user-managament/list');
-            $this->load->view('sim/layout/wrapper',$data);
+                            'isi'           => 'admins/user-managament/list');
+            $this->load->view('admins/layout/wrapper',$data);
         }else{
             redirect('auth/login');
         }
@@ -87,7 +87,7 @@ class User_managament extends CI_Controller {
                         unset($data['password']); // Clear password (just for any case)
 
                         $this->_show_message($this->lang->line('auth_message_registration_completed_1'));
-                        redirect('sim/user_managament');
+                        redirect('admins/user_managament');
 
                     } else {
                         if ($this->config->item('email_account_details', 'tank_auth')) {    // send "welcome" email
@@ -113,8 +113,8 @@ class User_managament extends CI_Controller {
             $data['use_username'] = $use_username;
             $data['captcha_registration'] = $captcha_registration;
             $data['use_recaptcha'] = $use_recaptcha;
-            $data['isi'] = 'sim/user-managament/create';
-            $this->load->view('sim/layout/wrapper', $data);
+            $data['isi'] = 'admins/user-managament/create';
+            $this->load->view('admins/layout/wrapper', $data);
         }
     }
 
@@ -397,7 +397,7 @@ class User_managament extends CI_Controller {
             $this->load->model('tank_auth/users');
             $this->users->delete_user($user_id);     
             $this->session->set_flashdata('sukses','Success');
-            redirect(base_url('sim/user_managament'));
+            redirect(base_url('admins/user_managament'));
         }else{
             redirect('auth/login');
         }
@@ -439,8 +439,8 @@ class User_managament extends CI_Controller {
                                     'judul_pendek'  => $this->config->item('nama_aplikasi_pendek'),
                                     'instansi'      => $this->config->item('nama_instansi'),
                                     'credit'        => $this->config->item('credit_aplikasi'),
-                                    'isi'           => 'sim/user-managament/list');
-                        $this->load->view('sim/layout/wrapper', $d);
+                                    'isi'           => 'admins/user-managament/list');
+                        $this->load->view('admins/layout/wrapper', $d);
                 
                         $i = $this->input;
                         $data  = array( 'name'          => $i->post('name'),
@@ -449,15 +449,15 @@ class User_managament extends CI_Controller {
 
                         $this->mMuser->createRole($data);
                         $this->session->set_flashdata('sukses','Success');
-                        redirect(base_url('sim/user_managament'));
+                        redirect(base_url('admins/user_managament'));
                 }
                 // Default page
                 $data = array(     'judul_lengkap'     => $this->config->item('nama_aplikasi_full'),
                                 'judul_pendek'      => $this->config->item('nama_aplikasi_pendek'),
                                 'instansi'          => $this->config->item('nama_instansi'),
                                 'credit'            => $this->config->item('credit_aplikasi'),
-                                'isi'               => 'sim/user-managament/list');
-                $this->load->view('sim/layout/wrapper', $data);
+                                'isi'               => 'admins/user-managament/list');
+                $this->load->view('admins/layout/wrapper', $data);
         }else{
             redirect('auth/login');
         }

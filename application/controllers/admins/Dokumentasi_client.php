@@ -7,7 +7,7 @@ class Dokumentasi_client extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
         $this->load->helper('url');
-		$this->load->model('sim/Dokumentasi_client_model');
+		$this->load->model('admins/Dokumentasi_client_model');
 	}
 	
 	// Main Page Index
@@ -21,8 +21,8 @@ class Dokumentasi_client extends CI_Controller {
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'doc'			=> $doc,
-							'isi'			=> 'sim/dokumentasi/list');
-			$this->load->view('sim/layout/wrapper',$data);
+							'isi'			=> 'admins/dokumentasi/list');
+			$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -48,8 +48,8 @@ class Dokumentasi_client extends CI_Controller {
 									'instansi'		=> $this->config->item('nama_instansi'),
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'error'			=> $this->upload->display_errors(),
-									'isi'			=> 'sim/dokumentasi/upload');
-					$this->load->view('sim/layout/wrapper',$data);
+									'isi'			=> 'admins/dokumentasi/upload');
+					$this->load->view('admins/layout/wrapper',$data);
 
 					}else{
 
@@ -66,7 +66,7 @@ class Dokumentasi_client extends CI_Controller {
 
 						$this->mDownloads->createDocs($data);
 						$this->session->set_flashdata('sukses','Success');
-						redirect(base_url('sim/dokumentasi_client/'));
+						redirect(base_url('admins/dokumentasi_client/'));
 					}
 				}
 				// Default page
@@ -74,8 +74,8 @@ class Dokumentasi_client extends CI_Controller {
 								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
-								'isi'			=> 'sim/dokumentasi/upload');
-				$this->load->view('sim/layout/wrapper',$data);
+								'isi'			=> 'admins/dokumentasi/upload');
+				$this->load->view('admins/layout/wrapper',$data);
 
 		}else{
 
@@ -160,8 +160,8 @@ class Dokumentasi_client extends CI_Controller {
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'download'	=> $download,
 									'error'		=> $this->upload->display_errors(),
-									'isi'		=> 'admin/downloads/edit');
-					$this->load->view('admin/layout/wrapper', $data);
+									'isi'		=> 'admins/downloads/edit');
+					$this->load->view('admins/layout/wrapper', $data);
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
 						$config['source_image'] 	= './upload/file/'.$upload_data['uploads']['file_name']; 
@@ -182,7 +182,7 @@ class Dokumentasi_client extends CI_Controller {
 								 );
 					$this->mDownloads->editDownload($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('admin/downloads'));
+					redirect(base_url('admins/downloads'));
 					}}else{
 					$i = $this->input;
 					$slugDownload = $endDownload['download_id'].'-'.url_title($i->post('file_name'),'dash', TRUE);
@@ -196,7 +196,7 @@ class Dokumentasi_client extends CI_Controller {
 								 );
 					$this->mDownloads->editDownload($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('admin/downloads'));	
+					redirect(base_url('admins/downloads'));	
 					}
 				}
 
@@ -206,10 +206,10 @@ class Dokumentasi_client extends CI_Controller {
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'download'	=> $download,
 								'site'		=> $site,
-								'isi'		=> 'admin/downloads/edit');
-				$this->load->view('admin/layout/wrapper', $data);
+								'isi'		=> 'admins/downloads/edit');
+				$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 
@@ -219,9 +219,9 @@ class Dokumentasi_client extends CI_Controller {
 			$data = array('download_id'	=> $download_id);
 			$this->mDownloads->deleteDownload($data);		
 			$this->session->set_flashdata('sukses','Success');
-			redirect(base_url('admin/downloads'));
+			redirect(base_url('admins/downloads'));
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 

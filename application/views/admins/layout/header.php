@@ -146,7 +146,7 @@
                         <ul class="navigation-menu">
                             <!-- Menu Dashboard -->
                             <li>
-                                <a href="<?php echo base_url('sim/dashboard') ?>"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                                <a href="<?php echo base_url('admins/dashboard') ?>"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                             </li>
                             <!-- Menu karyawan -->
                             <li class="has-submenu">
@@ -154,8 +154,8 @@
                                 <ul class="submenu">
                                     <li>
                                         <ul>
-                                            <li><a href="<?php echo base_url('sim/karyawan') ?>">List Karyawan</a></li>
-                                            <li><a href="<?php echo base_url('sim/karyawan/create') ?>">Tambah Data</a></li>
+                                            <li><a href="<?php echo base_url('admins/karyawan') ?>">List Karyawan</a></li>
+                                            <li><a href="<?php echo base_url('admins/karyawan/create') ?>">Tambah Data</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -165,10 +165,10 @@
                             <li class="has-submenu">
                                 <a href="#"><i class="fa fa-user-circle-o"></i> <span> Klien </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="<?php echo base_url('sim/master_client') ?>">List Klien</a></li>
-                                    <li><a href="<?php echo base_url('sim/master_kontrak_kerja') ?>">Kontrak Kerja Sama</a></li>
-                                    <li><a href="<?php echo base_url('sim/partnership_ag') ?>">Partnership Agreement</a></li>
-                                    <li><a href="<?php echo base_url('sim/dokumentasi_client') ?>">Dokumentasi Klien</a></li>
+                                    <li><a href="<?php echo base_url('admins/master_client') ?>">List Klien</a></li>
+                                    <li><a href="<?php echo base_url('admins/master_kontrak_kerja') ?>">Kontrak Kerja Sama</a></li>
+                                    <li><a href="<?php echo base_url('admins/partnership_ag') ?>">Partnership Agreement</a></li>
+                                    <li><a href="<?php echo base_url('admins/dokumentasi_client') ?>">Dokumentasi Klien</a></li>
                                 </ul>
                             </li>
                             
@@ -176,8 +176,8 @@
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Master Data </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="<?php echo base_url('sim/master_jabatan') ?>">Master Jabatan</a></li>
-                                    <li><a href="<?php echo base_url('sim/master_gaji') ?>">Master Gaji</a></li>
+                                    <li><a href="<?php echo base_url('admins/master_jabatan') ?>">Master Jabatan</a></li>
+                                    <li><a href="<?php echo base_url('admins/master_gaji') ?>">Master Gaji</a></li>
                                 </ul>
                             </li>
                             <!-- Menu Laporan -->
@@ -194,8 +194,8 @@
                             <li class="has-submenu">
                                 <a href="#"><i class="zmdi zmdi-view-list"></i> <span> Setting </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="<?php echo base_url('sim/user_managament') ?>">User Managament</a></li>
-                                    <li><a href="<?php echo base_url('sim/permission') ?>">Setting Web Site</a></li>
+                                    <li><a href="<?php echo base_url('admins/user_managament') ?>">User Managament</a></li>
+                                    <li><a href="<?php echo base_url('admins/permission') ?>">Setting Web Site</a></li>
                                 </ul>
                             </li>
 

@@ -54,7 +54,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" style="text-align: left;">No Partnership Agreement</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" name="no_pa" class="form-control" value="<?php echo $mkk['no_pa'] ?>" placeholder="No Partnership Agreement" required>
+                                                    <input type="text" name="no_pa" class="form-control" value="<?php echo $mkk['no_pa'] ?>" placeholder="No Partnership Agreement" disabled>
                                                 </div>
                                             </div>
 

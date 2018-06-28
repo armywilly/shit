@@ -2,12 +2,6 @@
 
 class App_Login_Model extends CI_Model {
 
-	/*
-		***	Model : app_login_model.php
-		***	by Gede Lumbung
-		***	http://gedelumbung.com
-	*/
-
 	public function getLoginData($data)
 	{
 		$login['username'] = $data['username'];

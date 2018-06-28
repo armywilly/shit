@@ -134,12 +134,12 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array( 
-							'sim/Karyawan_model' 			=> 'mKaryawan',
-							'sim/Master_jabatan_model' 		=> 'mMjabatan',
-							'sim/master_client_model'		=> 'mMClients',
-							'sim/master_kontrak_model'		=> 'mMKontrak',
-							'sim/dokumentasi_client_model'	=> 'mDocs',
-							'sim/partnership_model'			=> 'mMPa',
-							'sim/user_model'				=> 'mMuser',
-							'tank_auth/users'				=> 'mUsers',
+							'admins/Karyawan_model' 			=> 'mKaryawan',
+							'admins/Master_jabatan_model' 		=> 'mMjabatan',
+							'admins/master_client_model'		=> 'mMClients',
+							'admins/master_kontrak_model'		=> 'mMKontrak',
+							'admins/dokumentasi_client_model'	=> 'mDocs',
+							'admins/partnership_model'			=> 'mMPa',
+							'admins/user_model'					=> 'mMuser',
+							'tank_auth/users'					=> 'mUsers',
 						);

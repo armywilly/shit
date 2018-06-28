@@ -7,7 +7,7 @@ class Master_client extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
         $this->load->helper('url');
-		$this->load->model('sim/master_client_model');
+		$this->load->model('admins/master_client_model');
 	}
 	
 	// Main Page Clients
@@ -21,8 +21,8 @@ class Master_client extends CI_Controller {
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'mc'			=> $mc,
-							'isi'			=> 'sim/master-client/list');
-			$this->load->view('sim/layout/wrapper',$data);
+							'isi'			=> 'admins/master-client/list');
+			$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -39,8 +39,8 @@ class Master_client extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'mc'			=> $mc,
-								'isi'			=> 'sim/master-client/detail');
-			$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/master-client/detail');
+			$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}	
@@ -70,8 +70,8 @@ class Master_client extends CI_Controller {
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'error'			=> $this->upload->display_errors(),
 									'kd'			=> $kd,
-									'isi'			=> 'sim/master-client/create');
-					$this->load->view('sim/layout/wrapper',$data);
+									'isi'			=> 'admins/master-client/create');
+					$this->load->view('admins/layout/wrapper',$data);
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
 
@@ -93,7 +93,7 @@ class Master_client extends CI_Controller {
 
 						$this->mMClients->createMClient($data);
 						$this->session->set_flashdata('sukses','Success');
-						redirect(base_url('sim/master_client/'));
+						redirect(base_url('admins/master_client/'));
 					}
 				}
 				// Default page
@@ -102,8 +102,8 @@ class Master_client extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'kd'			=> $kd,
-								'isi'			=> 'sim/master-client/create');
-				$this->load->view('sim/layout/wrapper',$data);
+								'isi'			=> 'admins/master-client/create');
+				$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -136,8 +136,8 @@ class Master_client extends CI_Controller {
 									'mc'			=> $mc,
 									'kd'			=> $kd,
 									'error'			=> $this->upload->display_errors(),
-									'isi'			=> 'sim/master-client/edit');
-					$this->load->view('sim/layout/wrapper', $data);
+									'isi'			=> 'admins/master-client/edit');
+					$this->load->view('admins/layout/wrapper', $data);
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
 						$config['image_library']	= 'gd2';
@@ -177,7 +177,7 @@ class Master_client extends CI_Controller {
 						 			 );
 					$this->mMClients->editMClient($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/master_client'));
+					redirect(base_url('admins/master_client'));
 					}}else{
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
@@ -196,7 +196,7 @@ class Master_client extends CI_Controller {
 						 			 );
 					$this->mMClients->editMClient($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect('sim/master_client');			
+					redirect('admins/master_client');			
 					}
 				}
 
@@ -205,8 +205,8 @@ class Master_client extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'mc'			=> $mc,
-								'isi'			=> 'sim/master-client/edit');
-				$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/master-client/edit');
+				$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}
@@ -218,7 +218,7 @@ class Master_client extends CI_Controller {
 			$data = array('id_master_client' => $id_master_client);
 			$this->mMClients->deleteMClient($data);		
 			$this->session->set_flashdata('sukses','Success');
-			redirect(base_url('sim/master_client'));
+			redirect(base_url('admins/master_client'));
 		}else{
 			redirect('auth/login');
 		}

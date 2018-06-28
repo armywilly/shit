@@ -53,7 +53,7 @@ class Acl {
 		$this->CI->load->library('session');
 
 		// Load ACL model
-		$this->CI->load->model('sim/acl_model');
+		$this->CI->load->model('admins/acl_model');
 
 		if ( ! empty($config))
 		{

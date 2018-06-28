@@ -140,6 +140,16 @@ class Tank_auth
 	}
 
 	/**
+	 * Get roles
+	 *
+	 * @return	string
+	 */
+	function get_user_role()
+	{
+		return $this->ci->session->userdata('roles');
+	}
+
+	/**
 	 * Get username
 	 *
 	 * @return	string

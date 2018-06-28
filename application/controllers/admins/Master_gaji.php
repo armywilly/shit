@@ -19,8 +19,8 @@ class Master_gaji extends CI_Controller {
 							'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
-							'isi'			=> 'sim/master-gaji/list');
-			$this->load->view('sim/layout/wrapper', $data);
+							'isi'			=> 'admins/master-gaji/list');
+			$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}

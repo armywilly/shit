@@ -7,7 +7,7 @@ class Karyawan extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
         $this->load->helper('url');
-		$this->load->model('sim/Karyawan_model');
+		$this->load->model('admins/Karyawan_model');
 	}
 
 	// Index
@@ -20,8 +20,8 @@ class Karyawan extends CI_Controller {
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'k'				=> $k,
-							'isi'			=> 'sim/karyawan/list');
-			$this->load->view('sim/layout/wrapper',$data);
+							'isi'			=> 'admins/karyawan/list');
+			$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -38,8 +38,8 @@ class Karyawan extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'k'				=> $k,
-								'isi'			=> 'sim/karyawan/detail');
-			$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/karyawan/detail');
+			$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}	
@@ -69,8 +69,8 @@ class Karyawan extends CI_Controller {
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'error'			=> $this->upload->display_errors(),
 									'mj'			=> $mj,
-									'isi'			=> 'sim/karyawan/create');
-					$this->load->view('sim/layout/wrapper', $data);
+									'isi'			=> 'admins/karyawan/create');
+					$this->load->view('admins/layout/wrapper', $data);
 					// Masuk database
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
@@ -113,7 +113,7 @@ class Karyawan extends CI_Controller {
 									);
 					$this->mKaryawan->tambah($data);
 					$this->session->set_flashdata('success','Staff added successfully');
-					redirect(base_url('sim/karyawan'));
+					redirect(base_url('admins/karyawan'));
 					}
 				}
 				// End masuk database
@@ -122,8 +122,8 @@ class Karyawan extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'mj'			=> $mj,
-								'isi'			=> 'sim/karyawan/create');
-				$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/karyawan/create');
+				$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}
@@ -155,8 +155,8 @@ class Karyawan extends CI_Controller {
 											'k'				=> $k,
 											'mj'			=> $mj,
 											'error'			=> $this->upload->display_errors(),
-											'isi'			=> 'sim/karyawan/edit');
-							$this->load->view('sim/layout/wrapper', $data);
+											'isi'			=> 'admins/karyawan/edit');
+							$this->load->view('admins/layout/wrapper', $data);
 						// Masuk database
 						}else{
 
@@ -203,7 +203,7 @@ class Karyawan extends CI_Controller {
 										);
 						$this->mKaryawan->edit($data);
 						$this->session->set_flashdata('sukses','Staff data updated and photo replaced');
-						redirect(base_url('sim/karyawan'));
+						redirect(base_url('admins/karyawan'));
 						}
 					}else{
 
@@ -230,7 +230,7 @@ class Karyawan extends CI_Controller {
 									);
 					$this->mKaryawan->edit($data);
 					$this->session->set_flashdata('sukses','Staff data updated successfully');
-					redirect(base_url('sim/Karyawan'));	
+					redirect(base_url('admins/Karyawan'));	
 							
 					}
 				}
@@ -241,8 +241,8 @@ class Karyawan extends CI_Controller {
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'k'				=> $k,
 								'mj'			=> $mj,
-								'isi'			=> 'sim/karyawan/edit');
-				$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/karyawan/edit');
+				$this->load->view('admins/layout/wrapper', $data);
 
 		}else{
 			redirect('auth/login');
@@ -253,10 +253,10 @@ class Karyawan extends CI_Controller {
 	public function delete($id_staff) {
 		if ($this->tank_auth->is_logged_in()) {	
 			$k		= $this->mKaryawan->detailkaryawan($id_staff);
-			$data = array('id_staff'	=> $id_staff);
+			$data 	= array('id_staff'	=> $id_staff);
 			$this->mKaryawan->deleteKaryawan($data);		
 			$this->session->set_flashdata('sukses','Staff deleted successfully');
-			redirect(base_url('sim/karyawan'));
+			redirect(base_url('admins/karyawan'));
 		}else{
 			redirect('auth/login');
 		}

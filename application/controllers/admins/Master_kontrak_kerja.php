@@ -7,7 +7,7 @@ class Master_kontrak_kerja extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
         $this->load->helper('url');
-		$this->load->model('sim/master_kontrak_model');
+		$this->load->model('admins/master_kontrak_model');
 	}
 	
 	// Main Kontrak Kerja
@@ -21,8 +21,8 @@ class Master_kontrak_kerja extends CI_Controller {
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'mkk'			=> $mkk,
-							'isi'			=> 'sim/master-kontrak-kerja/list');
-			$this->load->view('sim/layout/wrapper',$data);
+							'isi'			=> 'admins/master-kontrak-kerja/list');
+			$this->load->view('admins/layout/wrapper',$data);
 			var_dump($data);
 		}else{
 			redirect('auth/login');
@@ -40,8 +40,8 @@ class Master_kontrak_kerja extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'mkk'			=> $mkk,
-								'isi'			=> 'sim/master-kontrak-kerja/detail');
-			$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/master-kontrak-kerja/detail');
+			$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}	
@@ -74,8 +74,8 @@ class Master_kontrak_kerja extends CI_Controller {
 									'kd'			=> $kd,
 									'mc'			=> $mc,
 									'pa'			=> $pa,
-									'isi'			=> 'sim/master-kontrak-kerja/create');
-					$this->load->view('sim/layout/wrapper',$data);
+									'isi'			=> 'admins/master-kontrak-kerja/create');
+					$this->load->view('admins/layout/wrapper',$data);
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
 						$config['source_file'] 	= './upload/klien/file/'.$upload_data['uploads']['file_name']; 
@@ -96,7 +96,7 @@ class Master_kontrak_kerja extends CI_Controller {
 
 						$this->mMKontrak->createMKontrak($data);
 						$this->session->set_flashdata('sukses','Success');
-						redirect(base_url('sim/master_kontrak_kerja/'));
+						redirect(base_url('admins/master_kontrak_kerja/'));
 						print_r($data);
 					}
 				}
@@ -108,8 +108,8 @@ class Master_kontrak_kerja extends CI_Controller {
 								'kd'			=> $kd,
 								'mc'			=> $mc,
 								'pa'			=> $pa,
-								'isi'			=> 'sim/master-kontrak-kerja/create');
-				$this->load->view('sim/layout/wrapper',$data);
+								'isi'			=> 'admins/master-kontrak-kerja/create');
+				$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -145,8 +145,8 @@ class Master_kontrak_kerja extends CI_Controller {
 									'mc'			=> $mc,
 									'pa'			=> $pa,
 									'error'			=> $this->upload->display_errors(),
-									'isi'			=> 'sim/master-kontrak-kerja/edit');
-					$this->load->view('sim/layout/wrapper', $data);
+									'isi'			=> 'admins/master-kontrak-kerja/edit');
+					$this->load->view('admins/layout/wrapper', $data);
 					}else{
 						$upload_data			= array('uploads' =>$this->upload->data());
 						$config['source_file'] 	= './upload/klien/file/'.$upload_data['uploads']['file_name']; 
@@ -170,7 +170,7 @@ class Master_kontrak_kerja extends CI_Controller {
 										'date'				=> $i->post('date'));
 					$this->mMKontrak->editMKontrak($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/master_kontrak_kerja'));
+					redirect(base_url('admins/master_kontrak_kerja'));
 					}}else{
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
@@ -188,7 +188,7 @@ class Master_kontrak_kerja extends CI_Controller {
 									);
 					$this->mMKontrak->editMKontrak($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/master_kontrak_kerja'));			
+					redirect(base_url('admins/master_kontrak_kerja'));			
 					}
 				}
 
@@ -200,8 +200,8 @@ class Master_kontrak_kerja extends CI_Controller {
 								'kd'			=> $kd,
 								'mc'			=> $mc,
 								'pa'			=> $pa,
-								'isi'			=> 'sim/master-kontrak-kerja/edit');
-				$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/master-kontrak-kerja/edit');
+				$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}
@@ -213,7 +213,7 @@ class Master_kontrak_kerja extends CI_Controller {
 			$data = array('id_master_kk' => $id_master_kk);
 			$this->mMKontrak->deleteMKontrak($data);		
 			$this->session->set_flashdata('sukses','Success');
-			redirect(base_url('sim/master_kontrak_kerja'));
+			redirect(base_url('admins/master_kontrak_kerja'));
 		}else{
 			redirect('auth/login');
 		}

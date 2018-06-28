@@ -7,7 +7,7 @@ class Master_jabatan extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
         $this->load->helper('url');
-		$this->load->model('sim/Master_jabatan_model');
+		$this->load->model('admins/Master_jabatan_model');
 	}
 	
 	// Main Page Jabatan
@@ -21,8 +21,8 @@ class Master_jabatan extends CI_Controller {
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'mj'			=> $mj,
-							'isi'			=> 'sim/master-jabatan/list');
-			$this->load->view('sim/layout/wrapper', $d);
+							'isi'			=> 'admins/master-jabatan/list');
+			$this->load->view('admins/layout/wrapper', $d);
 		}else{
 			redirect('auth/login');
 		}
@@ -41,8 +41,8 @@ class Master_jabatan extends CI_Controller {
 									'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 									'instansi'		=> $this->config->item('nama_instansi'),
 									'credit'		=> $this->config->item('credit_aplikasi'),
-									'isi'			=> 'sim/master-jabatan/list');
-						$this->load->view('sim/layout/wrapper', $d);
+									'isi'			=> 'admins/master-jabatan/list');
+						$this->load->view('admins/layout/wrapper', $d);
 				
 						$i = $this->input;
 						$slugmj = url_title($this->input->post('jabatan'), 'dash', TRUE);
@@ -55,15 +55,15 @@ class Master_jabatan extends CI_Controller {
 
 						$this->mMjabatan->createJabatan($d);
 						$this->session->set_flashdata('sukses','Success');
-						redirect(base_url('sim/master_jabatan'));
+						redirect(base_url('admins/master_jabatan'));
 				}
 				// Default page
 				$d = array(		'judul_lengkap'		=> $this->config->item('nama_aplikasi_full'),
 								'judul_pendek'		=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'			=> $this->config->item('nama_instansi'),
 								'credit'			=> $this->config->item('credit_aplikasi'),
-								'isi'				=> 'sim/master-jabatan/list');
-				$this->load->view('sim/layout/wrapper', $d);
+								'isi'				=> 'admins/master-jabatan/list');
+				$this->load->view('admins/layout/wrapper', $d);
 		}else{
 			redirect('auth/login');
 		}
@@ -87,8 +87,8 @@ class Master_jabatan extends CI_Controller {
 									'instansi'		=> $this->config->item('nama_instansi'),
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'mj'			=> $mj,
-									'isi'			=> 'sim/master-jabatan/edit');
-					$this->load->view('sim/layout/wrapper', $d);
+									'isi'			=> 'admins/master-jabatan/edit');
+					$this->load->view('admins/layout/wrapper', $d);
 
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
@@ -102,7 +102,7 @@ class Master_jabatan extends CI_Controller {
 						 			 );
 					$this->mMjabatan->editjabatan($d);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/master_jabatan'));			
+					redirect(base_url('admins/master_jabatan'));			
 				}
 
 				$d = array(	'judul_lengkap'			=> $this->config->item('nama_aplikasi_full'),
@@ -110,8 +110,8 @@ class Master_jabatan extends CI_Controller {
 								'instansi'			=> $this->config->item('nama_instansi'),
 								'credit'			=> $this->config->item('credit_aplikasi'),
 								'mj'				=> $mj,
-								'isi'				=> 'sim/master-jabatan/edit');
-				$this->load->view('sim/layout/wrapper', $d);
+								'isi'				=> 'admins/master-jabatan/edit');
+				$this->load->view('admins/layout/wrapper', $d);
 		}else{
 			redirect('auth/login');
 		}
@@ -123,7 +123,7 @@ class Master_jabatan extends CI_Controller {
 			$d = array('id_jabatan' => $id_jabatan);
 			$this->mMjabatan->deleteJabatan($d);		
 			$this->session->set_flashdata('sukses','Success');
-			redirect(base_url('sim/master_jabatan'));
+			redirect(base_url('admins/master_jabatan'));
 		}else{
 			redirect('auth/login');
 		}

@@ -36,8 +36,8 @@ class Dashboard extends CI_Controller {
 								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
-								'isi'			=> 'sim/dashboard/index');
-			$this->load->view('sim/layout/wrapper',$d);
+								'isi'			=> 'admins/dashboard/index');
+			$this->load->view('admins/layout/wrapper',$d);
 
 		}else{
 			redirect('auth/login');

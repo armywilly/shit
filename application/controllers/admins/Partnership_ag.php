@@ -7,7 +7,7 @@ class Partnership_ag extends CI_Controller {
 		parent::__construct();
 		$this->load->library('form_validation');
         $this->load->helper('url');
-		$this->load->model('sim/partnership_model');
+		$this->load->model('admins/partnership_model');
 	}
 	
 	// Main Kontrak Kerja
@@ -21,8 +21,8 @@ class Partnership_ag extends CI_Controller {
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'pa'			=> $pa,
-							'isi'			=> 'sim/partnership/list');
-			$this->load->view('sim/layout/wrapper',$data);
+							'isi'			=> 'admins/partnership/list');
+			$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -49,7 +49,7 @@ class Partnership_ag extends CI_Controller {
 
 						$this->mMPa->createMPa($data);
 						$this->session->set_flashdata('sukses','Success');
-						redirect(base_url('sim/partnership_ag/'));
+						redirect(base_url('admins/partnership_ag/'));
 				}
 				// Default page
 				$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
@@ -58,8 +58,8 @@ class Partnership_ag extends CI_Controller {
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'kd'			=> $kd,
 								'mc'			=> $mc,
-								'isi'			=> 'sim/partnership/create');
-				$this->load->view('sim/layout/wrapper',$data);
+								'isi'			=> 'admins/partnership/create');
+				$this->load->view('admins/layout/wrapper',$data);
 		}else{
 			redirect('auth/login');
 		}
@@ -87,7 +87,7 @@ class Partnership_ag extends CI_Controller {
 										'tanggal'			=> $i->post('tanggal'));
 					$this->mMPa->editMpa($data);
 					$this->session->set_flashdata('sukses','Success');
-					redirect(base_url('sim/partnership_ag'));
+					redirect(base_url('admins/partnership_ag'));
 				}
 
 				$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
@@ -97,8 +97,8 @@ class Partnership_ag extends CI_Controller {
 								'kd'			=> $kd,
 								'mc'			=> $mc,
 								'pa'			=> $pa,
-								'isi'			=> 'sim/partnership/edit');
-				$this->load->view('sim/layout/wrapper', $data);
+								'isi'			=> 'admins/partnership/edit');
+				$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
 		}
@@ -110,7 +110,7 @@ class Partnership_ag extends CI_Controller {
 			$data = array('id_pa' => $id_pa);
 			$this->mMPa->deleteMPa($data);		
 			$this->session->set_flashdata('sukses','Success');
-			redirect(base_url('sim/partnership_ag'));
+			redirect(base_url('admins/partnership_ag'));
 		}else{
 			redirect('auth/login');
 		}

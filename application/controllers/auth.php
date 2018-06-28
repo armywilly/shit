@@ -29,8 +29,12 @@ class Auth extends CI_Controller
 	 */
 	function login()
 	{
-		if ($this->tank_auth->is_logged_in()) {									// logged in
-			redirect('sim/Dashboard');
+		if ($this->tank_auth->is_logged_in()!="" && $this->tank_auth->get_user_role('roles') ="administrator") {									// logged in with user role is administrator
+			redirect('admins/Dashboard');
+
+		} elseif ($this->tank_auth->is_logged_in()!="" && $this->tank_auth->get_user_role('roles') ="Finance & SDM") {									// logged in with user role is finance
+			redirect('finance/Dashboard');
+		}
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('auth/send_again/');
@@ -123,6 +127,7 @@ class Auth extends CI_Controller
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
 			$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean|matches[password]');
+			//$this->form_validation->set_rules('role', 'Role', 'required');
 
 			$captcha_registration	= $this->config->item('captcha_registration', 'tank_auth');
 			$use_recaptcha			= $this->config->item('use_recaptcha', 'tank_auth');
