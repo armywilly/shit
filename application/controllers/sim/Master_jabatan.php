@@ -5,12 +5,14 @@ class Master_jabatan extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
+        $this->load->helper('url');
 		$this->load->model('sim/Master_jabatan_model');
 	}
 	
 	// Main Page Jabatan
 	public function index() {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 
 			$mj = $this->mMjabatan->listJabatan();
 			
@@ -22,16 +24,16 @@ class Master_jabatan extends CI_Controller {
 							'isi'			=> 'sim/master-jabatan/list');
 			$this->load->view('sim/layout/wrapper', $d);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 
 	// Create Jabatan
 	public function create() {
 		
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('jabatan','Jabatan','required');
 		
 				if($v->run()) {
 						
@@ -39,14 +41,14 @@ class Master_jabatan extends CI_Controller {
 									'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 									'instansi'		=> $this->config->item('nama_instansi'),
 									'credit'		=> $this->config->item('credit_aplikasi'),
-									'isi'			=> 'sim/master-jabatan/create');
+									'isi'			=> 'sim/master-jabatan/list');
 						$this->load->view('sim/layout/wrapper', $d);
 				
 						$i = $this->input;
-						$slugmj = url_title($this->input->post('name'), 'dash', TRUE);
+						$slugmj = url_title($this->input->post('jabatan'), 'dash', TRUE);
 						$d  = array(	'slug_jabatan'	=> $slugmj,
 										'id_user'		=> $this->session->userdata('id_user'),
-										'name'			=> $i->post('name'),
+										'jabatan'		=> $i->post('jabatan'),
 										'isi'			=> $i->post('isi'),								
 										'date'			=> $i->post('date')				
 						 			 );
@@ -60,23 +62,23 @@ class Master_jabatan extends CI_Controller {
 								'judul_pendek'		=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'			=> $this->config->item('nama_instansi'),
 								'credit'			=> $this->config->item('credit_aplikasi'),
-								'isi'				=> 'sim/master-jabatan/create');
+								'isi'				=> 'sim/master-jabatan/list');
 				$this->load->view('sim/layout/wrapper', $d);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 
 	// Edit Client
 	public function edit($id_jabatan) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 
 			$mj		= $this->mMjabatan->detailJabatan($id_jabatan);
 			$endmj	= $this->mMjabatan->endJabatan();		
 
 			// Validation
 			$v = $this->form_validation;
-			$v->set_rules('name','Name','required');
+			$v->set_rules('jabatan','Jabatan','required');
 				//Funtion Baca Data
 				if($v->run()) {
 				
@@ -90,11 +92,11 @@ class Master_jabatan extends CI_Controller {
 
 					//Funtion Insert data dan Redirect ke List
 					$i = $this->input;
-					$slugmj = $endmj['id_jabatan'].'-'.url_title($i->post('name'),'dash', TRUE);
+					$slugmj = $endmj['id_jabatan'].'-'.url_title($i->post('jabatan'),'dash', TRUE);
 					$d = array(		'id_jabatan'    => $mj['id_jabatan'],
 									'slug_jabatan'	=> $slugmj,
 									'id_user'		=> $this->session->userdata('id_user'),
-									'name'			=> $i->post('name'),
+									'jabatan'		=> $i->post('jabatan'),
 									'isi'			=> $i->post('isi'),							
 									'date'			=> $i->post('date')								
 						 			 );
@@ -111,19 +113,19 @@ class Master_jabatan extends CI_Controller {
 								'isi'				=> 'sim/master-jabatan/edit');
 				$this->load->view('sim/layout/wrapper', $d);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}	
 
 	// Delete Client
 	public function delete($id_jabatan) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$d = array('id_jabatan' => $id_jabatan);
 			$this->mMjabatan->deleteJabatan($d);		
 			$this->session->set_flashdata('sukses','Success');
 			redirect(base_url('sim/master_jabatan'));
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}		
 }

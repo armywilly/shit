@@ -10,23 +10,17 @@ class Karyawan_model extends CI_Model {
 	// Listing
 	public function listKaryawan() {
 		$this->db->select('*');
-		$this->db->from('s_karyawan');
-		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.id_jabatan');
+		$this->db->from('m_karyawan');
+		$this->db->join('m_jabatan','m_jabatan.id_jabatan = m_karyawan.id_jabatan');
 		$this->db->order_by('nama','ASC');
-		$query = $this->db->get(); //simpan database yang udah di get alias ambil ke query
-        if ($query->num_rows() >0){
-            foreach ($query->result() as $data) {
-                # code...
-                $k[] = $data;
-            }
-        return $k;
-        }
+		$query = $this->db->get();
+        return $query->result_array();
 	}
 	
 	// Semua
 	public function semua_karyawan($limit, $start) {
 		$this->db->select('*');
-		$this->db->from('s_karyawan');
+		$this->db->from('m_karyawan');
 		$this->db->where(array('status_staff'=>'Yes'));
 		$this->db->limit($limit, $start);
 		$this->db->order_by('nama','ASC');
@@ -38,7 +32,7 @@ class Karyawan_model extends CI_Model {
 	// Semua
 	public function total_karyawan() {
 		$this->db->select('*');
-		$this->db->from('s_karyawan');
+		$this->db->from('m_karyawan');
 		$this->db->where(array('status_staff'=>'Ya'));
 		$this->db->order_by('nama','ASC');
 		$query = $this->db->get();
@@ -48,7 +42,7 @@ class Karyawan_model extends CI_Model {
 	// Listing Besar
 	public function listing_besar() {
 		$this->db->select('*');
-		$this->db->from('s_karyawan');
+		$this->db->from('m_karyawan');
 		$this->db->where(array('status_staff'=>'Ya','ukuran' => 'Besar'));
 		$this->db->order_by('id_staff','DESC');
 		$query = $this->db->get();
@@ -58,7 +52,7 @@ class Karyawan_model extends CI_Model {
 	// Besar
 	public function total_besar() {
 		$this->db->select('*');
-		$this->db->from('s_karyawan');
+		$this->db->from('m_karyawan');
 		$this->db->where(array('status_staff'=>'Ya','ukuran' => 'Besar'));
 		$this->db->order_by('id_staff','DESC');
 		$query = $this->db->get();
@@ -66,10 +60,11 @@ class Karyawan_model extends CI_Model {
 	}
 		
 	// Detail
-	public function detail($id_staff) {
+	public function detailkaryawan($id_staff) {
 		$this->db->select('*');
-		$this->db->from('s_karyawan');
+		$this->db->from('m_karyawan');
 		$this->db->where('id_staff',$id_staff);
+		$this->db->join('m_jabatan','m_jabatan.id_jabatan = m_karyawan.id_jabatan');
 		$this->db->order_by('nama','DESC');
 		$query = $this->db->get();
 		return $query->row();
@@ -77,7 +72,7 @@ class Karyawan_model extends CI_Model {
 
 	//Create Code NIP UNIK Otomatis
 	function get_nip(){
-		$query = $this->db->query("SELECT MAX(RIGHT(nip,4)) AS kd_max FROM s_karyawan WHERE DATE(tanggal)=CURDATE()");
+		$query = $this->db->query("SELECT MAX(RIGHT(nip,4)) AS kd_max FROM m_karyawan WHERE DATE(tanggal)=CURDATE()");
         $kd = "";
         if($query->num_rows()>0){
             foreach($query->result() as $k){
@@ -94,26 +89,25 @@ class Karyawan_model extends CI_Model {
 	
 	// Tambah
 	public function tambah($data) {
-		$this->db->insert('s_karyawan',$data);
+		$this->db->insert('m_karyawan',$data);
 	}
 	
 	// Edit
 	public function edit($data) {
 		$this->db->where('id_staff',$data['id_staff']);
-		$this->db->join('s_jabatan','s_jabatan.id_jabatan = s_karyawan.id_jabatan','LEFT');
-		unset($data['nip']);
-		$this->db->update('s_karyawan',$data);
+		$this->db->join('m_jabatan','m_jabatan.id_jabatan = m_karyawan.id_jabatan');
+		$this->db->update('m_karyawan',$data);
 	}
 	
 	// Check delete
 	public function check($id_staff) {
-		$query = $this->db->get_where('gaji_pokok','task',array('id_staff' => $id_staff));
+		$query = $this->db->get_where('jabatan','data_task',array('id_staff' => $id_staff));
 		return $query->num_rows();
 	}
 	
 	// Delete
-	public function delete($data) {
+	public function deleteKaryawan($data) {
 		$this->db->where('id_staff',$data['id_staff']);
-		$this->db->delete('s_karyawan',$data);
+		$this->db->delete('m_karyawan',$data);
 	}
 }

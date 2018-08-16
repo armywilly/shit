@@ -18,9 +18,18 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct() {
+        parent::__construct();
+
+        $this->load->library('form_validation');
+        $this->load->helper('url');
+        $this->load->library('tank_auth');
+         }
+         
 	public function index()
 	{
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 
 			$d = array(	
 								'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
@@ -31,7 +40,7 @@ class Dashboard extends CI_Controller {
 			$this->load->view('sim/layout/wrapper',$d);
 
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 }

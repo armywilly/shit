@@ -1,4 +1,4 @@
-<?php
+        <?php
 // Session 
 if($this->session->flashdata('sukses')) {
     echo '<div class="col-md-6 pull-left">';
@@ -11,49 +11,59 @@ if($this->session->flashdata('sukses')) {
 // Error
 echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert alert-danger alert-with-icon" data-notify="container">','<i data-notify="icon" class="material-icons">add_alert</i>','</div>','</div>'); 
 ?>
-<div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Master Karyawan</h4>
-                                    <p class="category">List Karyawan</p>
-                                    <a href="<?php echo base_url('sim/karyawan/create') ?>" class="btn btn-info"><i class="material-icons">add_circle_outline</i>&nbsp;Add New Karyawan</a>
+<div class="wrapper">
+        <div class="container">
+
+            <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="page-title">Karyawan</h4>
+                    </div>
+                </div>
+
+            <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="m-b-30">
+                                        <a href="<?php echo base_url('sim/karyawan/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
+                                        </div>
                                 </div>
-                                <div class="card-content table-responsive">
-                                    <table class="table">
-                                        <thead class="text-primary">
-                                            <th>#</th>
-                                            <th>Nama Karyawan</th>
-                                            <th>NIP</th>
-                                            <th>Jabatan</th>
-                                            <th>Action</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php $i=1; foreach($k as $list) { ?>
+                            </div>
+
+                            <table id="convert" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>No Induk Pegawai</th>
+                                        <th>Jabatan</th>
+                                        <th>Email</th>
+                                        <th width="120">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                <?php $i=1; foreach($k as $list) { ?>
                                             <tr>
                                                 <td><?php echo $i; ?></td>
-                                                <td><?php echo substr(strip_tags($list->nama),0,20) ?></td>
-                                                <td><?php echo $list->nip ?></td>
-                                                <td><?php echo $list->id_jabatan ?></td>
-                                                <td class="td-actions text-right">
-                                                            <a href="<?php echo base_url('sim/karyawan/edit/'.$list->id_staff);?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
-                                                                <i class="material-icons">edit</i>
-                                                            </a>
-                                                            <a href="<?php echo base_url('sim/karyawan/delete/'.$list->id_staff);?>" type="button" rel="tooltip" title="Delete Task" class="btn btn-danger btn-simple btn-xs">
-                                                                <i class="material-icons">delete</i>
-                                                            </a>
+                                                <td><?php echo substr(strip_tags($list['nama']),0,25) ?></td>
+                                                <td><?php echo $list['nip'] ?></td>
+                                                <td><?php echo $list['jabatan'] ?></td>
+                                                <td><?php echo $list['email'] ?></td>
+                                                <td class="actions">
+                                                    <a href="<?php echo base_url('sim/karyawan/detail/'.$list['id_staff']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?php echo base_url('sim/karyawan/edit/'.$list['id_staff']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('sim/karyawan/delete/'.$list['id_staff']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                    
+                                </tbody>
+                            </table>
                         </div>
-
-                        
-                    </div>
+                    </div><!-- end col -->
                 </div>
-            </div>
+                <!-- end row -->
+
+        </div> <!-- End Cont -->

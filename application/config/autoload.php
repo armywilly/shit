@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','form_validation','pagination');
+$autoload['libraries'] = array('database','session','form_validation','pagination','email','tank_auth','acl',);
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url','form');
+$autoload['helper'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -133,20 +133,13 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 
-$autoload['model'] = array( 'app_login_model'				=> 'mAlm',
-							'admin/config_model' 			=> 'mConfig',
-							'admin/stats_model'  			=> 'mStats',
-							'admin/blogs_model'  			=> 'mBlogs',
-							'admin/categories_model'		=> 'mCategories',
-							'admin/clients_model'  			=> 'mClients',
-							'admin/contacts_model' 			=> 'mContacts',
-							'admin/downloads_model' 		=> 'mDownloads',
-							'admin/galleries_model' 		=> 'mGalleries',
-							'admin/products_model' 			=> 'mProducts',
-							'admin/Associates_model' 		=> 'mAssociates',
-							'admin/Partners_model' 			=> 'mPartners',
+$autoload['model'] = array( 
 							'sim/Karyawan_model' 			=> 'mKaryawan',
 							'sim/Master_jabatan_model' 		=> 'mMjabatan',
-							'sim/Master_task_karyawan_model'=> 'mMtkaryawan',
-							'sim/Data_task_lawyer_model'	=> 'mDtlawyer',
+							'sim/master_client_model'		=> 'mMClients',
+							'sim/master_kontrak_model'		=> 'mMKontrak',
+							'sim/dokumentasi_client_model'	=> 'mDocs',
+							'sim/partnership_model'			=> 'mMPa',
+							'sim/user_model'				=> 'mMuser',
+							'tank_auth/users'				=> 'mUsers',
 						);

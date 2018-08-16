@@ -5,34 +5,51 @@ class Karyawan extends CI_Controller {
 	// Load database
 	public function __construct(){
 		parent::__construct();
+		$this->load->library('form_validation');
+        $this->load->helper('url');
 		$this->load->model('sim/Karyawan_model');
 	}
 
 	// Index
 	public function index() {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			$k	= $this->mKaryawan->listKaryawan();
-			$mj = $this->mMjabatan->listJabatan();
 			
 			$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 							'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 							'instansi'		=> $this->config->item('nama_instansi'),
 							'credit'		=> $this->config->item('credit_aplikasi'),
 							'k'				=> $k,
-							'mj'			=> $mj,
 							'isi'			=> 'sim/karyawan/list');
 			$this->load->view('sim/layout/wrapper',$data);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
+	}
+
+	// Read Karyawan
+	public function detail($id_staff) {
+		if ($this->tank_auth->is_logged_in()) {	
+
+			$k 	= $this->mKaryawan->detailkaryawan($id_staff);                                           		
+			
+			$data  = array(		'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
+								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
+								'instansi'		=> $this->config->item('nama_instansi'),
+								'credit'		=> $this->config->item('credit_aplikasi'),
+								'k'				=> $k,
+								'isi'			=> 'sim/karyawan/detail');
+			$this->load->view('sim/layout/wrapper', $data);
+		}else{
+			redirect('auth/login');
+		}	
 	}
 		
 	// Tambah
 	public function create() {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			//Load Model
 			$mj = $this->mMjabatan->listJabatan();
-			$kd['nip']=  $this->mKaryawan->get_nip();
 
 			// Validasi
 			$v = $this->form_validation;//Set V as variable of form_validation
@@ -42,7 +59,7 @@ class Karyawan extends CI_Controller {
 					
 					$config['upload_path'] 		= './upload/image/';
 					$config['allowed_types'] 	= 'gif|jpg|png|svg';
-					$config['max_size']			= '300'; // KB	
+					$config['max_size']			= '500'; // KB	
 					$this->load->library('upload', $config);
 					if(! $this->upload->do_upload('image')) {
 				
@@ -52,7 +69,6 @@ class Karyawan extends CI_Controller {
 									'credit'		=> $this->config->item('credit_aplikasi'),
 									'error'			=> $this->upload->display_errors(),
 									'mj'			=> $mj,
-									'kd'			=> $kd,
 									'isi'			=> 'sim/karyawan/create');
 					$this->load->view('sim/layout/wrapper', $data);
 					// Masuk database
@@ -64,8 +80,8 @@ class Karyawan extends CI_Controller {
 						$config['new_image'] 		= './upload/image/thumbs/';
 						$config['create_thumb'] 	= TRUE;
 						$config['maintain_ratio'] 	= FALSE;
-						$config['width'] 			= 600; // Pixel
-						$config['height'] 			= 400; // Pixel
+						$config['max_width'] 		= 1024; // Pixel
+						$config['max_height'] 		= 700; // Pixel
 						$config['x_axis'] 			= 0;
 						$config['y_axis'] 			= 0;
 						$config['thumb_marker'] 	= '';
@@ -74,7 +90,8 @@ class Karyawan extends CI_Controller {
 
 					//Data input Begin	
 					$i = $this->input;
-					$data = array(	'nip'				=> $kd['nip'],
+					$data = array(	'nip'				=> $i->post('nip'),
+									'no_advokat'		=> $i->post('no_advokat'),
 									'nama'				=> $i->post('nama'),
 									'gender'			=> $i->post('gender'),
 									'tempat_lahir'		=> $i->post('tempat_lahir'),
@@ -85,9 +102,9 @@ class Karyawan extends CI_Controller {
 									'pendidikan'		=> $i->post('pendidikan'),
 									'sertifikat'		=> $i->post('sertifikat'),
 									'email'				=> $i->post('email'),
-									'isi'				=> $i->post('isi'),
+									'linkedin'			=> $i->post('linkedin'),
+									'biodata'			=> $i->post('biodata'),
 									'image'				=> $upload_data['uploads']['file_name'],
-									'id_user'			=> $this->session->userdata('id_user'),
 									'status_staff'		=> $i->post('status_staff'),
 									'keyword'			=> $i->post('keyword'),
 									'ukuran'			=> $i->post('ukuran'),
@@ -105,24 +122,23 @@ class Karyawan extends CI_Controller {
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'mj'			=> $mj,
-								'kd'			=> $kd,
 								'isi'			=> 'sim/karyawan/create');
 				$this->load->view('sim/layout/wrapper', $data);
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 	
 	// Edit
 	public function edit($id_staff) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
+		if ($this->tank_auth->is_logged_in()) {	
 			// Dari database
-			$k		= $this->mKaryawan->detail($id_staff);
-			$kd['nip']=  $this->mKaryawan->get_nip();
-			$mj = $this->mMjabatan->listJabatan();
+			$k		  = $this->mKaryawan->detailkaryawan($id_staff);
+			$mj 	  = $this->mMjabatan->listJabatan();
 			// Validasi
-			$v = $this->form_validation;
+			$v 		  = $this->form_validation;
 			$v->set_rules('nama','Staff name','required');
+			$v->set_rules('id_jabatan','id_jabatan','required');
 		
 				if($v->run()) {
 					if(!empty($_FILES->gambar['name'])) {
@@ -138,7 +154,6 @@ class Karyawan extends CI_Controller {
 											'credit'		=> $this->config->item('credit_aplikasi'),
 											'k'				=> $k,
 											'mj'			=> $mj,
-											'kd'			=> $kd,
 											'error'			=> $this->upload->display_errors(),
 											'isi'			=> 'sim/karyawan/edit');
 							$this->load->view('sim/layout/wrapper', $data);
@@ -151,8 +166,8 @@ class Karyawan extends CI_Controller {
 						$config['source_image'] 	= './upload/image/'.$upload_data['uploads']['file_name']; 
 						$config['new_image'] 		= './upload/image/thumbs/';
 						$config['create_thumb'] 	= TRUE;
-						$config['maintain_ratio'] 	= 600; // Pixel
-						$config['height'] 			= 400; // Pixel
+						$config['maintain_ratio'] 	= 1024; // Pixel
+						$config['height'] 			= 700; // Pixel
 						$config['x_axis'] 			= 0;
 						$config['y_axis'] 			= 0;
 						$config['thumb_marker'] 	= '';
@@ -161,11 +176,12 @@ class Karyawan extends CI_Controller {
 						
 						$i = $this->input;
 						// Hapus gambar lama
-						unlink('./upload/image/'.$k->image);
-						unlink('./upload/image/thumbs/'.$k->image);
+						unlink('./upload/image/'.$k['image']);
+						unlink('./upload/image/thumbs/'.$k['image']);
 						// End hapus gambar lama
 						$data = array(	'id_staff'			=> $k->id_staff,
-										'nip'				=> $kd('nip'),
+										'nip'				=> $i->post('nip'),
+										'no_advokat'		=> $i->post('no_advokat'),
 										'nama'				=> $i->post('nama'),
 										'gender'			=> $i->post('gender'),
 										'tempat_lahir'		=> $i->post('tempat_lahir'),
@@ -176,9 +192,9 @@ class Karyawan extends CI_Controller {
 										'pendidikan'		=> $i->post('pendidikan'),
 										'sertifikat'		=> $i->post('sertifikat'),
 										'email'				=> $i->post('email'),
-										'isi'				=> $i->post('isi'),
+										'linkedin'			=> $i->post('linkedin'),
+										'biodata'			=> $i->post('biodata'),
 										'image'				=> $upload_data['uploads']['file_name'],
-										'id_user'			=> $this->session->userdata('id_user'),
 										'status_staff'		=> $i->post('status_staff'),
 										'keyword'			=> $i->post('keyword'),
 										'ukuran'			=> $i->post('ukuran'),
@@ -193,7 +209,7 @@ class Karyawan extends CI_Controller {
 
 					$i = $this->input;
 					$data = array(	'id_staff'			=> $k->id_staff,
-									'nip'				=> $kd['nip'],
+									'no_advokat'		=> $i->post('no_advokat'),
 									'nama'				=> $i->post('nama'),
 									'gender'			=> $i->post('gender'),
 									'tempat_lahir'		=> $i->post('tempat_lahir'),
@@ -204,8 +220,8 @@ class Karyawan extends CI_Controller {
 									'pendidikan'		=> $i->post('pendidikan'),
 									'sertifikat'		=> $i->post('sertifikat'),
 									'email'				=> $i->post('email'),
-									'isi'				=> $i->post('isi'),
-									'id_user'			=> $this->session->userdata('id_user'),
+									'linkedin'			=> $i->post('linkedin'),
+									'biodata'			=> $i->post('biodata'),
 									'status_staff'		=> $i->post('status_staff'),
 									'keyword'			=> $i->post('keyword'),
 									'ukuran'			=> $i->post('ukuran'),
@@ -214,7 +230,8 @@ class Karyawan extends CI_Controller {
 									);
 					$this->mKaryawan->edit($data);
 					$this->session->set_flashdata('sukses','Staff data updated successfully');
-					redirect(base_url('sim/Karyawan'));			
+					redirect(base_url('sim/Karyawan'));	
+							
 					}
 				}
 				// End masuk database
@@ -224,28 +241,24 @@ class Karyawan extends CI_Controller {
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'k'				=> $k,
 								'mj'			=> $mj,
-								'kd'			=> $kd,
 								'isi'			=> 'sim/karyawan/edit');
 				$this->load->view('sim/layout/wrapper', $data);
+
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 	}
 	
 	// Delete
 	public function delete($id_staff) {
-		if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support") {
-			$k		= $this->mKaryawan->detail($id_staff);
-			// Hapus gambar lama
-			unlink('./upload/image/'.$k->gambar);
-			unlink('./upload/image/thumbs/'.$k->gambar);
-			// End hapus gambar lama
+		if ($this->tank_auth->is_logged_in()) {	
+			$k		= $this->mKaryawan->detailkaryawan($id_staff);
 			$data = array('id_staff'	=> $id_staff);
-			$this->mKaryawan->delete($data);		
+			$this->mKaryawan->deleteKaryawan($data);		
 			$this->session->set_flashdata('sukses','Staff deleted successfully');
 			redirect(base_url('sim/karyawan'));
 		}else{
-			redirect('login');
+			redirect('auth/login');
 		}
 
 	}

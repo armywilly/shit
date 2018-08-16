@@ -2,12 +2,6 @@
 
 class Login extends CI_Controller {
 
-	/*
-		***	Controller : app.php
-		***	by Gede Lumbung
-		***	http://gedelumbung.com
-	*/
-
 	public function index()
 	{
 		if($this->session->userdata('logged_in')=="")
@@ -17,7 +11,7 @@ class Login extends CI_Controller {
 								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
-								'isi'			=> 'login/login');
+								'isi'			=> 'login/login1');
 			
 			$this->form_validation->set_rules('username', 'Username', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -25,7 +19,7 @@ class Login extends CI_Controller {
 			if ($this->form_validation->run() == FALSE)
 			{
 
-				$this->load->view('login/layouts/wrapper',$d);
+				$this->load->view('sim/layouts/wrapper',$d);
 			}
 			else
 			{

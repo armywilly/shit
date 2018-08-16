@@ -11,7 +11,7 @@ class App_Login_Model extends CI_Model {
 	public function getLoginData($data)
 	{
 		$login['username'] = $data['username'];
-		$login['password'] = md5($data['password']);
+		$login['password'] = sha1($data['password']);
 		$cek = $this->db->get_where('t_users', $login);
 		if($cek->num_rows()>0)
 		{
