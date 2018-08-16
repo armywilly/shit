@@ -18,7 +18,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="m-b-30">
-                                        <a href="<?php echo base_url('sim/partnership_ag/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
+                                        <a href="<?php echo base_url('admins/partnership_ag/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -42,8 +42,8 @@
                                                 <td><?php echo $list->no_pa ?></td>
                                                 <td><?php echo $list->nrk ?></td>
                                                 <td class="actions">
-                                                    <a href="<?php echo base_url('sim/partnership_ag/edit/'.$list->id_pa);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('sim/partnership_ag/delete/'.$list->id_pa);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="<?php echo base_url('admins/partnership_ag/edit/'.$list->id_pa);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('admins/partnership_ag/delete/'.$list->id_pa);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>

@@ -30,11 +30,11 @@ class Login extends CI_Controller {
 		}
 		else if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="administrator")
 		{
-			redirect('admin/dashboard',$d);
+			redirect('admins/dashboard',$d);
 		}
-		else if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="support")
+		else if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="Finance & SDM")
 		{
-			redirect('sim/dashboard',$d);
+			redirect('finance/dashboard',$d);
 		}
 		else if($this->session->userdata('logged_in')!="" && $this->session->userdata('status')=="managing")
 		{

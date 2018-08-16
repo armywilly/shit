@@ -33,7 +33,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 
                             <div class="row">
                                 <!-- Form Start -->
-                                <form action="<?php echo base_url('sim/partnership_ag/create') ?>" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                                <form action="<?php echo base_url('admins/partnership_ag/create') ?>" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
 
                                     <div class="col-lg-12">
 
@@ -153,7 +153,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <button type="submit" class="btn btn-success waves-effect waves-light">
                                                 Submit
                                             </button>
-                                            <a href="<?php echo base_url('sim/partnership_ag') ?>" type="button"
+                                            <a href="<?php echo base_url('admins/partnership_ag') ?>" type="button"
                                                     class="btn btn-danger waves-effect">Cancel
                                             </a>
                                         </div>

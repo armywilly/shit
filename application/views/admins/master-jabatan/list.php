@@ -27,7 +27,7 @@
                                                         <h4 class="modal-title">Tambah Data Jabatan Baru</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="<?php echo base_url('sim/master_jabatan/create') ?>" method="post" enctype="multipart/form-data">
+                                                        <form action="<?php echo base_url('admins/master_jabatan/create') ?>" method="post" enctype="multipart/form-data">
                                                       
 
                                                         <div class="row">
@@ -75,8 +75,8 @@
                                         <td><?php echo substr(strip_tags($list['jabatan']),0,20) ?></td>
                                         <td><?php echo substr(strip_tags($list['isi']),0,100) ?></td>
                                         <td class="actions">
-                                            <a href="<?php echo base_url('sim/master_jabatan/edit/'.$list['id_jabatan']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                            <a href="<?php echo base_url('sim/master_jabatan/delete/'.$list['id_jabatan']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                            <a href="<?php echo base_url('admins/master_jabatan/edit/'.$list['id_jabatan']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                            <a href="<?php echo base_url('admins/master_jabatan/delete/'.$list['id_jabatan']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 <?php $i++; } ?>

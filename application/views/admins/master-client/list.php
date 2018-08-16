@@ -18,7 +18,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="m-b-30">
-                                        <a href="<?php echo base_url('sim/master_client/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
+                                        <a href="<?php echo base_url('admins/master_client/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -40,9 +40,9 @@
                                                 <td><?php echo substr(strip_tags($list['nama_client']),0,20) ?></td>
                                                 <td><?php echo $list['nrk'] ?></td>
                                                 <td class="actions">
-                                                    <a href="<?php echo base_url('sim/master_client/detil/'.$list['id_master_client']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                                    <a href="<?php echo base_url('sim/master_client/edit/'.$list['id_master_client']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('sim/master_client/delete/'.$list['id_master_client']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="<?php echo base_url('admins/master_client/detil/'.$list['id_master_client']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?php echo base_url('admins/master_client/edit/'.$list['id_master_client']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('admins/master_client/delete/'.$list['id_master_client']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>

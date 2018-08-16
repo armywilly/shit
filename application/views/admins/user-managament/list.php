@@ -18,8 +18,8 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="m-b-30">
-                                        <a href="<?php echo base_url('sim/user_managament/add_user') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah User <i class="fa fa-plus"></i></a>
-                                        <a href="<?php echo base_url('sim/permission/editPermission') ?>" type="button" class="btn btn-warning waves-effect waves-light">Atur Hak Akses <i class="fa fa-pencil"></i></a>
+                                        <a href="<?php echo base_url('admins/user_managament/add_user') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah User <i class="fa fa-plus"></i></a>
+                                        <a href="<?php echo base_url('admins/permission/editPermission') ?>" type="button" class="btn btn-warning waves-effect waves-light">Atur Hak Akses <i class="fa fa-pencil"></i></a>
                                         <!-- Button Modal -->
                                         <button class="btn btn-danger waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Tambah Role <i class="fa fa-plus"></i></button>
 
@@ -78,7 +78,7 @@
                                                 <td><?php echo $list->email ?></td>
                                                 <td><?php echo $list->name ?></td>
                                                 <td class="actions">
-                                                    <a href="<?php echo base_url('sim/user_managament/delete_user/'.$list->id);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="<?php echo base_url('admins/user_managament/delete_user/'.$list->id);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>

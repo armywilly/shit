@@ -29,7 +29,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 
                             <div class="row">
                                 <!-- Form Start -->
-                              <form action="<?php echo base_url('sim/karyawan/edit/'.$k->id_staff) ?>" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                              <form action="<?php echo base_url('admins/karyawan/edit/'.$k->id_staff) ?>" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
 
                                 <div class="col-lg-6">
                                         <div class="form-group">
@@ -201,7 +201,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <button type="submit" class="btn btn-success waves-effect waves-light">
                                                 Submit
                                             </button>
-                                            <a href="<?php echo base_url('sim/karyawan') ?>" type="button"
+                                            <a href="<?php echo base_url('admins/karyawan') ?>" type="button"
                                                     class="btn btn-danger waves-effect">Cancel
                                             </a>
                                         </div>

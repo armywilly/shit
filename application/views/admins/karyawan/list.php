@@ -26,7 +26,7 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="m-b-30">
-                                        <a href="<?php echo base_url('sim/karyawan/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
+                                        <a href="<?php echo base_url('admins/karyawan/create') ?>" type="button" class="btn btn-success waves-effect waves-light">Tambah Data <i class="fa fa-plus"></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -52,9 +52,9 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                                                 <td><?php echo $list['jabatan'] ?></td>
                                                 <td><?php echo $list['email'] ?></td>
                                                 <td class="actions">
-                                                    <a href="<?php echo base_url('sim/karyawan/detail/'.$list['id_staff']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                                    <a href="<?php echo base_url('sim/karyawan/edit/'.$list['id_staff']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                                                    <a href="<?php echo base_url('sim/karyawan/delete/'.$list['id_staff']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                                    <a href="<?php echo base_url('admins/karyawan/detail/'.$list['id_staff']);?>" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                                    <a href="<?php echo base_url('admins/karyawan/edit/'.$list['id_staff']);?>" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?php echo base_url('admins/karyawan/delete/'.$list['id_staff']);?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             <?php $i++; } ?>

@@ -96,7 +96,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <button type="submit" class="btn btn-success waves-effect waves-light">
                                                 Submit
                                             </button>
-                                            <a href="<?php echo base_url('sim/user_managament') ?>" type="button"
+                                            <a href="<?php echo base_url('admins/user_managament') ?>" type="button"
                                                     class="btn btn-danger waves-effect">Cancel
                                             </a>
                                         </div>

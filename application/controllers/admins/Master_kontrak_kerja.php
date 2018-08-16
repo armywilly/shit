@@ -23,7 +23,6 @@ class Master_kontrak_kerja extends CI_Controller {
 							'mkk'			=> $mkk,
 							'isi'			=> 'admins/master-kontrak-kerja/list');
 			$this->load->view('admins/layout/wrapper',$data);
-			var_dump($data);
 		}else{
 			redirect('auth/login');
 		}
@@ -97,7 +96,6 @@ class Master_kontrak_kerja extends CI_Controller {
 						$this->mMKontrak->createMKontrak($data);
 						$this->session->set_flashdata('sukses','Success');
 						redirect(base_url('admins/master_kontrak_kerja/'));
-						print_r($data);
 					}
 				}
 				// Default page
