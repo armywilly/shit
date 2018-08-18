@@ -56,6 +56,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                 <div class="col-md-10">
                                                     <select name="id_master_client" class="form-control" required>
                                                             <?php foreach($mc as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
                                                             <option value="<?php echo $list['id_master_client'] ?>">
                                                                 <?php echo $list['nama_client'] ?>
                                                             </option>
@@ -69,8 +70,8 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                 <div class="col-md-10">
                                                     <select name="no_pa" class="form-control" required>
                                                             <?php foreach($pa as $list) { ?>
-                                                            <option value="<?php echo $list['id_pa'] ?>">
-                                                                <?php echo $list['no_pa'] ?>
+                                                            <option value="<?php echo $list->id_pa ?>">
+                                                                <?php echo $list->no_pa ?>
                                                             </option>
                                                             <?php } ?>
                                                     </select>
@@ -92,14 +93,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Tanggal Mulai Kontrak</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Start</label>
                                                 <div class="col-md-10">
                                                     <input type="date"  name="start" class="form-control" value="<?php echo set_value('start') ?>" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Tanggal Berakhir Kontrak</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Due</label>
                                                 <div class="col-md-10">
                                                     <input type="date" name="due" class="form-control" value="<?php echo set_value('due') ?>" required>
                                                 </div>
@@ -111,6 +112,8 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                     <select name="stts_kontrak" class="form-control">
                                                             <option value="On Going">On Going</option>
                                                             <option value="Complete">Complete</option>
+                                                            <option value="Invoice">Invoice</option>
+                                                            <option value="Pending">Pending</option>
                                                     </select>
                                                 </div>
                                             </div>
