@@ -32,14 +32,14 @@ class Master_client extends CI_Controller {
 	public function detil($id_master_client) {
 		if ($this->tank_auth->is_logged_in()) {	
 
-			$mc 	= $this->mKaryawan->detailMClient($id_master_clien);                                           		
+			$mc 	= $this->mMClients->detailMClient($id_master_client);                                           		
 			
 			$data  = array(		'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 								'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
 								'instansi'		=> $this->config->item('nama_instansi'),
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'mc'			=> $mc,
-								'isi'			=> 'admins/master-client/detail');
+								'isi'			=> 'admins/master-client/detil');
 			$this->load->view('admins/layout/wrapper', $data);
 		}else{
 			redirect('auth/login');
@@ -58,11 +58,11 @@ class Master_client extends CI_Controller {
 				if($v->run()) {
 					
 					$config['upload_path'] 		= './upload/klien/';
-					$config['allowed_types'] 	= 'gif|jpg|png|pdf|rar|zip';
-					$config['max_size']			= '20000'; // KB
+					$config['allowed_types'] 	= 'gif|jpg|png';
+					$config['max_size']			= '300'; // KB
 					$config['overwrite']		= 'FALSE';			
 					$this->load->library('upload', $config);
-					if($this->upload->do_upload('multiple')) {
+					if(!$this->upload->do_upload('image')) {
 						
 					$data = array(	'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),
 									'judul_pendek'	=> $this->config->item('nama_aplikasi_pendek'),
@@ -74,6 +74,19 @@ class Master_client extends CI_Controller {
 					$this->load->view('admins/layout/wrapper',$data);
 					}else{
 						$upload_data				= array('uploads' =>$this->upload->data());
+						// Image Editor
+						$config['image_library']	= 'gd2';
+						$config['source_image'] 	= './upload/klien/'.$upload_data['uploads']['file_name']; 
+						$config['new_image'] 		= './upload/klien/thumbs/';
+						$config['create_thumb'] 	= TRUE;
+						$config['maintain_ratio'] 	= FALSE;
+						$config['max_width'] 		= 1024; // Pixel
+						$config['max_height'] 		= 700; // Pixel
+						$config['x_axis'] 			= 0;
+						$config['y_axis'] 			= 0;
+						$config['thumb_marker'] 	= '';
+						$this->load->library('image_lib', $config);
+						$this->image_lib->resize();
 
 						$i = $this->input;
 						$slugmc = url_title($this->input->post('nama_client'), 'dash', TRUE);
@@ -89,7 +102,7 @@ class Master_client extends CI_Controller {
 										'npwp_client'	=> $i->post('npwp_client'),								
 										'tanggal'		=> $i->post('tanggal'),								
 										'image'			=> $upload_data['uploads']['file_name'],
-										'file_1'		=> $upload_data['uploads']['file_name'],						 			 );
+											 			 );
 
 						$this->mMClients->createMClient($data);
 						$this->session->set_flashdata('sukses','Success');

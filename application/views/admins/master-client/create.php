@@ -37,23 +37,23 @@ echo validation_errors('<div class="alert alert-success">','</div>');
 
                                     <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Nama Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Nama Perusahaan</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="nama_client" class="form-control" value="<?php echo set_value('nama_client') ?>" placeholder="Nama Klien" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">No Registrasi Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Registration Code</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="nrk" class="form-control" value="<?php echo $kd['nrk']; ?>" placeholder="Nama Registrasi Klien" disabled>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">No NPWP Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;"> NPWP Perusahaan</label>
                                                 <div class="col-md-10">
-                                                    <input type="text" name="npwp_client" class="form-control" value="<?php echo set_value('npwp_client') ?>" placeholder="No NPWP Klien" required>
+                                                    <input type="text" name="npwp_client" class="form-control" value="<?php echo set_value('npwp_client') ?>" placeholder="NPWP Perusahaan" required>
                                                 </div>
                                             </div>
 
@@ -65,46 +65,47 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Alamat Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Alamat</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="alamat_client" class="form-control" value="<?php echo set_value('alamat_client') ?>" placeholder="Alamat Klien" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">No Telpon Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">No Telepon</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="no_telp_client" class="form-control" value="<?php echo set_value('no_telp_client') ?>" placeholder="No Telpon Klien" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">No Fax Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">No Fax</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="no_fax_client" class="form-control" value="<?php echo set_value('no_fax_client') ?>" placeholder="No Fax Klien" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Email Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Email Perusahaan</label>
                                                 <div class="col-md-10">
                                                     <input type="text" name="email_client" class="form-control" value="<?php echo set_value('email_client') ?>" placeholder="Email Klien" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Upload Foto / Logo Klien</label>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Logo Perusahaan</label>
                                                 <div class="col-md-10">
                                                     <input type="file" value="<?php echo set_value('image') ?>" name="image" class="dropify" data-max-file-size="1M"/>
                                                 </div>
                                             </div>
 
+                                            <!-- Tidak Terpakai
                                             <div class="form-group">
                                                 <label class="col-md-2 control-label" style="text-align: left;">File Pendukung(Optional)</label>
                                                 <div class="col-md-10">
                                                     <input type="file" value="<?php echo set_value('file_1') ?>" name="file_1" class="dropify" data-max-file-size="20M"/>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                     </div>
                                     <div class="row">
