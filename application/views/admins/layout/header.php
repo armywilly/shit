@@ -165,10 +165,10 @@
                             <li class="has-submenu">
                                 <a href="#"><i class="fa fa-user-circle-o"></i> <span> Klien </span> </a>
                                 <ul class="submenu">
-                                    <li><a href="<?php echo base_url('admins/master_client') ?>">List Klien</a></li>
-                                    <li><a href="<?php echo base_url('admins/master_kontrak_kerja') ?>">Kontrak Kerja Sama</a></li>
-                                    <li><a href="<?php echo base_url('admins/partnership_ag') ?>">Partnership Agreement</a></li>
-                                    <li><a href="<?php echo base_url('admins/dokumentasi_client') ?>">Dokumentasi Klien</a></li>
+                                    <li><a href="<?php echo base_url('admins/master_client') ?>">1. &nbsp;List Klien</a></li>
+                                    <li><a href="<?php echo base_url('admins/partnership_ag') ?>">2. &nbsp;Partnership Agreement</a></li>
+                                    <li><a href="<?php echo base_url('admins/master_kontrak_kerja') ?>">3. &nbsp;Kontrak Kerja Sama</a></li>
+                                    <li><a href="<?php echo base_url('admins/dokumentasi_client') ?>">4. &nbsp;Dokumentasi Klien</a></li>
                                 </ul>
                             </li>
                             
