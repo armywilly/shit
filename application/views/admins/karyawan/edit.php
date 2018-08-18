@@ -82,12 +82,6 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" style="text-align: left;">Linked In</label>
-                                            <div class="col-md-9">
-                                                <input type="text" name="linkedin" class="form-control" value="<?php echo $k->linkedin; ?>" placeholder="Paste Your Url Linked In Here" required>
-                                            </div>
-                                        </div>
 
                                 </div><!-- end col -->
 
@@ -122,6 +116,14 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         </div>
 
                                         <div class="form-group">
+                                            <label class="col-md-3 control-label" style="text-align: left;">Linked In</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="linkedin" class="form-control" value="<?php echo $k->linkedin; ?>" placeholder="Paste Your Url Linked In Here" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tidak Terpakai
+                                        <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Status Publish</label>
                                             <div class="col-md-9">
                                                 <select name="status_staff" class="form-control">
@@ -139,7 +141,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                         <option value="Large" <?php if($k->ukuran=="Large") { echo "selected"; } ?>>Large</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Jenis Kelamin</label>
