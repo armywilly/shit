@@ -105,9 +105,7 @@ class Karyawan extends CI_Controller {
 									'linkedin'			=> $i->post('linkedin'),
 									'biodata'			=> $i->post('biodata'),
 									'image'				=> $upload_data['uploads']['file_name'],
-									'status_staff'		=> $i->post('status_staff'),
 									'keyword'			=> $i->post('keyword'),
-									'ukuran'			=> $i->post('ukuran'),
 									'status_karyawan'	=> $i->post('status_karyawan'),
 									'tanggal'			=> $i->post('tanggal'),
 									);
@@ -195,9 +193,7 @@ class Karyawan extends CI_Controller {
 										'linkedin'			=> $i->post('linkedin'),
 										'biodata'			=> $i->post('biodata'),
 										'image'				=> $upload_data['uploads']['file_name'],
-										'status_staff'		=> $i->post('status_staff'),
 										'keyword'			=> $i->post('keyword'),
-										'ukuran'			=> $i->post('ukuran'),
 										'status_karyawan'	=> $i->post('status_karyawan'),
 										'tanggal'			=> $i->posy('tanggal'),
 										);
@@ -222,9 +218,7 @@ class Karyawan extends CI_Controller {
 									'email'				=> $i->post('email'),
 									'linkedin'			=> $i->post('linkedin'),
 									'biodata'			=> $i->post('biodata'),
-									'status_staff'		=> $i->post('status_staff'),
 									'keyword'			=> $i->post('keyword'),
-									'ukuran'			=> $i->post('ukuran'),
 									'status_karyawan'	=> $i->post('status_karyawan'),
 									'tanggal' 			=> $i->post('tanggal'),
 									);

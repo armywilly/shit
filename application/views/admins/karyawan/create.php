@@ -86,12 +86,6 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label" style="text-align: left;">Linked In</label>
-                                            <div class="col-md-9">
-                                                <input type="text" name="linkedin" class="form-control" value="<?php echo set_value('linkedin') ?>" placeholder="Paste Your Url Linked In Here" required>
-                                            </div>
-                                        </div>
 
                                 </div><!-- end col -->
 
@@ -113,17 +107,25 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">NPWP Karyawan</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="npwp" class="form-control" value="<?php echo set_value('npwp') ?>" placeholder="NPWP" required>
+                                                <input type="text" name="npwp" class="form-control" value="<?php echo set_value('npwp') ?>" placeholder="NPWP Karyawan" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">BPJS Karyawan</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="bpjs" class="form-control" value="<?php echo set_value('bpjs') ?>" placeholder="BPJS" required>
+                                                <input type="text" name="bpjs" class="form-control" value="<?php echo set_value('bpjs') ?>" placeholder="BPJS Karyawan" required>
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="col-md-3 control-label" style="text-align: left;">Linked In</label>
+                                            <div class="col-md-9">
+                                                <input type="text" name="linkedin" class="form-control" value="<?php echo set_value('linkedin') ?>" placeholder="Paste Your Url Linked In Here" required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tidak Terpakai
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Status Publish</label>
                                             <div class="col-md-9">
@@ -142,12 +144,13 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                         <option value="Large">Large</option>
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" style="text-align: left;">Jenis Kelamin</label>
                                             <div class="col-md-9">
                                                 <select name="gender" class="form-control">
+                                                        <option value="">Silahkan Pilih</option>
                                                         <option value="Male">Pria</option>
                                                         <option value="Female">Wanita</option>
                                                         <option value="Other">Other</option>
@@ -159,6 +162,7 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             <label class="col-md-3 control-label" style="text-align: left;">Status Karyawan</label>
                                             <div class="col-md-9">
                                                 <select name="status_karyawan" class="form-control">
+                                                        <option value="">Silahkan Pilih</option>
                                                         <option value="Aktif">Aktif</option>
                                                         <option value="Non-Aktif">Non-Aktif</option>
                                                 </select>
