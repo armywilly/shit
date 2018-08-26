@@ -115,7 +115,7 @@ $captcha = array(
 
                         <div class="form-group m-t-30 m-b-0">
                             <div class="col-sm-12">
-                                <a href="page-recoverpw.html" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
+                                <a href="#" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
                             </div>
                         </div>
                     </form>
@@ -127,7 +127,7 @@ $captcha = array(
 
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <p class="text-muted">Don't have an account? <a href="page-register.html" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                    <p class="text-muted">Don't have an account? <a href="#" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                 </div>
             </div>
             
