@@ -22,31 +22,31 @@ class Permission_model extends CI_Model {
                 $query = $this->db->get('permissions');
                 return $query->result();
         }
-        public function get_permissionJoinRole($id)
+        public function get_permissionJoinRole($roleid)
         {
-            $sql="SELECT a.id,a.key,a.description,a.group,a.order,b.id FROM permissions a LEFT JOIN role_permissions b ON a.id=b.permission_id AND b.id=$id ORDER BY a.group,a.order";
+            $sql="SELECT a.id,a.key,a.description,a.group,a.order,b.role_id FROM permissions a LEFT JOIN role_permissions b ON a.id=b.permission_id AND b.role_id=$roleid ORDER BY a.group,a.order";
             $query = $this->db->query($sql);
             return $query->result();
         }
-        public function get_permission_by_role($id)
+        public function get_permission_by_role($roleid)
         {
-                $this->db->where('id=',$id);
+                $this->db->where('role_id=',$roleid);
                 $query = $this->db->get('role_permissions');
                 return $query->result();
         }
-        public function get_role_by_id($id)
+        public function get_role_by_id($roleid)
         {
-                $this->db->where('id=',$roleid);
+                $this->db->where('role_id=',$roleid);
                 $query = $this->db->get('roles');
                 return $query->row();
         }
         
-        public function add_roles($id,$permission =array())
+        public function add_roles($roleid,$permission =array())
         {
-            $sql="delete from role_permissions where id=$id";
+            $sql="delete from role_permissions where role_id=$roleid";
             $query = $this->db->query($sql);
             foreach($permission as $dt){
-                $sql="insert into role_permissions values(null,$id,$dt)";
+                $sql="insert into role_permissions values(null,$roleid,$dt)";
                 $query = $this->db->query($sql);
             }
            
