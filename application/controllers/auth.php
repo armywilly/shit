@@ -123,7 +123,7 @@ class Auth extends CI_Controller
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
 			$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean|matches[password]');
-			//$this->form_validation->set_rules('role', 'Role', 'required');
+			$this->form_validation->set_rules('role', 'Role', 'required');
 
 			$captcha_registration	= $this->config->item('captcha_registration', 'tank_auth');
 			$use_recaptcha			= $this->config->item('use_recaptcha', 'tank_auth');
@@ -177,6 +177,8 @@ class Auth extends CI_Controller
 					$data['captcha_html'] = $this->_create_captcha();
 				}
 			}
+			$this->load->model('admins/Permission_model');
+            $data['dataRole'] = $this->Permission_model->get_role();
 			$data['use_username'] = $use_username;
 			$data['captcha_registration'] = $captcha_registration;
 			$data['use_recaptcha'] = $use_recaptcha;
@@ -570,6 +572,10 @@ class Auth extends CI_Controller
 		}
 		return TRUE;
 	}
+
+	function noaccess(){
+            $this->load->view('errors/html/error_noaccess');
+        }
 
 }
 
