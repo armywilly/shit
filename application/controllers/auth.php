@@ -81,7 +81,7 @@ class Auth extends CI_Controller
     			
     			echo validation_errors();
     			
-    			$this->load->view('auth/login_form', $data);
+    			$this->load->view('auth/new_login', $data);
 			    
 			}
 		}
