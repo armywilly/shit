@@ -29,12 +29,8 @@ class Auth extends CI_Controller
 	 */
 	function login()
 	{
-		if ($this->tank_auth->is_logged_in()){//!="" && $this->tank_auth->get_user_role('roles') ="administrator") {									// logged in with user role is administrator
-			redirect('admins/dashboard');
-
-		//} elseif ($this->tank_auth->is_logged_in()//!="" && $this->tank_auth->get_user_role('roles') ="Finance & SDM") {									// logged in with user role is finance
-			//redirect('finance/dashboard');
-		//}
+		if ($this->tank_auth->is_logged_in()){
+				redirect('admins/dashboard');
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
 			redirect('auth/send_again/');
