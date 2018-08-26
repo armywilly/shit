@@ -30,7 +30,7 @@ class Master_client extends CI_Controller {
 
 	// Read Karyawan
 	public function detil($id_master_client) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('detail-client')) {
 
 			$mc 	= $this->mMClients->detailMClient($id_master_client);                                           		
 			
@@ -42,16 +42,14 @@ class Master_client extends CI_Controller {
 								'isi'			=> 'admins/master-client/detil');
 			$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}	
 	}
 
 	// Create Product
 	public function create() {
-
-		$kd['nrk'] = $this->mMClients->get_nrk();
-		
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('add-client')) {
+			$kd['nrk'] = $this->mMClients->get_nrk();
 			$v = $this->form_validation;
 			$v->set_rules('nama_client','Nama Client','required');
 		
@@ -118,14 +116,13 @@ class Master_client extends CI_Controller {
 								'isi'			=> 'admins/master-client/create');
 				$this->load->view('admins/layout/wrapper',$data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}
 
 	// Edit Client
 	public function edit($id_master_client) {
-		if ($this->tank_auth->is_logged_in()) {	
-
+		if ($this->acl->has_permission('edit-client')) {	
 			$mc	= $this->mMClients->detailMClient($id_master_client);
 			$endmc	= $this->mMClients->endMClient();
 			$kd['nrk'] = $this->mMClients->get_nrk();		
@@ -221,19 +218,19 @@ class Master_client extends CI_Controller {
 								'isi'			=> 'admins/master-client/edit');
 				$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}	
 
 	// Delete Client
 	public function delete($id_master_client) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('delete-client')) {	
 			$data = array('id_master_client' => $id_master_client);
 			$this->mMClients->deleteMClient($data);		
 			$this->session->set_flashdata('sukses','Success');
 			redirect(base_url('admins/master_client'));
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}		
 }
