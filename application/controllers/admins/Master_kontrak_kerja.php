@@ -30,7 +30,7 @@ class Master_kontrak_kerja extends CI_Controller {
 
 	// Read Kontrak Kerja
 	public function detail($id_master_kk) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('detail-kontrak-kerja')) {
 
 			$mkk 	= $this->mMKontrak->detailMKontrak($id_master_kk);                                           		
 			
@@ -42,18 +42,17 @@ class Master_kontrak_kerja extends CI_Controller {
 								'isi'			=> 'admins/master-kontrak-kerja/detail');
 			$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}	
 	}
 
 	// Create Kontrak Kerja
 	public function create() {
+		if ($this->acl->has_permission('add-kontrak-kerja')) {
 
-		$kd['nr_k'] = $this->mMKontrak->get_nr_k();
-		$mc 		= $this->mMClients->listMClients();
-		$pa 		= $this->mMPa->listMPa();
-		
-		if ($this->tank_auth->is_logged_in()) {	
+			$kd['nr_k'] = $this->mMKontrak->get_nr_k();
+			$mc 		= $this->mMClients->listMClients();
+			$pa 		= $this->mMPa->listMPa();	
 			$v = $this->form_validation;
 			$v->set_rules('no_kontrak','No Kontrak','required');
 		
@@ -109,14 +108,13 @@ class Master_kontrak_kerja extends CI_Controller {
 								'isi'			=> 'admins/master-kontrak-kerja/create');
 				$this->load->view('admins/layout/wrapper',$data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}
 
 	// Edit Client
 	public function edit($id_master_kk) {
-		if ($this->tank_auth->is_logged_in()) {	
-
+		if ($this->acl->has_permission('edit-kontrak-kerja')) {
 			$mkk	   	= $this->mMKontrak->detailMKontrak($id_master_kk);
 			$mc  	   	= $this->mMClients->listMClients();
 			$pa 		= $this->mMPa->listMPa();
@@ -201,19 +199,19 @@ class Master_kontrak_kerja extends CI_Controller {
 								'isi'			=> 'admins/master-kontrak-kerja/edit');
 				$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}	
 
 	// Delete Client
 	public function delete($id_master_kk) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('delete-kontrak-kerja')) {	
 			$data = array('id_master_kk' => $id_master_kk);
 			$this->mMKontrak->deleteMKontrak($data);		
 			$this->session->set_flashdata('sukses','Success');
 			redirect(base_url('admins/master_kontrak_kerja'));
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}		
 }
