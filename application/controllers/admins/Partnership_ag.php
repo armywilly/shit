@@ -31,11 +31,10 @@ class Partnership_ag extends CI_Controller {
 
 	// Create Kontrak Kerja
 	public function create() {
+		if ($this->acl->has_permission('add-pa')) {
 
-		$kd['no_pa'] = $this->mMPa->get_no_pa();
-		$mc 		= $this->mMClients->listMClients();
-		
-		if ($this->tank_auth->is_logged_in()) {	
+			$kd['no_pa'] = $this->mMPa->get_no_pa();
+			$mc 		= $this->mMClients->listMClients();
 			$v = $this->form_validation;
 			$v->set_rules('id_master_client','id master client','required');
 		
@@ -67,7 +66,7 @@ class Partnership_ag extends CI_Controller {
 
 	// Edit Client
 	public function edit($id_pa) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('edit-pa')) {
 
 			$pa 		= $this->mMPa->detailMPa($id_pa);
 			$mc  	   	= $this->mMClients->listMClients();
@@ -100,19 +99,19 @@ class Partnership_ag extends CI_Controller {
 								'isi'			=> 'admins/partnership/edit');
 				$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}	
 
 	// Delete Client
 	public function delete($id_pa) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('delete-pa')) {	
 			$data = array('id_pa' => $id_pa);
 			$this->mMPa->deleteMPa($data);		
 			$this->session->set_flashdata('sukses','Success');
 			redirect(base_url('admins/partnership_ag'));
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}		
 }
