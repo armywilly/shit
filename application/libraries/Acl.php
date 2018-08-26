@@ -53,7 +53,7 @@ class Acl {
 		$this->CI->load->library('session');
 
 		// Load ACL model
-		$this->CI->load->model('admins/acl_model');
+		$this->CI->load->model('admins/Acl_model');
 
 		if ( ! empty($config))
 		{
@@ -86,9 +86,9 @@ class Acl {
 
 					// Set the restrictions
 					$this->_config[$key][$k] = array(
-						'allow_roles' => $allow_roles,
-						'allow_users' => $allow_users,
-						'error_msg' => $error_msg
+						'allow_roles' 	=> $allow_roles,
+						'allow_users' 	=> $allow_users,
+						'error_msg' 	=> $error_msg
 					);
 				}
 			}
@@ -198,7 +198,7 @@ class Acl {
 	 */
 	public function has_permission($key = '')
 	{
-		return $this->CI->acl_model->has_permission($key);
+		return $this->CI->Acl_model->has_permission($key);
 	}
 
 	// --------------------------------------------------------------------
@@ -254,7 +254,7 @@ class Acl {
 			$user = $this->_session_user();
 
 			// Set the role
-			$this->role = $this->CI->acl_model->user_role($user);
+			$this->role = $this->CI->Acl_model->user_role($user);
 		}
 
 		return $this->role;

@@ -72,6 +72,7 @@ class Tank_auth
 								'user_id'	=> $user->id,
 								'username'	=> $user->username,
 								'status'	=> ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
+                                'role_id'=>$user->role_id,
 						));
 
 						if ($user->activated == 0) {							// fail - not activated
@@ -139,16 +140,10 @@ class Tank_auth
 		return $this->ci->session->userdata('user_id');
 	}
 
-	/**
-	 * Get roles
-	 *
-	 * @return	string
-	 */
-	function get_user_role()
+        function get_role_id()
 	{
-		return $this->ci->session->userdata('roles');
+		return $this->ci->session->userdata('role_id');
 	}
-
 	/**
 	 * Get username
 	 *
@@ -169,7 +164,7 @@ class Tank_auth
 	 * @param	bool
 	 * @return	array
 	 */
-	function create_user($username, $email, $password, $email_activation)
+	function create_user($username, $email, $password, $email_activation,$roleId)
 	{
 		if ((strlen($username) > 0) AND !$this->ci->users->is_username_available($username)) {
 			$this->error = array('username' => 'auth_username_in_use');
@@ -189,6 +184,7 @@ class Tank_auth
 				'password'	=> $hashed_password,
 				'email'		=> $email,
 				'last_ip'	=> $this->ci->input->ip_address(),
+                'role_id'	=> $roleId,
 			);
 
 			if ($email_activation) {

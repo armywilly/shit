@@ -17,7 +17,7 @@ class User_managament extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('url','security','form'));
         $this->load->library('tank_auth');
-        $this->load->model('tank_auth/users');
+        $this->load->model('admins/user_model','tank_auth/users');
     }
 
     public function index() {
