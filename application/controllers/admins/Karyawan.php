@@ -6,7 +6,7 @@ class Karyawan extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('form_validation');
-        $this->load->helper('url');
+        $this->load->helper('url','');
 		$this->load->model('admins/Karyawan_model');
 	}
 
@@ -29,7 +29,7 @@ class Karyawan extends CI_Controller {
 
 	// Read Karyawan
 	public function detail($id_staff) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('detail-lawyer')) {
 
 			$k 	= $this->mKaryawan->detailkaryawan($id_staff);                                           		
 			
@@ -41,13 +41,13 @@ class Karyawan extends CI_Controller {
 								'isi'			=> 'admins/karyawan/detail');
 			$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}	
 	}
 		
 	// Tambah
 	public function create() {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('add-lawyer')) {	
 			//Load Model
 			$mj = $this->mMjabatan->listJabatan();
 
@@ -123,13 +123,13 @@ class Karyawan extends CI_Controller {
 								'isi'			=> 'admins/karyawan/create');
 				$this->load->view('admins/layout/wrapper', $data);
 		}else{
-			redirect('auth/login');
+			 redirect('/auth/noaccess/');
 		}
 	}
 	
 	// Edit
 	public function edit($id_staff) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('edit-lawyer')) {	
 			// Dari database
 			$k		  = $this->mKaryawan->detailkaryawan($id_staff);
 			$mj 	  = $this->mMjabatan->listJabatan();
@@ -239,20 +239,20 @@ class Karyawan extends CI_Controller {
 				$this->load->view('admins/layout/wrapper', $data);
 
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 	}
 	
 	// Delete
 	public function delete($id_staff) {
-		if ($this->tank_auth->is_logged_in()) {	
+		if ($this->acl->has_permission('delete-lawyer')) {	
 			$k		= $this->mKaryawan->detailkaryawan($id_staff);
 			$data 	= array('id_staff'	=> $id_staff);
 			$this->mKaryawan->deleteKaryawan($data);		
 			$this->session->set_flashdata('sukses','Staff deleted successfully');
 			redirect(base_url('admins/karyawan'));
 		}else{
-			redirect('auth/login');
+			redirect('auth/noaccess');
 		}
 
 	}
