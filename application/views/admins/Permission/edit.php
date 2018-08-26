@@ -1,4 +1,18 @@
-
+        <?php
+// Session 
+if($this->session->flashdata('sukses')) {
+    echo '<div class="col-md-6 pull-left">';
+    echo '<div class="alert alert-info alert-with-icon" data-notify="container">';
+    echo '<i data-notify="icon" class="material-icons">add_alert</i>';
+    echo $this->session->flashdata('sukses');
+    echo '</div>';
+    echo '</div>';
+} 
+// Error
+echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert alert-danger alert-with-icon" data-notify="container">','<i data-notify="icon" class="material-icons">add_alert</i>','</div>','</div>'); 
+?>
+<div class="wrapper">
+        <div class="container">
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="">
@@ -81,3 +95,5 @@
     </div>
 </div>
 <!-- /page content -->
+</div>
+</div>

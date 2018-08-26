@@ -110,6 +110,8 @@ class User_managament extends CI_Controller {
                     $data['captcha_html'] = $this->_create_captcha();
                 }
             }
+            $this->load->model('Permission_model');
+            $data['dataRole'] = $this->Permission_model->get_role();
             $data['use_username'] = $use_username;
             $data['captcha_registration'] = $captcha_registration;
             $data['use_recaptcha'] = $use_recaptcha;

@@ -36,7 +36,7 @@ class Permission_model extends CI_Model {
         }
         public function get_role_by_id($roleid)
         {
-                $this->db->where('role_id=',$roleid);
+                $this->db->where('id=',$roleid);
                 $query = $this->db->get('roles');
                 return $query->row();
         }
