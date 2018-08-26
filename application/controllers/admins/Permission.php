@@ -23,46 +23,46 @@ class Permission extends CI_Controller {
         }
     }
 
-    function index() {
+    Public function index() {
         if (!$this->acl->has_permission('user-permission')) {
             redirect('/auth/noaccess/');
         } else {
-            $data['user_id'] = $this->tank_auth->get_user_id();
-            $data['username'] = $this->tank_auth->get_username();
-            $data['dataRole'] = $this->Permission_model->get_role();
-            $data['main'] = 'permission/v_role';
-            $this->load->view('welcome', $data);
+            $data = array(  'user_id'       => $this->tank_auth->get_user_id(),
+                            'username'      => $this->tank_auth->get_username(),
+                            'dataRole'      => $this->Permission_model->get_role(),
+                            'isi'           => 'admins/permission/index');
+            $this->load->view('admins/layout/wrapper',$data);
         }
     }
 
-    function editPermission($roleid) {
-        if (!$this->acl->has_permission('user-editpermission')) {
+    Public function edit($roleid) {
+        if ($this->acl->has_permission('edit-permission')) {
+            $data = array(  'role_id'       => $roleid,
+                            'dataPermission'=> $this->Permission_model->get_permissionJoinRole($roleid),
+                            'roleName'      => $this->Permission_model->get_role_by_id($roleid)->name,
+                            'isi'           => 'admins/permission/edit');
+            $this->load->view('admins/layout/wrapper',$data);
+        }else{
             redirect('/auth/noaccess/');
-        } else {
-            $data['role_id'] = $roleid;
-            $data['dataPermission'] = $this->Permission_model->get_permissionJoinRole($roleid);
-            $data['roleName'] = $this->Permission_model->get_role_by_id($roleid)->name;
-            $data['main'] = 'permission/v_rolePermission';
-            $this->load->view('welcome', $data);
         }
     }
 
-    function submitPermission() {
-        if (!$this->acl->has_permission('user-editpermission')) {
+    Public function submit($roleid,$roles) {
+        if (!$this->acl->has_permission('edit-permission')) {
             redirect('/auth/noaccess/');
         } else {
-            $this->form_validation->set_rules('roles[]', 'roles', 'required');
+            $this->form_validation->set_rules('roles', 'roles', 'required');
             if ($this->form_validation->run()) {
                 $roleid = $this->input->post('roleid');
                 $roles = $this->input->post('roles');
 
                 $this->Permission_model->add_roles($roleid, $roles);
                 $this->session->set_userdata('okCekPermission', 'permission berhasil ditambahkan');
-                redirect('/permission/editPermission/' . $roleid);
+                redirect('/admins/permission/edit/' . $roleid);
             } else {
                 $this->session->set_userdata('errorCekPermission', 'harap ceklis permission');
                 $roleid = $this->input->post('roleid');
-                redirect('/permission/editPermission/' . $roleid);
+                redirect('/admins/permission/edit/' . $roleid);
             }
         }
     }
