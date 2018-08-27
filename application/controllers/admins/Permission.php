@@ -49,7 +49,8 @@ class Permission extends CI_Controller {
 
     Public function submit($roleid,$roles) {
         if (!$this->acl->has_permission('edit-permission')) {
-
+            redirect('/auth/noaccess/');
+        } else {
             $this->form_validation->set_rules('roles', 'roles', 'required');
             if ($this->form_validation->run()) {
                 $roleid = $this->input->post('roleid');
@@ -63,8 +64,6 @@ class Permission extends CI_Controller {
                 $roleid = $this->input->post('roleid');
                 redirect('/admins/permission/edit/' . $roleid);
             }
-        } else{
-            redirect('/auth/noaccess/');
         }
     }
 

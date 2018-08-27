@@ -53,7 +53,7 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                     <?php echo form_error('roles'); ?><?php echo isset($errors['roles'])?$errors['roles']:''; ?>
                     <div class="x_content">                        
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="<?php echo base_url()?>permission/submitPermission">
+                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="post" action="<?php echo base_url()?>admins/permission/submit">
                                 <input type="hidden" value="<?php echo $role_id?>" name="roleid"/>
                                       <?php
                                       $judul="";
@@ -68,10 +68,10 @@ echo validation_errors('<div class="col-md-6 pull-left">','<div class="alert ale
                                   echo '<p style="padding: 5px;">';
                               }
                               if(is_null($hasil->role_id)){
-                                  echo'<input type="checkbox" name="roles[]" value="'.$hasil->id.'" /> '.$hasil->description.'<br/>';
+                                  echo'<input type="checkbox" name="roles" value="'.$hasil->id.'" /> '.$hasil->description.'<br/>';
                              
                               }else{
-                                echo'<input type="checkbox" checked name="roles[]" value="'.$hasil->id.'" /> '.$hasil->description.'<br/>';
+                                echo'<input type="checkbox" checked name="roles" value="'.$hasil->id.'" /> '.$hasil->description.'<br/>';
                               }
                               $judul=$hasil->group;
                               $i++;
