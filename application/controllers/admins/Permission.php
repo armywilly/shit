@@ -35,9 +35,11 @@ class Permission extends CI_Controller {
         }
     }
 
+    //Ada Bug saat submit user id langsung terhapus dari database. Perlu tambahkan untuk validasi user id dan insert ke database
     Public function edit($roleid) {
         if ($this->acl->has_permission('edit-permission')) {
             $data = array(  'role_id'       => $roleid,
+                            'user_id'       => $this->tank_auth->get_user_id(),
                             'dataPermission'=> $this->Permission_model->get_permissionJoinRole($roleid),
                             'roleName'      => $this->Permission_model->get_role_by_id($roleid)->name,
                             'isi'           => 'admins/permission/edit');
@@ -48,9 +50,8 @@ class Permission extends CI_Controller {
     }
 
     Public function submit($roleid,$roles) {
-        if (!$this->acl->has_permission('edit-permission')) {
-            redirect('/auth/noaccess/');
-        } else {
+        if ($this->acl->has_permission('submit-permission')) {
+            
             $this->form_validation->set_rules('roles', 'roles', 'required');
             if ($this->form_validation->run()) {
                 $roleid = $this->input->post('roleid');
@@ -64,6 +65,10 @@ class Permission extends CI_Controller {
                 $roleid = $this->input->post('roleid');
                 redirect('/admins/permission/edit/' . $roleid);
             }
+
+        } else {
+
+            redirect('/auth/noaccess/');
         }
     }
 
