@@ -58,14 +58,17 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" style="text-align: left;">Pilih Team Leader</label>
-                                                    <div class="col-md-10">
-                                                        <select name="" class="form-control">
-                                                                <option value="1"> 1. Dodi </option>
-                                                                <option value="2"> 2. Arif</option>
-                                                                <option value="3"> 3. Taufik</option>
-                                                        </select>
-                                                    </div>
+                                                <label class="col-md-2 control-label" style="text-align: left;">Nama Klien</label>
+                                                <div class="col-md-10">
+                                                    <select name="lead" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-6">
@@ -73,33 +76,42 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 1</label>
                                                         <div class="col-md-8">
-                                                            <select name="" class="form-control">
-                                                                    <option value="1"> 1. Dodi </option>
-                                                                    <option value="2"> 2. Arif</option>
-                                                                    <option value="3"> 3. Taufik</option>
-                                                            </select>
+                                                        <select name="team_1" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                         </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 2</label>
                                                         <div class="col-md-8">
-                                                            <select name="" class="form-control">
-                                                                    <option value="1"> 1. Dodi </option>
-                                                                    <option value="2"> 2. Arif</option>
-                                                                    <option value="3"> 3. Taufik</option>
-                                                            </select>
+                                                        <select name="team_2" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                         </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 3</label>
                                                         <div class="col-md-8">
-                                                            <select name="" class="form-control">
-                                                                    <option value="1"> 1. Dodi </option>
-                                                                    <option value="2"> 2. Arif</option>
-                                                                    <option value="3"> 3. Taufik</option>
-                                                            </select>
+                                                        <select name="team_3" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                         </div>
                                                 </div>
 
@@ -110,33 +122,42 @@ echo validation_errors('<div class="alert alert-success">','</div>');
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 4</label>
                                                         <div class="col-md-8">
-                                                            <select name="" class="form-control">
-                                                                    <option value="1"> 1. Dodi </option>
-                                                                    <option value="2"> 2. Arif</option>
-                                                                    <option value="3"> 3. Taufik</option>
-                                                            </select>
+                                                        <select name="team_4" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                         </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 5</label>
                                                         <div class="col-md-8">
-                                                            <select name="" class="form-control">
-                                                                    <option value="1"> 1. Dodi </option>
-                                                                    <option value="2"> 2. Arif</option>
-                                                                    <option value="3"> 3. Taufik</option>
-                                                            </select>
+                                                        <select name="team_5" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                         </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" style="text-align: left;">Pilih Team 6</label>
                                                         <div class="col-md-8">
-                                                            <select name="" class="form-control">
-                                                                    <option value="1"> 1. Dodi </option>
-                                                                    <option value="2"> 2. Arif</option>
-                                                                    <option value="3"> 3. Taufik</option>
-                                                            </select>
+                                                        <select name="team_6" class="form-control" required>
+                                                            <?php foreach($k as $list) { ?>
+                                                            <option value="">Silahkan Pilih</option>
+                                                            <option value="<?php echo $list['id_staff'] ?>">
+                                                                <?php echo $list['nama'] ?>
+                                                            </option>
+                                                            <?php } ?>
+                                                    </select>
                                                         </div>
                                                 </div>
 

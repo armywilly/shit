@@ -35,6 +35,7 @@ class Partnership_ag extends CI_Controller {
 
 			$kd['no_pa'] = $this->mMPa->get_no_pa();
 			$mc 		= $this->mMClients->listMClients();
+			$k			= $this->mKaryawan->listKaryawan();
 			$v = $this->form_validation;
 			$v->set_rules('id_master_client','id master client','required');
 		
@@ -43,7 +44,13 @@ class Partnership_ag extends CI_Controller {
 						$i = $this->input;
 						$data = array(	'id_master_client'	=> $i->post('id_master_client'),
 										'no_pa'				=> $kd['no_pa'],
-										'tanggal'			=> $i->post('tanggal')
+										'lead'				=> $i->post('lead'),
+										'team_1'			=> $i->post('team_1'),
+										'team_2'			=> $i->post('team_2'),
+										'team_3'			=> $i->post('team_3'),
+										'team_4'			=> $i->post('team_4'),
+										'team_5'			=> $i->post('team_5'),
+										'team_6'			=> $i->post('team_6'),
 									);
 
 						$this->mMPa->createMPa($data);
@@ -57,6 +64,7 @@ class Partnership_ag extends CI_Controller {
 								'credit'		=> $this->config->item('credit_aplikasi'),
 								'kd'			=> $kd,
 								'mc'			=> $mc,
+								'k'				=> $k,
 								'isi'			=> 'admins/partnership/create');
 				$this->load->view('admins/layout/wrapper',$data);
 		}else{
@@ -70,6 +78,7 @@ class Partnership_ag extends CI_Controller {
 
 			$pa 		= $this->mMPa->detailMPa($id_pa);
 			$mc  	   	= $this->mMClients->listMClients();
+			$k			= $this->mKaryawan->listKaryawan();
 			$kd['no_pa']= $this->mMPa->get_no_pa();		
 
 			// Validation

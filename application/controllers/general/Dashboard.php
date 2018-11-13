@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller {
          
 	public function index()
 	{
-		if ($this->tank_auth->('is_logged_in') !="" && $this->session->userdata('roles')=="general") {	
+		if ($this->acl->has_permission('')) {
 
 			$d = array(	
 								'judul_lengkap'	=> $this->config->item('nama_aplikasi_full'),

@@ -18,6 +18,7 @@
 
         // Create Kontrak Kerja Sama
         public function createMPa($data) {
+            $this->db->join('m_karyawan','m_karyawan.id_staff= m_pa.id_staff','LEFT');
             $this->db->insert('m_pa',$data);
         }
 
